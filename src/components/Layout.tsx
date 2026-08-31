@@ -50,7 +50,7 @@ export const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" href="/assisi_assets/Assisi-Renewal-Center-150x150.webp" />
       </Head>
 
-      <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#12100E] text-slate-100 font-sans antialiased selection:bg-[#7A1C1C] selection:text-white flex flex-col justify-between pb-16 md:pb-0">
+      <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#12100E] text-slate-100 font-sans antialiased selection:bg-[#7A1C1C] selection:text-white flex flex-col justify-between pb-24 md:pb-0">
         
         {/* Golden Jubilee Celebration Modal */}
         <JubileeModal

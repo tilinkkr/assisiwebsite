@@ -11,8 +11,8 @@
   
   body {
     font-family: 'Manjari', 'Gayathri', 'Noto Sans Malayalam', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #1A202C;
-    background-color: #FFFFFF;
+    color: #1E293B;
+    background-color: #12100E;
     line-height: 1.8;
     letter-spacing: 0;
     overflow-x: hidden;
@@ -23,15 +23,14 @@
   /* Strict Malayalam Typography Rules */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Manjari', 'Noto Sans Malayalam', sans-serif;
-    color: #111827;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.35;
     letter-spacing: 0;
     font-style: normal !important;
   }
 
   p, li, span, input, textarea, button {
-    line-height: 1.8;
+    line-height: 1.75;
     font-style: normal !important;
   }
 
@@ -48,12 +47,12 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8F7F4;
+  background: #181614;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D1CEC7;
+  background: #7A1C1C;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A8A39D;
+  background: #991B1B;
 }
