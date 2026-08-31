@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '../components/Layout';
 import { Sparkles, X, ZoomIn } from 'lucide-react';
 
@@ -60,62 +61,62 @@ const GALLERY_DATA: GalleryItem[] = [
   },
   {
     id: '6',
-    title: 'Retreat Hall Seating & Interior',
-    malayalamTitle: 'ധ്യാന ഹാൾ ഉൾവശം',
-    category: 'halls',
+    title: 'Praise & Worship Altar Podium',
+    malayalamTitle: 'സ്തുതിപ്പ് വേദി',
+    category: 'chapel',
     src: '/assisi_assets/gallery/IMG20230605155154-461x1024.webp',
     fullSrc: '/assisi_assets/gallery/IMG20230605155154-scaled.webp',
-    description: 'ആത്മീയ നവീകരണ ശുശ്രൂഷകൾക്കായി സജ്ജീകരിച്ചിരിക്കുന്ന ശാന്തമായ അന്തരീക്ഷം.'
+    description: 'ധ്യാന ശുശ്രൂഷകൾ നയിക്കുന്ന പ്രധാന വേദി.'
   },
   {
     id: '7',
-    title: 'Ashram Prayer Corridors',
-    malayalamTitle: 'ധ്യാന പാതയും വരാന്തയും',
-    category: 'campus',
-    src: '/assisi_assets/gallery/IMG20230605155200-scaled.webp',
-    fullSrc: '/assisi_assets/gallery/IMG20230605155200-scaled.webp',
-    description: 'ധ്യാനാർത്ഥികൾക്കു സ്വസ്ഥമായി ജപമാല ചൊല്ലാനും ഏകാന്ത പ്രാർത്ഥനയിൽ ഏർപ്പെടാനുമുള്ള ആശ്രമ പരിസരം.'
+    title: 'Holy Monstrance & Tabernacle',
+    malayalamTitle: 'ദിവ്യകാരുണ്യ സക്രാരി',
+    category: 'chapel',
+    src: '/assisi_assets/gallery/IMG20230605155215-461x1024.webp',
+    fullSrc: '/assisi_assets/gallery/IMG20230605155215-scaled.webp',
+    description: 'അനുഗ്രഹദായകമായ പരിശുദ്ധ പരമ ദിവ്യകാരുണ്യ സന്നിധി.'
   },
   {
     id: '8',
-    title: 'Main Hall Sanctuary Stage',
-    malayalamTitle: 'പ്രധാന അൾത്താര വേദി',
-    category: 'halls',
-    src: '/assisi_assets/gallery/IMG20230605155215-461x1024.webp',
-    fullSrc: '/assisi_assets/gallery/IMG20230605155215-scaled.webp',
-    description: 'വിശുദ്ധ കുർബാനയും രോഗശാന്തി ശുശ്രൂഷകളും അർപ്പിക്കപ്പെടുന്ന വേദി.'
+    title: 'Eucharistic Adoration with Votive Candles',
+    malayalamTitle: 'മെഴുകുതിരി വെളിച്ചത്തിൽ ആരാധന',
+    category: 'chapel',
+    src: '/assisi_assets/gallery/MonstranceCandles-1536x1000-1.webp',
+    fullSrc: '/assisi_assets/gallery/MonstranceCandles-1536x1000-1.webp',
+    description: 'ശാന്തമായ പ്രാർത്ഥനാന്തരീക്ഷത്തിൽ പ്രകാശിക്കുന്ന ദിവ്യകാരുണ്യം.'
   },
   {
     id: '9',
-    title: 'Campus Panorama',
-    malayalamTitle: 'ധ്യാനകേന്ദ്രം പരിസര കാഴ്ച',
+    title: 'Scenic Campus Gardens & Hills',
+    malayalamTitle: 'ആശ്രമ പൂന്തോട്ടവും പ്രകൃതിയും',
     category: 'campus',
-    src: '/assisi_assets/gallery/IMG20230605153946-1024x460.webp',
-    fullSrc: '/assisi_assets/gallery/IMG20230605153946-scaled.webp',
-    description: 'ഭരണങ്ങാനത്തിന്റെ ഹൃദയഭാഗത്ത് സ്ഥിതി ചെയ്യുന്ന അസ്സീസി ധ്യാനകേന്ദ്രം.'
+    src: '/assisi_assets/gallery/photo-1622598453695-4fbaf151aadc.webp',
+    fullSrc: '/assisi_assets/gallery/photo-1622598453695-4fbaf151aadc.webp',
+    description: 'ധ്യാനാർത്ഥികൾക്ക് ധ്യാനിക്കാനും പ്രാർത്ഥിക്കാനുമുള്ള ശാന്തമായ പ്രകൃതിഭംഗി.'
   },
   {
     id: '10',
-    title: 'Nature & Greenery Grounds',
-    malayalamTitle: 'ആശ്രമ പൂന്തോട്ടവും പ്രകൃതിയും',
+    title: 'Residential Retreat Accommodation Block',
+    malayalamTitle: 'റസിഡൻഷ്യൽ താമസ മുറികൾ',
     category: 'campus',
-    src: '/assisi_assets/gallery/IMG20230605154038-1024x460.webp',
-    fullSrc: '/assisi_assets/gallery/IMG20230605154038-scaled.webp',
-    description: 'പ്രകൃതിഭംഗിയും തണലും നിറഞ്ഞ പ്രാർത്ഥനാന്തരീക്ഷം.'
+    src: '/assisi_assets/gallery/IMG20230605155200-scaled.webp',
+    fullSrc: '/assisi_assets/gallery/IMG20230605155200-scaled.webp',
+    description: 'ധ്യാനത്തിനെത്തുന്നവർക്കുള്ള സുഖപ്രദമായ താമസ മുറികളും ഹാളുകളും.'
   },
   {
     id: '11',
-    title: 'St. Francis of Assisi Statue',
-    malayalamTitle: 'വിശുദ്ധ ഫ്രാൻസിസ് അസ്സീസി രൂപം',
-    category: 'grotto',
-    src: '/assisi_assets/4934.webp',
-    fullSrc: '/assisi_assets/4934.webp',
-    description: 'സമാധാനത്തിന്റെയും പ്രകൃതിസ്നേഹത്തിന്റെയും കാവൽപിതാവായ വിശുദ്ധ ഫ്രാൻസിസ് അസ്സീസി.'
+    title: 'Spiritual Counseling Rooms',
+    malayalamTitle: 'ആത്മീയ കൗൺസിലിംഗ് മുറികൾ',
+    category: 'halls',
+    src: '/assisi_assets/gallery/IMG20230605155235-scaled-e1695101767132.webp',
+    fullSrc: '/assisi_assets/gallery/IMG20230605155235-scaled-e1695101767132.webp',
+    description: 'വ്യക്തിഗത കൗൺസിലിംഗിനും കുമ്പസാരത്തിനുമുള്ള പ്രാർത്ഥനാ മുറികൾ.'
   },
   {
     id: '12',
-    title: 'Golden Jubilee Ashram Church (1976 – 2026)',
-    malayalamTitle: 'സുവർണ്ണ ജൂബിലി ദേവാലയം',
+    title: 'Assisi Golden Jubilee Monastic Church',
+    malayalamTitle: 'അസ്സീസി ആശ്രമ ദേവാലയം (50 വർഷം)',
     category: 'history',
     src: '/assisi_assets/2018-05-26.webp',
     fullSrc: '/assisi_assets/2018-05-26.webp',
@@ -172,18 +173,18 @@ export default function GalleryPage() {
       title="ഫോട്ടോ ഗാലറി | Photo Gallery | അസ്സീസി ധ്യാനകേന്ദ്രം, ഭരണങ്ങാനം"
       description="Photo gallery of Assisi Renewal Center Bharananganam - Chapels, Retreat Halls, Grotto, and Campus Grounds."
     >
-      {/* Header Banner - Marian Blue & Ivory */}
-      <section className="bg-gradient-to-b from-[#F0F7FF] via-[#E8F2FC] to-[#DDEAF8] border-b border-[#C7DCF1] py-14 text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header Banner - Marian Midnight Atmosphere */}
+      <section className="relative bg-gradient-to-b from-[#0B1528] via-[#101E38] to-[#0A1120] border-b border-blue-900/40 py-14 sm:py-18 text-left overflow-hidden">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1E3A8A] bg-white px-3 py-1 rounded-md border border-[#BFDBFE] inline-flex items-center gap-1.5 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-300 bg-blue-950/80 px-3.5 py-1 rounded-md border border-blue-500/40 inline-flex items-center gap-1.5 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span>ARC PHOTO ARCHIVES • ഭരണങ്ങാനം</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-950">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
               ഫോട്ടോ ഗാലറി (Photo Gallery)
             </h1>
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-blue-200/90 leading-relaxed font-normal">
               അസ്സീസി ധ്യാനകേന്ദ്രത്തിലെ ദിവ്യകാരുണ്യ ചാപ്പൽ, ധ്യാന ഹാളുകൾ, മാതാവിന്റെ ഗ്രോട്ടോ, ആശ്രമ പ്രകൃതിഭംഗി, സുവർണ്ണ ജൂബിലി ചരിത്ര ചിത്രങ്ങൾ.
             </p>
           </div>
@@ -191,11 +192,11 @@ export default function GalleryPage() {
       </section>
 
       {/* Filter Tabs & Gallery Grid */}
-      <section className="py-12 bg-[#FAF8F5] min-h-[600px]">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 bg-gradient-to-b from-[#0A1120] via-[#0D1629] to-[#080D18] min-h-[600px]">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-[#E8E3D7] mb-10">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-blue-900/40 mb-10">
             {categories.map((cat) => (
               <button
                 key={cat.key}
@@ -203,8 +204,8 @@ export default function GalleryPage() {
                 onClick={() => setActiveCategory(cat.key as any)}
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition shadow-xs cursor-pointer ${
                   activeCategory === cat.key
-                    ? 'bg-[#7A1C1C] text-white shadow-sm'
-                    : 'bg-white hover:bg-slate-100 text-slate-800 border border-[#E2DCCE]'
+                    ? 'bg-[#7A1C1C] text-white shadow-md border border-amber-400/40'
+                    : 'bg-slate-900/80 hover:bg-slate-800 text-stone-300 border border-blue-900/40 backdrop-blur-md'
                 }`}
               >
                 {cat.label}
@@ -214,88 +215,101 @@ export default function GalleryPage() {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredItems.map((item) => (
-              <div
+            {filteredItems.map((item, idx) => (
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 100, damping: 15, delay: (idx % 4) * 0.05 }}
                 onClick={() => setActiveLightbox(item)}
-                className="group bg-white rounded-2xl border border-[#E8E2D5] overflow-hidden shadow-xs hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col justify-between"
+                className="group bg-slate-900/85 backdrop-blur-md rounded-2xl border border-blue-900/50 overflow-hidden shadow-xl hover:border-blue-400/60 transition-all duration-300 cursor-pointer flex flex-col justify-between"
               >
-                <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+                <div className="relative aspect-[4/3] bg-slate-950 overflow-hidden">
                   <img
                     src={item.src}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = '/assisi_assets/2018-05-26.webp';
                     }}
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white">
-                    <ZoomIn className="w-6 h-6" />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white">
+                    <ZoomIn className="w-6 h-6 text-amber-300" />
                     <span className="text-xs font-bold uppercase tracking-wider">വലുതായി കാണുക</span>
                   </div>
                 </div>
 
                 <div className="p-4 text-left space-y-1">
-                  <h3 className="text-base font-bold text-slate-950 group-hover:text-[#7A1C1C] transition line-clamp-1">
+                  <h3 className="text-base font-bold text-white group-hover:text-amber-300 transition line-clamp-1">
                     {item.malayalamTitle}
                   </h3>
-                  <p className="text-xs text-slate-600 font-medium line-clamp-1">
+                  <p className="text-xs text-blue-200 font-medium line-clamp-1">
                     {item.title}
                   </p>
-                  <p className="text-[11px] text-slate-500 line-clamp-2 pt-1">
+                  <p className="text-[11px] text-stone-400 line-clamp-2 pt-1 font-normal">
                     {item.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {activeLightbox && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setActiveLightbox(null)}
-        >
-          <div
-            className="relative max-w-4xl w-full bg-[#181614] rounded-2xl border border-amber-900/50 p-4 sm:p-6 overflow-hidden shadow-2xl space-y-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between border-b border-amber-900/40 pb-3">
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-white">
-                  {activeLightbox.malayalamTitle}
-                </h3>
-                <p className="text-xs sm:text-sm text-amber-300">
-                  {activeLightbox.title}
-                </p>
-              </div>
+      {/* Lightbox Modal (Ultra-Smooth Mobile Optimized) */}
+      <AnimatePresence>
+        {activeLightbox && (
+          <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveLightbox(null)}
+              className="fixed inset-0"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 15 }}
+              transition={{ type: 'spring', stiffness: 120, damping: 18 }}
+              className="relative max-w-4xl w-full bg-slate-900 border border-blue-500/40 rounded-3xl overflow-hidden shadow-2xl z-10 my-auto"
+            >
               <button
                 type="button"
                 onClick={() => setActiveLightbox(null)}
-                className="p-2 rounded-lg bg-amber-950/60 hover:bg-amber-900 text-amber-200 transition cursor-pointer"
-                aria-label="Close"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2 rounded-full bg-black/70 hover:bg-black text-white transition cursor-pointer"
+                aria-label="Close Lightbox"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
-            </div>
 
-            <div className="relative max-h-[65vh] flex items-center justify-center bg-black/60 rounded-xl overflow-hidden">
-              <img
-                src={activeLightbox.fullSrc || activeLightbox.src}
-                alt={activeLightbox.title}
-                className="max-h-[65vh] w-auto object-contain rounded-lg"
-              />
-            </div>
+              <div className="aspect-[16/10] sm:aspect-[16/9] w-full bg-black flex items-center justify-center">
+                <img
+                  src={activeLightbox.fullSrc || activeLightbox.src}
+                  alt={activeLightbox.title}
+                  className="max-h-[65vh] w-full object-contain"
+                />
+              </div>
 
-            <div className="text-left text-xs sm:text-sm text-amber-100/90 pt-1">
-              <p>{activeLightbox.description}</p>
-            </div>
+              <div className="p-4 sm:p-6 bg-slate-950 text-left space-y-1.5">
+                <h3 className="text-lg sm:text-xl font-bold text-white">
+                  {activeLightbox.malayalamTitle}
+                </h3>
+                <p className="text-xs sm:text-sm text-amber-300 font-semibold">
+                  {activeLightbox.title}
+                </p>
+                <p className="text-xs sm:text-sm text-stone-300 font-normal">
+                  {activeLightbox.description}
+                </p>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
+
     </Layout>
   );
 }

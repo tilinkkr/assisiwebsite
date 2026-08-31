@@ -28,7 +28,7 @@ export const Layout: React.FC<LayoutProps> = ({
         timer = setTimeout(() => {
           setIsJubileeOpen(true);
           sessionStorage.setItem('assisi_jubilee_seen', 'true');
-        }, 900);
+        }, 1200);
       }
     } catch {
       // Fallback for private browsing environments
@@ -50,7 +50,7 @@ export const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" href="/assisi_assets/Assisi-Renewal-Center-150x150.webp" />
       </Head>
 
-      <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-white text-slate-900 font-sans antialiased selection:bg-[#7A1C1C] selection:text-white flex flex-col justify-between pb-16 md:pb-0">
+      <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#12100E] text-slate-100 font-sans antialiased selection:bg-[#7A1C1C] selection:text-white flex flex-col justify-between pb-16 md:pb-0">
         
         {/* Golden Jubilee Celebration Modal */}
         <JubileeModal
@@ -78,18 +78,18 @@ export const Layout: React.FC<LayoutProps> = ({
           <button
             type="button"
             onClick={() => setIsJubileeOpen(true)}
-            className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[11px] font-bold py-2 px-3 rounded-full shadow-lg border border-amber-300 active:scale-95 transition"
+            className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[11px] font-bold py-2 px-3.5 rounded-full shadow-xl border border-amber-300 active:scale-95 transition cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-950 fill-amber-950 animate-pulse" />
             <span>സുവർണ്ണ ജൂബിലി</span>
           </button>
         </div>
 
-        {/* Fixed Mobile Bottom Action Strip (For 40+ year-old visitors on mobile) */}
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/98 backdrop-blur-md border-t border-[#E5E0D5] p-2.5 flex items-center justify-between gap-2 shadow-2xl safe-area-bottom">
+        {/* Fixed Mobile Bottom Action Strip (For quick reachability on mobile) */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#181614]/95 backdrop-blur-md border-t border-amber-900/40 p-2.5 flex items-center justify-between gap-2 shadow-2xl safe-area-bottom">
           <a
             href="tel:8590124063"
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900 text-white text-xs sm:text-sm font-bold py-3 px-2 rounded-xl transition shadow-sm active:bg-black"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-stone-900 text-white text-xs font-bold py-3 px-2 rounded-xl transition shadow-sm border border-stone-700 active:bg-black"
           >
             <Phone className="w-4 h-4 shrink-0 text-amber-400" />
             <span>വിളിക്കുക</span>
@@ -99,7 +99,7 @@ export const Layout: React.FC<LayoutProps> = ({
             href="https://wa.me/918330884331?text=ഹലോ,%20അസ്സീസി%20ധ്യാനകേന്ദ്രത്തിലെ%20വിവരങ്ങൾ%20അറിയാൻ%20ആഗ്രഹിക്കുന്നു."
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#0F5132] text-white text-xs sm:text-sm font-bold py-3 px-2 rounded-xl transition shadow-sm active:bg-[#0B3D26]"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#0F5132] text-white text-xs font-bold py-3 px-2 rounded-xl transition shadow-sm active:bg-[#0B3D26]"
           >
             <MessageCircle className="w-4 h-4 shrink-0" />
             <span>WhatsApp</span>
@@ -107,9 +107,9 @@ export const Layout: React.FC<LayoutProps> = ({
 
           <Link
             href="/retreats"
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#7A1C1C] text-white text-xs sm:text-sm font-bold py-3 px-2 rounded-xl transition shadow-sm active:bg-[#601515]"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#7A1C1C] text-white text-xs font-bold py-3 px-2 rounded-xl transition shadow-sm active:bg-[#601515]"
           >
-            <Calendar className="w-4 h-4 shrink-0" />
+            <Calendar className="w-4 h-4 shrink-0 text-amber-300" />
             <span>ബുക്കിംഗ്</span>
           </Link>
         </div>

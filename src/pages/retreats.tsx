@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
 import { Calendar, Phone, MessageCircle, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
@@ -43,15 +44,15 @@ export default function RetreatsPage() {
       title="ധ്യാന കലണ്ടർ 2026 | Retreat Programes | അസ്സീസി ധ്യാനകേന്ദ്രം"
       description="Official Residential Retreat Schedule 2026 - Assisi Renewal Center Bharananganam."
     >
-      {/* Header Banner: Eucharistic Crimson */}
-      <section className="bg-gradient-to-b from-[#7A1C1C] via-[#661414] to-[#4F0F0F] text-white py-14 text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header Banner: Eucharistic Sanctuary Atmosphere */}
+      <section className="relative bg-gradient-to-b from-[#2A0808] via-[#1E0606] to-[#140404] text-white py-14 sm:py-18 text-left border-b border-amber-900/40 overflow-hidden">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/60 px-3 py-1 rounded-md border border-amber-500/40 inline-flex items-center gap-1.5 shadow-xs">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center gap-1.5 shadow-xs">
               <Calendar className="w-3.5 h-3.5" />
               <span>RESIDENTIAL RETREAT SCHEDULE 2026</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
               RETREAT PROGRAMES (ധ്യാനങ്ങൾ 2026)
             </h1>
             <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed font-normal">
@@ -61,21 +62,32 @@ export default function RetreatsPage() {
         </div>
       </section>
 
-      {/* Main Schedule Body */}
-      <section className="py-14 bg-[#FFF9FA] min-h-[600px] text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Main Schedule Body with Adoration Background */}
+      <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
+        
+        {/* Background Image: Adoration Candles */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/assisi_assets/backgrounds/retreat_adoration_candles_bg.webp"
+            alt="Adoration Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#140507]/95 via-[#100305]/92 to-[#0C0204]/96" />
+        </div>
+
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Month Selector Tabs */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-[#F0D5D8] mb-10">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-amber-900/40 mb-10 overflow-x-auto scrollbar-none">
             {(['august', 'september', 'october', 'november', 'december'] as const).map((m) => (
               <button
                 key={m}
                 type="button"
                 onClick={() => setSelectedMonth(m)}
-                className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition cursor-pointer ${
+                className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition cursor-pointer whitespace-nowrap ${
                   selectedMonth === m
-                    ? 'bg-[#7A1C1C] text-white shadow-md'
-                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-[#F0D5D8]'
+                    ? 'bg-[#7A1C1C] text-white shadow-lg border border-amber-400/50'
+                    : 'bg-stone-900/80 hover:bg-stone-800 text-stone-300 border border-white/15 backdrop-blur-md'
                 }`}
               >
                 {m} 2026
@@ -86,80 +98,90 @@ export default function RetreatsPage() {
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {RETREAT_CALENDAR[selectedMonth].map((item, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-white border-2 border-[#EED4D7] rounded-2xl p-6 shadow-xs hover:shadow-md transition space-y-4 text-left"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
+                className="bg-stone-900/85 backdrop-blur-md border border-white/15 rounded-2xl p-6 shadow-xl hover:border-amber-500/40 transition space-y-4 text-left"
               >
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <span className="text-xs sm:text-sm font-bold text-[#7A1C1C] bg-[#FDF2F4] px-3 py-1 rounded-md border border-[#F5D5DA]">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="text-xs sm:text-sm font-bold text-amber-300 bg-amber-950/80 px-3 py-1 rounded-md border border-amber-600/40">
                     {item.dates}
                   </span>
-                  <span className="text-xs font-bold text-slate-700 bg-slate-100 px-2.5 py-1 rounded">
+                  <span className="text-xs font-bold text-stone-200 bg-white/10 px-2.5 py-1 rounded">
                     രജിസ്ട്രേഷൻ ഫീസ്: {item.fee}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-950">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">
                     {item.type}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
-                    നയിക്കുന്നത്: <strong className="text-slate-900">{item.director}</strong>
+                  <p className="text-xs sm:text-sm text-stone-300 mt-1 font-medium">
+                    നയിക്കുന്നത്: <strong className="text-amber-200">{item.director}</strong>
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
-                  <Clock className="w-4 h-4 text-amber-700 shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-stone-400 font-medium">
+                  <Clock className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>{item.timing}</span>
                 </div>
 
-                <div className="pt-2 flex items-center gap-3">
+                <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
                     href="tel:8590124063"
-                    className="bg-[#7A1C1C] hover:bg-[#601515] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-lg transition inline-flex items-center gap-1.5"
+                    className="bg-[#7A1C1C] hover:bg-[#601515] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98"
                   >
-                    <Phone className="w-3.5 h-3.5" />
+                    <Phone className="w-3.5 h-3.5 text-amber-300" />
                     <span>സീറ്റ് ബുക്ക് ചെയ്യാൻ വിളിക്കുക</span>
                   </a>
                   <a
                     href={`https://wa.me/918330884331?text=${encodeURIComponent(`ഹലോ, ${item.dates} തീയതിയിലെ ${item.type} ധ്യാനത്തിൽ പങ്കെടുക്കാൻ ആഗ്രഹിക്കുന്നു.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-emerald-800 hover:bg-emerald-900 text-white text-xs sm:text-sm font-bold px-3 py-2.5 rounded-lg transition inline-flex items-center gap-1.5"
+                    className="bg-[#0F5132] hover:bg-[#0B3D26] text-white text-xs sm:text-sm font-bold px-3 py-2.5 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>WhatsApp</span>
                   </a>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Guidelines info card */}
-          <div className="mt-12 bg-white border border-[#EED4D7] rounded-2xl p-6 sm:p-8 text-left space-y-4">
-            <h4 className="text-lg font-bold text-slate-950 flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#7A1C1C]" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+            className="mt-12 bg-stone-900/90 backdrop-blur-md border border-amber-500/30 rounded-3xl p-6 sm:p-8 text-left space-y-4 text-white shadow-2xl"
+          >
+            <h4 className="text-lg font-bold text-white flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-amber-400" />
               <span>റസിഡൻഷ്യൽ ധ്യാനത്തിൽ പങ്കെടുക്കുന്നവർക്കുള്ള പ്രധാന നിർദ്ദേശങ്ങൾ</span>
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-stone-300">
               <p className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <span>ധ്യാനം വ്യാഴാഴ്ച വൈകുന്നേരം 4:30-ന് ആരംഭിച്ച് ഞായറാഴ്ച ഉച്ചയ്ക്ക് 1:30-ന് സമാപിക്കും.</span>
               </p>
               <p className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <span>വിശുദ്ധ ബൈബിൾ (പി.ഒ.സി.), നോട്ടുബുക്ക്, പേന, ബെഡ്ഷീറ്റ് എന്നിവ കരുതുക.</span>
               </p>
               <p className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <span>നിത്യേന കഴിക്കുന്ന മരുന്നുകൾ ആവശ്യത്തിന് കൈവശം കരുതേണ്ടതാണ്.</span>
               </p>
               <p className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <span>ധ്യാന സമയത്ത് മൊബൈൽ ഫോൺ ഉപയോഗം പൂർണ്ണമായി നിരോധിച്ചിരിക്കുന്നു.</span>
               </p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>

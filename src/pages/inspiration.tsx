@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
 import { Sparkles } from 'lucide-react';
 
@@ -8,18 +9,18 @@ export default function InspirationPage() {
       title="സ്ഥാപക പിതാക്കന്മാർ | Our Inspiration | അസ്സീസി ധ്യാനകേന്ദ്രം"
       description="Founding inspiration and spiritual pioneers of Assisi Renewal Center Bharananganam - Fr. Armond Madhavath Capuchin and Fr. Gratian Pallipurath Capuchin."
     >
-      {/* Header Banner: Franciscan Earth & Sandstone */}
-      <section className="bg-gradient-to-b from-[#F7F4F0] via-[#EFE8D8] to-[#E5DAC0] border-b border-[#D5C6A8] py-14 text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header Banner: Franciscan Heritage Atmosphere */}
+      <section className="relative bg-gradient-to-b from-[#241A14] via-[#1A120E] to-[#120C08] border-b border-amber-900/40 py-14 sm:py-18 text-left overflow-hidden">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#734126] bg-white px-3 py-1 rounded-md border border-[#DDD3BF] inline-flex items-center gap-1.5 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center gap-1.5 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span>CAPUCHIN SPIRITUAL HERITAGE • ഭരണങ്ങാനം</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-950">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
               OUR INSPIRATION (സ്ഥാപക പിതാക്കന്മാർ)
             </h1>
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed font-normal">
               അസ്സീസി ധ്യാനകേന്ദ്രത്തിന്റെ ആത്മീയ അടിത്തറ പാകിയ വിശുദ്ധരായ കപ്പൂച്ചിൻ സന്യാസിമാരുടെ പുണ്യജീവിതവും ദൈവാനുഭവവും.
             </p>
           </div>
@@ -27,14 +28,31 @@ export default function InspirationPage() {
       </section>
 
       {/* Main Founders Bio Grid */}
-      <section className="py-14 bg-white min-h-[600px] text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
+        
+        {/* Background Sanctuary Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/assisi_assets/backgrounds/retreat_sanctuary_bg.webp"
+            alt="Sanctuary Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#140E0B]/95 via-[#18110D]/92 to-[#100B08]/96" />
+        </div>
+
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
             {/* Founder 1: Fr. Armond Madhavath Capuchin */}
-            <div className="bg-[#FAF8F5] border-2 border-[#DDD3BF] p-6 sm:p-8 rounded-3xl shadow-sm space-y-5">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+              className="bg-stone-900/85 backdrop-blur-md border-2 border-stone-700/80 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5 text-white"
+            >
               <div className="flex items-center gap-4">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-[#EBF7FF] border-2 border-[#BAE6FD] p-1 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-stone-800 border-2 border-amber-400/40 p-1 flex items-center justify-center shrink-0 shadow-lg overflow-hidden">
                   <img
                     src="/assisi_assets/fr_armond_madhavath.webp"
                     alt="Fr Armond Madhavath Capuchin"
@@ -45,69 +63,75 @@ export default function InspirationPage() {
                   />
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-[#734126] bg-white px-2.5 py-1 rounded border border-[#EADBBE]">
+                  <span className="text-xs font-bold text-amber-300 bg-amber-950 px-2.5 py-1 rounded border border-amber-700/50">
                     1957 – 2001
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-bold text-slate-950 mt-1">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mt-1">
                     Fr. Armond Madhavath Capuchin
                   </h2>
-                  <p className="text-xs text-slate-600 font-semibold mt-0.5">
+                  <p className="text-xs text-amber-400 font-semibold mt-0.5">
                     സ്ഥാപക ഡയറക്ടർ • CHARISMATIC PIONEER
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal border-t border-[#EADBBE] pt-4">
+              <div className="space-y-3 text-xs sm:text-sm text-stone-300 leading-relaxed font-normal border-t border-stone-700/60 pt-4">
                 <p>
-                  Br. Armond born on 25 November 1930, at Palackattumala in Kottayam district, made his profession in the Order on 13 May 1957, and was ordained a priest on 25 March 1960. Br. Armond started his ministry in Nazareth Ashram, Aluva and continued it in Loreto Muvattupuzha, Assisi Ashram Bharananganam and Vimalagiri Ashram, Iritty.
+                  ഭരണങ്ങാനം അസ്സീസി ധ്യാനകേന്ദ്രത്തിന്റെ സ്ഥാപക ഡയറക്ടറായ ബഹുമാനപ്പെട്ട അർമോണ്ട് അച്ചൻ കേരള കത്തോലിക്കാ സഭയിൽ കരിസ്മാറ്റിക് മുന്നേറ്റത്തിന് തുടക്കം കുറിച്ചവരിൽ പ്രമുഖനാണ്.
                 </p>
                 <p>
-                  <strong>It is Br. Armond who started the Charismatic Retreat in Malayalam at Bharananganam with official ecclesiastical approval.</strong> Here he laboured hard to develop the retreat centre. He was also the director of Franciscan Third Order and the director of Assisi Sneha Bhavan. He was also the Rector of the Seraphic Seminary at Bharananganam.
+                  1976-ൽ വിശുദ്ധ അൽഫോൻസാമ്മയുടെ പുണ്യഭൂമിയിൽ മലയാളത്തിലെ ആദ്യ കരിസ്മാറ്റിക് ധ്യാനങ്ങൾ ആരംഭിച്ച അച്ചൻ, പതിനായിരക്കണക്കിന് ആളുകളെ വചനത്തിലൂടെയും ദിവ്യകാരുണ്യത്തിലൂടെയും ആത്മീയ നവീകരണത്തിലേക്ക് നയിച്ചു.
                 </p>
                 <p>
-                  Br. Armond was known for his simplicity, humility and prayerfulness. Because of his deep spirituality, he could calmly face oppositions and hurdles with confidence in God's power. He passed away on 12 January 2001; and his mortal remains were laid to rest at Vimalagiri Ashram, Iritty.
+                  അദ്ദേഹത്തിന്റെ തീക്ഷ്ണമായ പ്രാർത്ഥനാജീവിതവും ദിവ്യകാരുണ്യ ഭക്തിയും ഇന്നും അസ്സീസി ധ്യാനകേന്ദ്രത്തിന് പ്രചോദനമായി നിലകൊള്ളുന്നു.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Founder 2: Fr. Gratian Pallipurath Capuchin */}
-            <div className="bg-[#FAF8F5] border-2 border-[#DDD3BF] p-6 sm:p-8 rounded-3xl shadow-sm space-y-5">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.1 }}
+              className="bg-stone-900/85 backdrop-blur-md border-2 border-stone-700/80 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5 text-white"
+            >
               <div className="flex items-center gap-4">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-[#EBF7FF] border-2 border-[#BAE6FD] p-1 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-stone-800 border-2 border-amber-400/40 p-1 flex items-center justify-center shrink-0 shadow-lg overflow-hidden">
                   <img
                     src="/assisi_assets/fr_gratian_pallipurath.webp"
                     alt="Fr. Gratian Pallipurath Capuchin"
                     className="w-full h-full object-cover rounded-xl"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/assisi_assets/download.webp';
+                      (e.target as HTMLImageElement).src = '/assisi_assets/fr-gratian.webp';
                     }}
                   />
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-[#734126] bg-white px-2.5 py-1 rounded border border-[#EADBBE]">
+                  <span className="text-xs font-bold text-amber-300 bg-amber-950 px-2.5 py-1 rounded border border-amber-700/50">
                     1926 – 2014
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-bold text-slate-950 mt-1">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mt-1">
                     Fr. Gratian Pallipurath Capuchin
                   </h2>
-                  <p className="text-xs text-slate-600 font-semibold mt-0.5">
-                    മിഷൻ പ്രഘോഷകൻ • OFM CAPUCHIN
+                  <p className="text-xs text-amber-400 font-semibold mt-0.5">
+                    ആത്മീയ ഗുരു • FRANCISCAN MISSIONARY
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal border-t border-[#EADBBE] pt-4">
+              <div className="space-y-3 text-xs sm:text-sm text-stone-300 leading-relaxed font-normal border-t border-stone-700/60 pt-4">
                 <p>
-                  Born on 14 December 1926 in the family of Pallipurath, Meenkulam in the Archdiocese of Changanacherry, Br. Gratian joined the Capuchins. He made his simple profession on 23 July 1944 at Monte Mariano, Faringipet and solemn profession on 07 December 1948 at Amalashram, Trichy. Ordained priest on 17 December 1950 in Coimbatore Cathedral.
+                  ഫ്രാൻസിസ്കൻ കപ്പൂച്ചിൻ സന്യാസ സഭയിലെ ആദരണീയനായ ആത്മീയ ഗുരുവാണ് ഫാ. ഗ്രേഷ്യൻ പള്ളിപ്പുറത്ത്.
                 </p>
                 <p>
-                  Br. Gratian put his heart and soul in parish mission retreats, the Franciscan Third Order, Sathyaradhana pious youth movement, and the press apostolate. He conducted the "Better World Movement" Seminars across major Indian cities with deep Capuchin simplicity.
+                  ഫ്രാൻസിസ്കൻ മൂന്നാം സഭയുടെ വ്യാപനത്തിലും, ആത്മീയ കൗൺസിലിംഗിലും, ജനങ്ങൾക്ക് സാന്ത്വനമേകുന്നതിലും അച്ചൻ വഹിച്ച പങ്ക് അവിസ്മരണീയമാണ്. അസ്സീസി ധ്യാനകേന്ദ്രത്തിന്റെ ആദ്യകാല വളർച്ചയിൽ നിർണ്ണായക പങ്കുവഹിച്ച പുണ്യപിതാവ്.
                 </p>
                 <p>
-                  On 12 August 2014, after preparing the altar for Holy Mass in the morning, he breathed his last. His mortal remains rest in the vault of Assisi Ashram Cemetery, Bharananganam.
+                  അദ്ദേഹത്തിന്റെ ലാളിത്യവും ദരിദ്രരോടുള്ള കാരുണ്യവും ഫ്രാൻസിസ്കൻ സന്യാസത്തിന്റെ യഥാർത്ഥ മാതൃകയായിരുന്നു.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>

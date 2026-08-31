@@ -1,6 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
-import { Building, ExternalLink } from 'lucide-react';
+import { ExternalLink, Sparkles } from 'lucide-react';
 
 export default function InstitutionsPage() {
   const institutions = [
@@ -58,62 +59,62 @@ export default function InstitutionsPage() {
   return (
     <Layout
       title="കപ്പൂച്ചിൻ സ്ഥാപനങ്ങൾ | Our Institutions | അസ്സീസി ധ്യാനകേന്ദ്രം"
-      description="Sister institutions and ministries of St. Joseph Capuchin Province - Assisi Magazine, Jeevan Books, Retreat Centers, and Language Institute."
+      description="Sister institutions and ministries of St. Joseph Capuchin Province - Assisi Magazine, Jeevan Books, Assisi Ashram, and Retreat Centers."
     >
-      {/* Header Banner: Capuchin Emerald */}
-      <section className="bg-gradient-to-b from-[#F4FAF6] via-[#E6F4EC] to-[#D5EDE0] border-b border-[#BBE3CC] py-14 text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header Banner: Capuchin Forest Emerald Atmosphere */}
+      <section className="relative bg-gradient-to-b from-[#061810] via-[#0B2519] to-[#04120C] border-b border-emerald-900/40 py-14 sm:py-18 text-left overflow-hidden">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#065F46] bg-white px-3 py-1 rounded-md border border-[#A7F3D0] inline-flex items-center gap-1.5 shadow-xs">
-              <Building className="w-3.5 h-3.5" />
-              <span>ST. JOSEPH CAPUCHIN PROVINCE MINISTRIES</span>
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-300 bg-emerald-950/80 px-3.5 py-1 rounded-md border border-emerald-500/40 inline-flex items-center gap-1.5 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>ST. JOSEPH CAPUCHIN PROVINCE • MINISTRIES</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-950">
-              OUR INSTITUTIONS (കപ്പൂച്ചിൻ സ്ഥാപനങ്ങൾ)
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+              OUR INSTITUTIONS (സ്ഥാപനങ്ങൾ)
             </h1>
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-              സെന്റ് ജോസഫ് കപ്പൂച്ചിൻ പ്രൊവിൻസിന്റെ കീഴിൽ പ്രവർത്തിക്കുന്ന സഹോദര സ്ഥാപനങ്ങളും ആത്മീയ സംരംഭങ്ങളും.
+            <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed font-normal">
+              ഫ്രാൻസിസ്കൻ കപ്പൂച്ചിൻ സന്യാസ സഭയുടെ കീഴിൽ പ്രവർത്തിക്കുന്ന പ്രമുഖ ആത്മീയ, പ്രസിദ്ധീകരണ, വിദ്യാഭ്യാസ സ്ഥാപനങ്ങൾ.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Institutions Grid */}
-      <section className="py-14 bg-white min-h-[600px] text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {institutions.map((inst, idx) => (
-              <div
+      {/* Grid of Institutions */}
+      <section className="py-14 bg-gradient-to-b from-[#04120C] via-[#081C13] to-[#030E09] min-h-[600px] text-left">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {institutions.map((item, idx) => (
+              <motion.a
                 key={idx}
-                className="bg-[#FAF8F5] border-2 border-[#D5EDE0] rounded-3xl p-6 shadow-xs hover:shadow-lg transition flex flex-col justify-between space-y-4"
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 100, damping: 15, delay: (idx % 3) * 0.08 }}
+                className="bg-emerald-950/60 backdrop-blur-md border border-emerald-800/40 p-6 rounded-3xl shadow-xl hover:border-emerald-400/60 transition group flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-2">
-                  <span className="text-xs font-bold text-[#065F46] bg-[#ECFDF5] px-3 py-1 rounded-md border border-[#A7F3D0]">
-                    {inst.tag}
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-300 bg-emerald-900/80 px-2.5 py-0.5 rounded border border-emerald-700">
+                    {item.tag}
                   </span>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-950 pt-1">
-                    {inst.malayalamTitle}
+                  <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition leading-snug">
+                    {item.malayalamTitle}
                   </h3>
-                  <p className="text-xs font-bold text-emerald-800">
-                    {inst.name}
+                  <p className="text-xs text-emerald-200/80 font-medium">
+                    {item.name}
                   </p>
-                  <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed pt-1">
-                    {inst.desc}
+                  <p className="text-xs text-stone-300 leading-relaxed font-normal pt-1">
+                    {item.desc}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#E8E2D5]">
-                  <a
-                    href={inst.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#065F46] hover:text-[#047857] transition"
-                  >
-                    <span>വെബ്‌സൈറ്റ് സന്ദർശിക്കുക</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                <div className="pt-3 border-t border-emerald-900/50 flex items-center justify-between text-xs font-bold text-emerald-400 group-hover:text-white transition">
+                  <span>വെബ്സൈറ്റ് സന്ദർശിക്കുക</span>
+                  <ExternalLink className="w-4 h-4" />
                 </div>
-              </div>
+              </motion.a>
             ))}
           </div>
         </div>

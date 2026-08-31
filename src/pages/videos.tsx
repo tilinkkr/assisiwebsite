@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
 import { Video } from 'lucide-react';
 
@@ -47,53 +48,60 @@ export default function VideosPage() {
       title="വീഡിയോകൾ | Videos | അസ്സീസി ധ്യാനകേന്ദ്രം"
       description="Watch Praise & Worship, Eucharistic Adoration, and Procession videos from Assisi Renewal Center Bharananganam."
     >
-      {/* Header Banner: Royal Indigo */}
-      <section className="bg-gradient-to-b from-[#F8F7FF] via-[#EFEBFD] to-[#E3DCFA] border-b border-[#D7CEFB] py-14 text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header Banner */}
+      <section className="relative bg-gradient-to-b from-[#0F0D24] via-[#14122E] to-[#0A091A] border-b border-indigo-900/40 py-14 sm:py-18 text-left overflow-hidden">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#4338CA] bg-white px-3 py-1 rounded-md border border-[#C7D2FE] inline-flex items-center gap-1.5 shadow-xs">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-300 bg-indigo-950/80 px-3.5 py-1 rounded-md border border-indigo-500/40 inline-flex items-center gap-1.5 shadow-xs">
               <Video className="w-3.5 h-3.5" />
               <span>SACRED BROADCASTS • ഭക്തിസാന്ദ്രമായ ദൃശ്യങ്ങൾ</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-950">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
               VIDEOS (സ്തുതിപ്പും ആരാധനയും)
             </h1>
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
-              അസ്സീസി ധ്യാനകേന്ദ്രത്തിലെ സ്തുതിപ്പും ആരാധനയും, ദിവ്യകാരുണ്യ പ്രദക്ഷിണങ്ങളും, സായാഹ്ന കൺവെൻഷൻ ദൃശ്യങ്ങളും.
+            <p className="text-sm sm:text-base text-indigo-100/90 leading-relaxed font-normal">
+              അസ്സീസി ധ്യാനകേന്ദ്രത്തിലെ ദിവ്യകാരുണ്യ ആരാധന, സ്തുതിപ്പ്, പ്രാർത്ഥനാ ശുശ്രൂഷകൾ, ചരിത്രപരമായ സുവർണ്ണ ജൂബിലി ദൃശ്യങ്ങൾ.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Video Cards Grid */}
-      <section className="py-14 bg-[#FAF8F5] min-h-[600px] text-left">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Video Grid */}
+      <section className="py-14 bg-gradient-to-b from-[#0A091A] via-[#0D0C22] to-[#080714] min-h-[600px] text-left">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {videoList.map((item, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-white border border-[#D7CEFB] rounded-3xl overflow-hidden shadow-xs hover:shadow-lg transition flex flex-col justify-between"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 100, damping: 15, delay: (idx % 3) * 0.08 }}
+                className="bg-slate-900/85 backdrop-blur-md border border-indigo-900/40 rounded-3xl overflow-hidden shadow-2xl hover:border-indigo-500/60 transition flex flex-col justify-between"
               >
-                <div className="relative aspect-video bg-slate-950 flex items-center justify-center">
+                <div className="aspect-[16/9] bg-black relative">
                   <video
-                    src={item.videoUrl}
                     controls
                     preload="metadata"
                     className="w-full h-full object-cover"
-                  />
+                  >
+                    <source src={item.videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
-                <div className="p-5 space-y-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded border border-indigo-100">
+
+                <div className="p-5 space-y-2 text-white">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-300 bg-indigo-950 px-2.5 py-0.5 rounded border border-indigo-800">
                     {item.category}
                   </span>
-                  <h3 className="text-base sm:text-lg font-bold text-slate-950">
+                  <h3 className="text-base font-bold text-white leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-600 font-normal leading-relaxed">
+                  <p className="text-xs text-stone-300 font-normal leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
