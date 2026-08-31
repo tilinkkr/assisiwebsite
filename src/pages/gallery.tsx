@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '../components/Layout';
-import { Sparkles, X, ZoomIn } from 'lucide-react';
+import { X, ZoomIn } from 'lucide-react';
 
 interface GalleryItem {
   id: string;
@@ -177,8 +177,7 @@ export default function GalleryPage() {
       <section className="relative bg-gradient-to-b from-[#0B1528] via-[#101E38] to-[#0A1120] border-b border-blue-900/40 py-14 sm:py-18 text-left overflow-hidden">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-300 bg-blue-950/80 px-3.5 py-1 rounded-md border border-blue-500/40 inline-flex items-center gap-1.5 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-300 bg-blue-950/80 px-3.5 py-1 rounded-md border border-blue-500/40 inline-flex items-center shadow-xs">
               <span>ARC PHOTO ARCHIVES • ഭരണങ്ങാനം</span>
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">

@@ -8,7 +8,6 @@ import {
   MessageCircle,
   X,
   Phone,
-  Sparkles,
   ChevronRight
 } from 'lucide-react';
 
@@ -33,15 +32,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'HOME', href: '/', mal: 'ഹോം', icon: '🏠' },
-    { label: 'RETREATS 2026', href: '/retreats', mal: 'ധ്യാന കലണ്ടർ', icon: '🗓️' },
-    { label: 'CONVENTION', href: '/convention', mal: 'സായാഹ്ന കൺവെൻഷൻ', icon: '⛪' },
-    { label: 'PRAYER', href: '/prayer', mal: 'പ്രാർത്ഥനാ സഹായം', icon: '🙏' },
-    { label: 'THANKS GIVING', href: '/thanksgiving', mal: 'നന്ദി പ്രകാശനം', icon: '🕊️', isHighlight: true },
-    { label: 'OUR INSPIRATION', href: '/inspiration', mal: 'സ്ഥാപക പിതാക്കന്മാർ', icon: '✝️' },
-    { label: 'GALLERY', href: '/gallery', mal: 'ഫോട്ടോ ഗാലറി', icon: '🖼️' },
-    { label: 'INSTITUTIONS', href: '/institutions', mal: 'കപ്പൂച്ചിൻ സ്ഥാപനങ്ങൾ', icon: '🏛️' },
-    { label: 'CONTACT', href: '/contact', mal: 'ബന്ധപ്പെടുക', icon: '📍' },
+    { label: 'HOME', href: '/', mal: 'ഹോം' },
+    { label: 'RETREATS 2026', href: '/retreats', mal: 'ധ്യാന കലണ്ടർ' },
+    { label: 'CONVENTION', href: '/convention', mal: 'സായാഹ്ന കൺവെൻഷൻ' },
+    { label: 'PRAYER', href: '/prayer', mal: 'പ്രാർത്ഥനാ സഹായം' },
+    { label: 'THANKS GIVING', href: '/thanksgiving', mal: 'നന്ദി പ്രകാശനം', isHighlight: true },
+    { label: 'OUR INSPIRATION', href: '/inspiration', mal: 'സ്ഥാപക പിതാക്കന്മാർ' },
+    { label: 'GALLERY', href: '/gallery', mal: 'ഫോട്ടോ ഗാലറി' },
+    { label: 'INSTITUTIONS', href: '/institutions', mal: 'കപ്പൂച്ചിൻ സ്ഥാപനങ്ങൾ' },
+    { label: 'CONTACT', href: '/contact', mal: 'ബന്ധപ്പെടുക' },
   ];
 
   const isActive = (href: string) => {
@@ -53,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
   return (
     <header className="w-full relative z-50 select-none shadow-md">
       
-      {/* 1. TOP HERITAGE BAR (DEEP RICH BLACK & GOLD) */}
+      {/* 1. TOP HERITAGE BAR */}
       <div className="w-full bg-[#12100E] text-amber-100 text-xs py-1.5 sm:py-2 px-3 sm:px-6 lg:px-8 border-b border-amber-900/60">
         <div className="max-w-[1536px] mx-auto flex flex-wrap justify-between items-center gap-y-1 gap-x-3">
           
@@ -67,7 +66,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             <span className="font-bold text-amber-300 group-hover:text-white transition tracking-tight text-[11px] sm:text-xs md:text-[13px] truncate">
               സുവർണ്ണ ജൂബിലി (1976 – 2026) • 50 YEARS OF GRACE
             </span>
-            <Sparkles className="w-3.5 h-3.5 text-amber-400 opacity-90 group-hover:opacity-100 shrink-0 hidden sm:inline" />
           </button>
 
           {/* Quick Contact & Hours */}
@@ -98,7 +96,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
       <nav className="w-full bg-white border-b-2 border-stone-200 shadow-sm sticky top-0">
         <div className="max-w-[1536px] mx-auto px-3 sm:px-5 lg:px-6 2xl:px-8 h-18 sm:h-20 flex items-center justify-between gap-2 lg:gap-3 2xl:gap-5">
           
-          {/* Left Brand Area (Sharp Black Text & Crisp Logo) */}
+          {/* Left Brand Area */}
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0 min-w-0">
             <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-[#FAF7F0] border-2 border-[#DDD3BF] p-1 flex items-center justify-center shrink-0 shadow-xs">
               <img
@@ -120,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links (>= xl: 1280px) - ULTRA HIGH CONTRAST */}
+          {/* Desktop Navigation Links (>= xl: 1280px) */}
           <div className="hidden xl:flex items-center gap-1 lg:gap-1.5 2xl:gap-3 text-[12.5px] 2xl:text-[14px] font-bold text-slate-900 shrink-0">
             {navLinks.map((link) => {
               const active = isActive(link.href);
@@ -213,12 +211,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
                   }}
                   className="mb-3 p-3.5 bg-gradient-to-r from-amber-950 to-stone-900 rounded-2xl border-2 border-amber-500/60 flex items-center justify-between text-white cursor-pointer shadow-md"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <Sparkles className="w-5 h-5 text-amber-400 animate-pulse shrink-0" />
-                    <div>
-                      <p className="text-xs sm:text-sm font-bold text-amber-300">സുവർണ്ണ ജൂബിലി (1976 – 2026)</p>
-                      <p className="text-[11px] text-amber-100/90">50 Years of Divine Grace • വിശദാംശങ്ങൾ</p>
-                    </div>
+                  <div>
+                    <p className="text-xs sm:text-sm font-bold text-amber-300">സുവർണ്ണ ജൂബിലി (1976 – 2026)</p>
+                    <p className="text-[11px] text-amber-100/90">50 Years of Divine Grace • വിശദാംശങ്ങൾ</p>
                   </div>
                   <ChevronRight className="w-5 h-5 text-amber-400 shrink-0" />
                 </div>
@@ -237,16 +232,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
                           : 'text-slate-900 hover:bg-slate-100'
                       }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="text-lg">{link.icon}</span>
-                        <div className="flex flex-col text-left">
-                          <span className={`${active ? 'text-white' : 'text-slate-950'} font-extrabold`}>
-                            {link.label}
-                          </span>
-                          <span className={`text-[11px] ${active ? 'text-amber-200' : 'text-slate-600'} font-medium`}>
-                            {link.mal}
-                          </span>
-                        </div>
+                      <div className="flex flex-col text-left">
+                        <span className={`${active ? 'text-white' : 'text-slate-950'} font-extrabold`}>
+                          {link.label}
+                        </span>
+                        <span className={`text-[11px] ${active ? 'text-amber-200' : 'text-slate-600'} font-medium`}>
+                          {link.mal}
+                        </span>
                       </div>
                       <ChevronRight className={`w-4 h-4 ${active ? 'text-white' : 'text-slate-400'}`} />
                     </Link>

@@ -12,7 +12,6 @@ import {
   ZoomIn,
   ArrowRight,
   CheckCircle2,
-  Sparkles,
   Clock,
   MessageCircle
 } from 'lucide-react';
@@ -116,7 +115,6 @@ export default function Home() {
               className="lg:col-span-7 bg-stone-950/85 backdrop-blur-xl border border-amber-500/40 p-6 sm:p-10 rounded-3xl shadow-2xl space-y-5 text-left"
             >
               <div className="inline-flex items-center gap-2 bg-amber-400 text-stone-950 font-black text-xs sm:text-sm px-3.5 py-1 rounded-full shadow-md">
-                <Sparkles className="w-4 h-4 fill-stone-950" />
                 <span>ST. JOSEPH CAPUCHIN PROVINCE • 1976 – 2026</span>
               </div>
 
@@ -130,7 +128,7 @@ export default function Home() {
 
               <div className="p-4 bg-amber-950/80 rounded-2xl border border-amber-500/50 shadow-md space-y-1 max-w-xl text-left">
                 <p className="text-xs font-black text-amber-300 uppercase tracking-wider">
-                  ✝️ ഫ്രാൻസിസ്കൻ ആപ്തവാക്യം (FRANCISCAN MOTTO)
+                  ഫ്രാൻസിസ്കൻ ആപ്തവാക്യം (FRANCISCAN MOTTO)
                 </p>
                 <p className="text-sm sm:text-base font-extrabold text-amber-100">
                   "സമാധാനവും നന്മയും" (Pax et Bonum • Peace and Goodness)

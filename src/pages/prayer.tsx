@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
-import { Heart, Send, CheckCircle2, Phone } from 'lucide-react';
+import { Send, CheckCircle2, Phone } from 'lucide-react';
 
 export default function PrayerPage() {
   const [prayerForm, setPrayerForm] = useState({ name: '', phone: '', place: '', intention: '' });
@@ -25,8 +25,7 @@ export default function PrayerPage() {
       <section className="relative bg-gradient-to-b from-[#08152A] via-[#0E2040] to-[#061020] border-b border-blue-900/40 py-14 sm:py-18 text-left overflow-hidden">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-300 bg-blue-950/80 px-3.5 py-1 rounded-md border border-blue-500/40 inline-flex items-center gap-1.5 shadow-xs">
-              <Heart className="w-3.5 h-3.5 text-blue-400 fill-blue-400" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-300 bg-blue-950/80 px-3.5 py-1 rounded-md border border-blue-500/40 inline-flex items-center shadow-xs">
               <span>INTERCESSORY PRAYERS • പ്രാർത്ഥനാ സഹായം</span>
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">

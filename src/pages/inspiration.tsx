@@ -1,8 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
-import { Sparkles } from 'lucide-react';
-
 export default function InspirationPage() {
   return (
     <Layout
@@ -13,8 +11,7 @@ export default function InspirationPage() {
       <section className="relative bg-gradient-to-b from-[#241A14] via-[#1A120E] to-[#120C08] border-b border-amber-900/40 py-14 sm:py-18 text-left overflow-hidden">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center gap-1.5 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center shadow-xs">
               <span>CAPUCHIN SPIRITUAL HERITAGE • ഭരണങ്ങാനം</span>
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">

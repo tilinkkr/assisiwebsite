@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, Sparkles, MessageCircle, Heart } from 'lucide-react';
+import { X, Calendar, MessageCircle } from 'lucide-react';
 
 interface JubileeModalProps {
   isOpen: boolean;
@@ -60,8 +60,7 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
                   />
                 </div>
                 <div>
-                  <div className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-black text-amber-950 uppercase tracking-wider bg-amber-100 px-2.5 py-0.5 rounded-md border border-amber-400">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-600 fill-amber-500 animate-pulse" />
+                  <div className="inline-flex items-center text-[10px] sm:text-xs font-black text-amber-950 uppercase tracking-wider bg-amber-100 px-2.5 py-0.5 rounded-md border border-amber-400">
                     <span>GOLDEN JUBILEE • 1976 – 2026</span>
                   </div>
                   <h3 className="text-base sm:text-xl font-extrabold text-slate-950 leading-tight mt-0.5">
@@ -82,7 +81,7 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-2.5 sm:p-3 text-left">
                   <p className="text-xs sm:text-sm font-extrabold text-amber-200">
-                    ✨ 50 വർഷത്തെ കൃപാസമൃദ്ധി (50 Years of Divine Grace)
+                    50 വർഷത്തെ കൃപാസമൃദ്ധി (50 Years of Divine Grace)
                   </p>
                 </div>
               </div>
@@ -95,8 +94,7 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
 
                 {/* Grand Retreat Highlight Box */}
                 <div className="p-3 sm:p-3.5 bg-[#FFF5F6] border-2 border-[#E8B8BE] rounded-2xl space-y-1">
-                  <div className="flex items-center gap-1.5 text-[#7A1C1C] font-extrabold text-xs sm:text-sm">
-                    <Heart className="w-3.5 h-3.5 fill-[#7A1C1C] shrink-0" />
+                  <div className="text-[#7A1C1C] font-extrabold text-xs sm:text-sm">
                     <span>സുവർണ്ണ ജൂബിലി സമാപന മഹാധ്യാനം:</span>
                   </div>
                   <p className="text-xs sm:text-sm font-black text-slate-950">

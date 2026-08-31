@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { JubileeModal } from './JubileeModal';
-import { Phone, MessageCircle, Calendar, Sparkles } from 'lucide-react';
+import { Phone, MessageCircle, Calendar } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -78,14 +78,13 @@ export const Layout: React.FC<LayoutProps> = ({
           <button
             type="button"
             onClick={() => setIsJubileeOpen(true)}
-            className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[11px] font-bold py-2 px-3.5 rounded-full shadow-xl border border-amber-300 active:scale-95 transition cursor-pointer"
+            className="flex items-center gap-1 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[11px] font-black py-2 px-3.5 rounded-full shadow-xl border border-amber-300 active:scale-95 transition cursor-pointer"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-950 fill-amber-950 animate-pulse" />
-            <span>സുവർണ്ണ ജൂബിലി</span>
+            <span>സുവർണ്ണ ജൂബിലി 1976–2026</span>
           </button>
         </div>
 
-        {/* Fixed Mobile Bottom Action Strip (For quick reachability on mobile) */}
+        {/* Fixed Mobile Bottom Action Strip */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#181614]/95 backdrop-blur-md border-t border-amber-900/40 p-2.5 flex items-center justify-between gap-2 shadow-2xl safe-area-bottom">
           <a
             href="tel:8590124063"
