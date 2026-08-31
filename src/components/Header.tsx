@@ -49,6 +49,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
     return false;
   };
 
+  const handleNavClick = (href: string) => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className="w-full relative z-50 select-none shadow-md">
       
@@ -92,12 +96,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
         </div>
       </div>
 
-      {/* 2. MAIN EXECUTIVE NAVBAR: CRISP WHITE BACKGROUND WITH ULTRA-HIGH CONTRAST */}
+      {/* 2. MAIN EXECUTIVE NAVBAR */}
       <nav className="w-full bg-white border-b-2 border-stone-200 shadow-sm sticky top-0">
         <div className="max-w-[1536px] mx-auto px-3 sm:px-5 lg:px-6 2xl:px-8 h-18 sm:h-20 flex items-center justify-between gap-2 lg:gap-3 2xl:gap-5">
           
           {/* Left Brand Area */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0 min-w-0">
+          <Link
+            href="/"
+            prefetch={true}
+            onMouseEnter={() => router.prefetch('/')}
+            onTouchStart={() => router.prefetch('/')}
+            className="flex items-center gap-2.5 sm:gap-3 group shrink-0 min-w-0"
+          >
             <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-[#FAF7F0] border-2 border-[#DDD3BF] p-1 flex items-center justify-center shrink-0 shadow-xs">
               <img
                 src="/assisi_assets/Assisi-Renewal-Center.webp"
@@ -118,7 +128,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links (>= xl: 1280px) */}
+          {/* Desktop Navigation Links with Instant Prefetching */}
           <div className="hidden xl:flex items-center gap-1 lg:gap-1.5 2xl:gap-3 text-[12.5px] 2xl:text-[14px] font-bold text-slate-900 shrink-0">
             {navLinks.map((link) => {
               const active = isActive(link.href);
@@ -127,6 +137,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
                   <Link
                     key={link.href}
                     href={link.href}
+                    prefetch={true}
+                    onMouseEnter={() => router.prefetch(link.href)}
+                    onTouchStart={() => router.prefetch(link.href)}
                     className={`px-3 py-1.5 rounded-lg transition whitespace-nowrap text-xs 2xl:text-[13px] font-extrabold ${
                       active
                         ? 'bg-[#7A1C1C] text-white shadow-sm'
@@ -141,6 +154,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
                 <Link
                   key={link.href}
                   href={link.href}
+                  prefetch={true}
+                  onMouseEnter={() => router.prefetch(link.href)}
+                  onTouchStart={() => router.prefetch(link.href)}
                   className={`px-2 py-1.5 transition whitespace-nowrap rounded-lg ${
                     active
                       ? 'bg-[#7A1C1C] text-white font-extrabold shadow-xs'
@@ -171,6 +187,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             {/* Retreat Booking CTA */}
             <Link
               href="/retreats"
+              prefetch={true}
+              onMouseEnter={() => router.prefetch('/retreats')}
+              onTouchStart={() => router.prefetch('/retreats')}
               className="bg-[#7A1C1C] hover:bg-[#601515] text-white text-xs sm:text-[13px] font-bold px-3 sm:px-3.5 py-2 rounded-xl transition whitespace-nowrap shadow-sm flex items-center gap-1.5 shrink-0 active:scale-98"
             >
               <Calendar className="w-4 h-4 shrink-0 text-amber-300" />
@@ -198,7 +217,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
               className="xl:hidden border-t-2 border-slate-200 bg-white shadow-2xl overflow-hidden max-h-[calc(100vh-5rem)] overflow-y-auto"
             >
               <div className="px-4 py-5 space-y-2 text-left">
@@ -225,7 +244,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
                     <Link
                       key={link.href}
                       href={link.href}
-                      onClick={() => setMobileMenuOpen(false)}
+                      prefetch={true}
+                      onClick={() => handleNavClick(link.href)}
+                      onTouchStart={() => router.prefetch(link.href)}
                       className={`flex items-center justify-between py-3 px-3.5 rounded-xl text-sm font-bold transition ${
                         active
                           ? 'bg-[#7A1C1C] text-white shadow-sm'
