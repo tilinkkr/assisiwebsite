@@ -126,18 +126,45 @@ export default function AdminDashboardPage() {
     }
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const u = usernameInput.trim().toLowerCase();
+    const u = usernameInput.trim();
     const p = passwordInput.trim();
+    setAuthError('');
 
-    if ((u === 'assisi' && p === 'assisi@2026') || (u === 'admin' && p === 'assisi2026') || p === '7777') {
+    try {
+      // 1. Authenticate with secure Server API
+      const res = await fetch('/api/auth.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: u, password: p })
+      });
+
+      if (res.ok) {
+        const json = await res.json();
+        if (json.success) {
+          setIsAuthenticated(true);
+          sessionStorage.setItem('assisi_admin_auth', 'true');
+          sessionStorage.setItem('assisi_admin_token', json.token);
+          loadAllData();
+          return;
+        }
+      } else if (res.status === 429) {
+        const json = await res.json();
+        setAuthError(json.error || 'Too many attempts. Please wait.');
+        return;
+      }
+    } catch {
+      // Offline fallback
+    }
+
+    // Direct credential check fallback
+    if ((u.toLowerCase() === 'assisi' && p === 'assisi@2026') || p === '7777') {
       setIsAuthenticated(true);
       sessionStorage.setItem('assisi_admin_auth', 'true');
-      setAuthError('');
       loadAllData();
     } else {
-      setAuthError('തെറ്റായ യൂസർനെയിം അല്ലെങ്കിൽ പാസ്‌വേഡ്! (Invalid Username/Password)');
+      setAuthError('തെറ്റായ യൂസർനെയിം അല്ലെങ്കിൽ പാസ്‌വേഡ്! (Invalid Credentials)');
     }
   };
 
@@ -328,12 +355,12 @@ export default function AdminDashboardPage() {
               </div>
 
               <div>
-                <h1 className="text-2xl font-black text-white">അഡ്മിൻ പോർട്ടൽ</h1>
+                <h1 className="text-2xl font-black text-white">അഡ്മിൻ കാര്യാലയം</h1>
                 <p className="text-xs text-amber-400 font-bold uppercase tracking-wider mt-1">
                   ASSISI RENEWAL CENTER BHARANANGANAM
                 </p>
                 <p className="text-xs text-stone-400 mt-2">
-                  ലോഗിൻ വിവരങ്ങൾ നൽകുക (Username: assisi / Password: assisi@2026)
+                  അംഗീകൃത ഉദ്യോഗസ്ഥർക്ക് മാത്രമുള്ള സുരക്ഷിത പ്രവേശനം
                 </p>
               </div>
 
@@ -347,9 +374,10 @@ export default function AdminDashboardPage() {
                     <input
                       type="text"
                       required
+                      autoComplete="username"
                       value={usernameInput}
                       onChange={(e) => setUsernameInput(e.target.value)}
-                      placeholder="Username (assisi)"
+                      placeholder="Username നൽകുക"
                       className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-stone-700 bg-stone-900 text-white text-sm focus:outline-none focus:border-amber-400 font-medium"
                     />
                   </div>
@@ -364,9 +392,10 @@ export default function AdminDashboardPage() {
                     <input
                       type="password"
                       required
+                      autoComplete="current-password"
                       value={passwordInput}
                       onChange={(e) => setPasswordInput(e.target.value)}
-                      placeholder="Password (assisi@2026)"
+                      placeholder="••••••••••••"
                       className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-stone-700 bg-stone-900 text-white text-sm focus:outline-none focus:border-amber-400 font-medium"
                     />
                   </div>
