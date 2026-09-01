@@ -33,40 +33,40 @@ export default function RetreatsPage() {
       description="Official 2026 Residential Retreat Schedule at Assisi Renewal Center Bharananganam. Booking, timings and preachers."
     >
       {/* Header Banner: Franciscan Crimson Atmosphere */}
-      <section className="relative bg-gradient-to-b from-[#2A080C] via-[#1E0508] to-[#120305] border-b border-rose-900/40 py-14 sm:py-18 text-left overflow-hidden">
+      <section className="relative bg-[#1E080C] border-b border-stone-800 py-12 sm:py-16 text-left overflow-hidden">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center shadow-xs">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950 px-3.5 py-1 rounded-md border border-amber-500 inline-flex items-center shadow-xs">
               <span>RESIDENTIAL RETREATS 2026 • ഭരണങ്ങാനം</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">
               ധ്യാന കലണ്ടർ 2026 (RETREAT SCHEDULE)
             </h1>
-            <p className="text-sm sm:text-base text-rose-100/90 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-rose-100 leading-relaxed font-medium">
               അസ്സീസി ധ്യാനകേന്ദ്രത്തിൽ നടക്കുന്ന താമസിച്ചുള്ള ധ്യാനങ്ങളുടെ തീയതികളും വിവരങ്ങളും.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Retreats Content with Eucharistic Adoration Background */}
-      <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
+      {/* Main Retreats Content with Subtle Ambient Texture */}
+      <section className="relative py-14 min-h-[600px] text-left overflow-hidden bg-[#0F0C0B]">
         
-        {/* Background Image: Glowing Eucharistic Monstrance */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#0F0C0B]">
           <img
             src="/assisi_assets/backgrounds/retreat_eucharist_glow.webp"
             alt="Eucharistic Adoration Sanctuary"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#140507]/95 via-[#100305]/92 to-[#0C0204]/96" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0F0C0B]/98 via-[#0F0C0B]/90 to-[#0F0C0B]/98" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Month Selector Tabs */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-white/10 mb-10">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-stone-800 mb-10">
             {(['august', 'september', 'october'] as const).map((m) => (
               <button
                 key={m}
@@ -75,7 +75,7 @@ export default function RetreatsPage() {
                 className={`px-5 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-sm cursor-pointer ${
                   selectedMonth === m
                     ? 'bg-[#7A1C1C] text-white shadow-md border-2 border-amber-400'
-                    : 'bg-stone-900/80 hover:bg-stone-800 text-stone-300 border border-white/15 backdrop-blur-md'
+                    : 'bg-[#181412] hover:bg-[#221D1A] text-stone-200 border border-stone-700'
                 }`}
               >
                 {m} 2026
@@ -83,7 +83,7 @@ export default function RetreatsPage() {
             ))}
           </div>
 
-          {/* Cards Grid */}
+          {/* Cards Grid - SOLID OPAQUE HIGH-CONTRAST */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {RETREAT_CALENDAR[selectedMonth].map((item, idx) => (
               <motion.div
@@ -92,13 +92,13 @@ export default function RetreatsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
-                className="bg-stone-900/85 backdrop-blur-md border border-white/15 rounded-2xl p-6 shadow-xl hover:border-amber-500/40 transition space-y-4 text-left"
+                className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-6 shadow-xl hover:border-amber-400 transition space-y-4 text-left"
               >
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                  <span className="text-xs sm:text-sm font-bold text-amber-300 bg-amber-950/80 px-3 py-1 rounded-md border border-amber-600/40">
+                <div className="flex items-center justify-between border-b border-stone-800 pb-3">
+                  <span className="text-xs sm:text-sm font-bold text-amber-300 bg-amber-950 px-3 py-1 rounded-md border border-amber-500">
                     {item.dates}
                   </span>
-                  <span className="text-xs font-bold text-stone-200 bg-white/10 px-2.5 py-1 rounded">
+                  <span className="text-xs font-bold text-stone-200 bg-stone-800 px-2.5 py-1 rounded border border-stone-700">
                     രജിസ്ട്രേഷൻ ഫീസ്: {item.fee}
                   </span>
                 </div>
@@ -107,17 +107,17 @@ export default function RetreatsPage() {
                   <h3 className="text-lg sm:text-xl font-bold text-white">
                     {item.type}
                   </h3>
-                  <p className="text-xs sm:text-sm text-stone-300 mt-1 font-medium">
-                    നയിക്കുന്നത്: <strong className="text-amber-200">{item.director}</strong>
+                  <p className="text-xs sm:text-sm text-stone-200 mt-1 font-medium">
+                    നയിക്കുന്നത്: <strong className="text-amber-300">{item.director}</strong>
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs text-stone-400 font-medium">
+                <div className="flex items-center gap-2 text-xs text-stone-300 font-medium">
                   <Clock className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>{item.timing}</span>
                 </div>
 
-                {/* Card Action CTA Buttons (Marian & Franciscan - Franciscan Burgundy & Marian Blue) */}
+                {/* Card Action CTA Buttons */}
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
                     href="tel:8590124063"
@@ -146,9 +146,9 @@ export default function RetreatsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-            className="mt-12 bg-stone-900/90 backdrop-blur-md border border-amber-500/30 rounded-3xl p-6 sm:p-8 text-left space-y-4 text-white shadow-2xl"
+            className="mt-12 bg-[#181412] border-2 border-stone-700 rounded-3xl p-6 sm:p-8 text-left space-y-4 text-white shadow-2xl"
           >
-            <div className="flex items-center gap-2.5 border-b border-white/15 pb-3">
+            <div className="flex items-center gap-2.5 border-b border-stone-800 pb-3">
               <ShieldCheck className="w-6 h-6 text-amber-400 shrink-0" />
               <h2 className="text-lg sm:text-xl font-bold text-white">
                 ധ്യാനത്തിൽ പങ്കെടുക്കുന്നവർ ശ്രദ്ധിക്കേണ്ട പ്രധാന കാര്യങ്ങൾ

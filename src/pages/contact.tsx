@@ -10,41 +10,41 @@ export default function ContactPage() {
       description="Contact Assisi Renewal Center Bharananganam - Office Phone, Address, WhatsApp helpline, Route and Google Map."
     >
       {/* Header Banner */}
-      <section className="relative bg-gradient-to-b from-[#241A14] via-[#1A120E] to-[#120C08] border-b border-amber-900/40 py-14 sm:py-18 text-left overflow-hidden">
+      <section className="relative bg-[#1A120E] border-b border-stone-800 py-12 sm:py-16 text-left overflow-hidden">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center gap-1.5 shadow-xs">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950 px-3.5 py-1 rounded-md border border-amber-500 inline-flex items-center gap-1.5 shadow-xs">
               <Compass className="w-3.5 h-3.5" />
               <span>VISIT & INQUIRY • ഭരണങ്ങാനം</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">
               CONTACT US (ബന്ധപ്പെടുക)
             </h1>
-            <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-amber-100 leading-relaxed font-medium">
               ഭരണങ്ങാനം അസ്സീസി ധ്യാനകേന്ദ്രത്തിന്റെ വിലാസം, ഫോൺ നമ്പറുകൾ, എത്തിച്ചേരാനുള്ള വഴി, ഗൂഗിൾ മാപ്പ്.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Contact Content with Monastery Background */}
-      <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
+      {/* Main Contact Content with Subtle Background */}
+      <section className="relative py-14 min-h-[600px] text-left overflow-hidden bg-[#0F0C0A]">
         
-        {/* Background Monastery Cloister */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#0F0C0A]">
           <img
             src="/assisi_assets/backgrounds/retreat_monastery_cloister.webp"
             alt="Monastery Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#140E0B]/95 via-[#18110D]/92 to-[#100B08]/96" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0F0C0A]/98 via-[#0F0C0A]/90 to-[#0F0C0A]/98" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
-            {/* Left Column: Office Contacts (5 cols) */}
+            {/* Left Column: Office Contacts (5 cols) - SOLID OPAQUE CARD */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export default function ContactPage() {
               transition={{ type: 'spring', stiffness: 100, damping: 15 }}
               className="lg:col-span-5 space-y-6"
             >
-              <div className="bg-stone-900/85 backdrop-blur-md border border-white/15 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6 text-white">
+              <div className="bg-[#181412] border-2 border-stone-700 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6 text-white">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white">
                     അസ്സീസി ആശ്രമ കാര്യാലയം
@@ -133,7 +133,7 @@ export default function ContactPage() {
               transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.1 }}
               className="lg:col-span-7 space-y-6"
             >
-              <div className="bg-stone-900/85 backdrop-blur-md border border-white/15 p-4 rounded-3xl shadow-2xl">
+              <div className="bg-[#181412] border-2 border-stone-700 p-4 rounded-3xl shadow-2xl">
                 <h3 className="text-lg font-bold text-white p-2">
                   ഗൂഗിൾ മാപ്പ് ലൊക്കേഷൻ (Google Maps)
                 </h3>
@@ -150,7 +150,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-stone-900/85 backdrop-blur-md border border-white/15 p-6 rounded-3xl shadow-xl space-y-3 text-stone-200 text-xs sm:text-sm">
+              <div className="bg-[#181412] border-2 border-stone-700 p-6 rounded-3xl shadow-xl space-y-3 text-stone-200 text-xs sm:text-sm">
                 <h4 className="font-bold text-white text-base">
                   എത്തിച്ചേരാനുള്ള വഴി (How to Reach)
                 </h4>

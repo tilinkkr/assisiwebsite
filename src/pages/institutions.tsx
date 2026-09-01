@@ -61,35 +61,35 @@ export default function InstitutionsPage() {
       title="കപ്പൂച്ചിൻ സ്ഥാപനങ്ങൾ | Our Institutions | അസ്സീസി ധ്യാനകേന്ദ്രം"
       description="Ministries, Ashrams, Publishing and Language Institutes under St. Joseph Capuchin Province Bharananganam."
     >
-      {/* Header Banner: Capuchin Monastic Earth Atmosphere */}
-      <section className="relative bg-gradient-to-b from-[#241A14] via-[#1A120E] to-[#120C08] border-b border-amber-900/40 py-14 sm:py-18 text-left overflow-hidden">
+      {/* Header Banner */}
+      <section className="relative bg-[#1A120E] border-b border-stone-800 py-12 sm:py-16 text-left overflow-hidden">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center shadow-xs">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950 px-3.5 py-1 rounded-md border border-amber-500 inline-flex items-center shadow-xs">
               <span>CAPUCHIN MINISTRIES & APOSTOLATE</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">
               OUR INSTITUTIONS (കപ്പൂച്ചിൻ സ്ഥാപനങ്ങൾ)
             </h1>
-            <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-amber-100 leading-relaxed font-medium">
               സെന്റ് ജോസഫ് കപ്പൂച്ചിൻ പ്രൊവിൻസിന്റെ കീഴിൽ പ്രവർത്തിക്കുന്ന ഇതര ആത്മീയ, പ്രസിദ്ധീകരണ, വിദ്യാഭ്യാസ സ്ഥാപനങ്ങൾ.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Institutions Grid with Cloister Background */}
-      <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
+      {/* Main Institutions Grid with Subtle Cloister Background */}
+      <section className="relative py-14 min-h-[600px] text-left overflow-hidden bg-[#0F0C0A]">
         
-        {/* Background Image: Capuchin Cloister */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#0F0C0A]">
           <img
             src="/assisi_assets/backgrounds/retreat_monastery_cloister.webp"
             alt="Capuchin Cloister Architecture"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#18110D]/95 via-[#201610]/92 to-[#120D0A]/96" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0F0C0A]/98 via-[#0F0C0A]/90 to-[#0F0C0A]/98" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -106,11 +106,11 @@ export default function InstitutionsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
-                  className="bg-[#241A14]/90 backdrop-blur-md border-2 border-[#8C6239]/60 p-6 rounded-3xl shadow-xl hover:border-amber-400 transition text-left group flex flex-col justify-between space-y-4"
+                  className="bg-[#181412] border-2 border-stone-700 p-6 rounded-3xl shadow-xl hover:border-amber-400 transition text-left group flex flex-col justify-between space-y-4"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="w-10 h-10 rounded-xl bg-amber-950/80 border border-amber-500/50 flex items-center justify-center text-amber-300">
+                      <span className="w-10 h-10 rounded-xl bg-amber-950 border border-amber-500 flex items-center justify-center text-amber-300">
                         <Icon className="w-5 h-5" />
                       </span>
                       <span className="text-[11px] font-black text-amber-300 bg-black/60 px-2.5 py-0.5 rounded border border-amber-600/40">
@@ -127,7 +127,7 @@ export default function InstitutionsPage() {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-amber-900/40 flex items-center justify-between text-xs font-bold text-amber-300 group-hover:text-white transition">
+                  <div className="pt-3 border-t border-stone-800 flex items-center justify-between text-xs font-bold text-amber-300 group-hover:text-white transition">
                     <span>വെബ്സൈറ്റ് സന്ദർശിക്കുക</span>
                     <ExternalLink className="w-4 h-4" />
                   </div>

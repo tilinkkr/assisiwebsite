@@ -18,34 +18,34 @@ export default function ConventionPage() {
       description="Monthly Evening Convention - Every 1st Tuesday 4:00 PM to 9:00 PM at Assisi Renewal Center Bharananganam."
     >
       {/* Header Banner */}
-      <section className="relative bg-gradient-to-b from-[#24080D] via-[#1A050A] to-[#120306] border-b border-rose-900/40 py-14 sm:py-18 text-left overflow-hidden">
+      <section className="relative bg-[#1A050A] border-b border-stone-800 py-12 sm:py-16 text-left overflow-hidden">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-rose-300 bg-rose-950/80 px-3.5 py-1 rounded-md border border-rose-500/40 inline-flex items-center shadow-xs">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-rose-300 bg-rose-950 px-3.5 py-1 rounded-md border border-rose-500 inline-flex items-center shadow-xs">
               <span>MONTHLY 1-DAY CONVENTION • ഭരണങ്ങാനം</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white">
               സായാഹ്ന കൺവെൻഷൻ (Evening Convention)
             </h1>
-            <p className="text-sm sm:text-base text-rose-100/90 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-rose-100 leading-relaxed font-medium">
               എല്ലാ മാസത്തെയും ആദ്യ ചൊവ്വാഴ്ച വൈകുന്നേരം 4:00 മുതൽ രാത്രി 9:00 വരെ അസ്സീസി ധ്യാനകേന്ദ്രത്തിൽ വെച്ച് നടക്കുന്ന സായാഹ്ന കൺവെൻഷൻ.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Timetable & Poster Grid with Cross at Dawn Background */}
-      <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
+      {/* Main Timetable & Poster Grid */}
+      <section className="relative py-14 min-h-[600px] text-left overflow-hidden bg-[#0D0A0B]">
         
-        {/* Background Image: Cross at Dawn */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#0D0A0B]">
           <img
             src="/assisi_assets/backgrounds/retreat_cross_dawn.webp"
             alt="Convention Hilltop Cross Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/96 via-stone-950/90 to-stone-900/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D0A0B]/98 via-[#0D0A0B]/90 to-[#0D0A0B]/85" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -60,15 +60,16 @@ export default function ConventionPage() {
               className="lg:col-span-7 space-y-6"
             >
               <div>
-                <h2 className="text-2xl font-bold text-white">
+                <h2 className="text-2xl font-black text-white">
                   ശുശ്രൂഷാ ക്രമം (Timetable & Program)
                 </h2>
-                <p className="text-xs sm:text-sm text-stone-300 font-normal mt-1">
+                <p className="text-xs sm:text-sm text-stone-200 font-medium mt-1">
                   ഓരോ മാസത്തെയും ആദ്യ ചൊവ്വാഴ്ച താഴെ കാണുന്ന ക്രമത്തിലാണ് ശുശ്രൂഷകൾ നടക്കുന്നത്:
                 </p>
               </div>
 
-              <div className="bg-stone-900/85 backdrop-blur-md border border-white/15 rounded-3xl p-5 sm:p-6 shadow-2xl divide-y divide-white/10 space-y-2">
+              {/* Solid Opaque Timetable Box */}
+              <div className="bg-[#181412] border-2 border-stone-700 rounded-3xl p-5 sm:p-6 shadow-2xl divide-y divide-stone-800 space-y-2">
                 {schedule.map((item, idx) => (
                   <div key={idx} className="pt-3 first:pt-0 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-left">
                     <div>
@@ -88,7 +89,7 @@ export default function ConventionPage() {
                 ))}
               </div>
 
-              {/* Action Buttons (Marian & Franciscan: Franciscan Burgundy & Marian Blue) */}
+              {/* Action Buttons */}
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a
                   href="tel:04822238335"
@@ -117,7 +118,7 @@ export default function ConventionPage() {
               transition={{ type: 'spring', stiffness: 90, damping: 16 }}
               className="lg:col-span-5"
             >
-              <div className="bg-stone-900/85 backdrop-blur-md border border-white/20 rounded-3xl p-4 shadow-2xl max-w-sm mx-auto">
+              <div className="bg-[#181412] border-2 border-stone-700 rounded-3xl p-4 shadow-2xl max-w-sm mx-auto">
                 <img
                   src="/assisi_assets/convension-683x1024.webp"
                   alt="സായാഹ്ന കൺവെൻഷൻ ഔദ്യോഗിക പോസ്റ്റർ"

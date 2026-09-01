@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 
 const springEntrance = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: '-40px' },
   transition: { type: 'spring' as const, stiffness: 100, damping: 15 }
@@ -88,47 +88,46 @@ export default function Home() {
   return (
     <Layout>
       {/* ========================================================================= */}
-      {/* 1. HERO: EUCHARISTIC MONSTRANCE ADORATION ATMOSPHERE */}
+      {/* 1. HERO SECTION: MAXIMUM TEXT VISIBILITY & SUBTLE AMBIENT BACKGROUND */}
       {/* ========================================================================= */}
-      <section className="relative min-h-[620px] sm:min-h-[680px] flex items-center justify-center text-left py-12 sm:py-18 overflow-hidden">
+      <section className="relative min-h-[580px] sm:min-h-[640px] flex items-center justify-center text-left py-12 sm:py-16 overflow-hidden bg-[#0C0A09]">
         
-        {/* Background Image: Eucharistic Adoration with Gold Rays */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle, non-intrusive ambient background */}
+        <div className="absolute inset-0 z-0 bg-[#0C0A09]">
           <img
             src="/assisi_assets/backgrounds/retreat_eucharist_glow.webp"
-            alt="Assisi Eucharistic Sanctuary Background"
-            className="w-full h-full object-cover scale-105"
+            alt="Assisi Eucharistic Sanctuary"
+            className="w-full h-full object-cover opacity-20 sm:opacity-25 filter blur-[0.5px] scale-105"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/96 via-black/85 to-black/60" />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0C0A09]/98 via-[#0C0A09]/90 to-[#0C0A09]/80" />
         </div>
 
         <div className="max-w-[1536px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Content Card - SOLID HIGH CONTRAST FROSTED CARD */}
+            {/* Left Content Card - OPAQUE HIGH-CONTRAST CARD */}
             <motion.div
               {...springEntrance}
-              className="lg:col-span-7 bg-stone-950/90 backdrop-blur-xl border border-amber-500/40 p-6 sm:p-10 rounded-3xl shadow-2xl space-y-5 text-left"
+              className="lg:col-span-7 bg-[#161311] border-2 border-amber-500/40 p-6 sm:p-10 rounded-3xl shadow-2xl space-y-5 text-left"
             >
               <div className="inline-flex items-center gap-2 bg-amber-400 text-stone-950 font-black text-xs sm:text-sm px-3.5 py-1 rounded-full shadow-md">
                 <span>ST. JOSEPH CAPUCHIN PROVINCE • 1976 – 2026</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black text-white leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black text-white leading-tight">
                 അസ്സീസി ധ്യാനകേന്ദ്രം, ഭരണങ്ങാനം
               </h1>
 
-              <p className="text-base sm:text-lg text-stone-100 leading-relaxed font-medium max-w-2xl drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+              <p className="text-base sm:text-lg text-stone-100 leading-relaxed font-medium max-w-2xl">
                 വിശുദ്ധ അൽഫോൻസാമ്മയുടെ പുണ്യഭൂമിയിൽ, കപ്പൂച്ചിൻ സന്യാസിമാരുടെ ആത്മീയ നേതൃത്വത്തിൽ കഴിഞ്ഞ 50 വർഷങ്ങളായി പതിനായിരങ്ങൾക്ക് ദൈവാനുഭവവും ആന്തരിക സൗഖ്യവും പകരുന്ന ആത്മീയ തണൽ.
               </p>
 
-              <div className="p-4 bg-amber-950/90 rounded-2xl border border-amber-500/60 shadow-md space-y-1 max-w-xl text-left">
+              <div className="p-4 bg-[#231710] rounded-2xl border-2 border-amber-500/50 shadow-md space-y-1 max-w-xl text-left">
                 <p className="text-xs font-black text-amber-300 uppercase tracking-wider">
                   ഫ്രാൻസിസ്കൻ ആപ്തവാക്യം (FRANCISCAN MOTTO)
                 </p>
-                <p className="text-sm sm:text-base font-extrabold text-amber-100">
+                <p className="text-sm sm:text-base font-extrabold text-white">
                   "സമാധാനവും നന്മയും" (Pax et Bonum • Peace and Goodness)
                 </p>
               </div>
@@ -144,7 +143,7 @@ export default function Home() {
 
                 <Link
                   href="/gallery"
-                  className="bg-stone-900/90 hover:bg-stone-800 text-amber-300 border-2 border-stone-600 text-sm sm:text-base font-extrabold px-6 py-3.5 rounded-xl transition inline-flex items-center gap-2 active:scale-98 shadow-xl"
+                  className="bg-[#1F1C18] hover:bg-[#28231E] text-amber-300 border-2 border-stone-600 text-sm sm:text-base font-extrabold px-6 py-3.5 rounded-xl transition inline-flex items-center gap-2 active:scale-98 shadow-xl"
                 >
                   <ZoomIn className="w-4 h-4 text-amber-400" />
                   <span>ഫോട്ടോ ഗാലറി</span>
@@ -160,7 +159,7 @@ export default function Home() {
               transition={{ type: 'spring', stiffness: 90, damping: 16, delay: 0.15 }}
               className="lg:col-span-5"
             >
-              <div className="bg-stone-950/90 backdrop-blur-xl p-3 sm:p-4 rounded-3xl shadow-2xl border-2 border-amber-500/40 relative group max-w-md mx-auto">
+              <div className="bg-[#161311] p-3 sm:p-4 rounded-3xl shadow-2xl border-2 border-amber-500/40 relative group max-w-md mx-auto">
                 <div className="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-slate-900">
                   <img
                     src="/assisi_assets/2018-05-26.webp"
@@ -190,19 +189,19 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. RETREATS SECTION: CANDLELIT ADORATION BACKGROUND */}
+      {/* 2. RETREATS SECTION: HIGH VISIBILITY CALENDAR CARDS */}
       {/* ========================================================================= */}
-      <section id="retreats" className="relative py-16 sm:py-20 text-left overflow-hidden">
+      <section id="retreats" className="relative py-16 sm:py-20 text-left overflow-hidden bg-[#100D0B] border-y border-stone-800">
         
-        {/* Background Image with Deep Crimson Scrim */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 z-0 bg-[#100D0B]">
           <img
             src="/assisi_assets/backgrounds/retreat_eucharist_glow.webp"
             alt="Adoration Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 filter blur-[1px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1C0E10]/96 via-[#180A0C]/92 to-[#14080A]/96" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#100D0B]/98 via-[#100D0B]/90 to-[#100D0B]/98" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -235,7 +234,7 @@ export default function Home() {
                 className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wider transition cursor-pointer whitespace-nowrap ${
                   selectedMonth === m
                     ? 'bg-[#7A1C1C] text-white shadow-lg border-2 border-amber-400'
-                    : 'bg-stone-900/90 hover:bg-stone-800 text-stone-200 border border-stone-600'
+                    : 'bg-[#1C1815] hover:bg-[#25201C] text-stone-200 border border-stone-700'
                 }`}
               >
                 {m} 2026
@@ -243,7 +242,7 @@ export default function Home() {
             ))}
           </motion.div>
 
-          {/* Retreat Cards Grid */}
+          {/* Retreat Cards Grid - SOLID OPAQUE HIGH-CONTRAST CARDS */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {RETREAT_CALENDAR[selectedMonth].map((item, idx) => (
               <motion.div
@@ -252,7 +251,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.08 }}
-                className="bg-stone-950/90 backdrop-blur-md border-2 border-stone-700/80 rounded-2xl p-5 shadow-2xl hover:border-amber-400 transition flex flex-col justify-between space-y-4"
+                className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-5 shadow-2xl hover:border-amber-400 transition flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between">
@@ -275,7 +274,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* Card Action Buttons (Marian & Franciscan: Marian Blue & Amber) */}
+                {/* Card Action Buttons (Marian Sapphire & Amber) */}
                 <div className="pt-3 border-t border-stone-800 flex items-center justify-between gap-2">
                   <a
                     href="tel:8590124063"
@@ -302,19 +301,19 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. CONVENTION SECTION: KERALA HILLTOP CROSS DAWN BACKGROUND */}
+      {/* 3. CONVENTION SECTION: CRISP TIMETABLE */}
       {/* ========================================================================= */}
-      <section id="convention" className="relative py-16 sm:py-20 text-left overflow-hidden">
+      <section id="convention" className="relative py-16 sm:py-20 text-left overflow-hidden bg-[#0F0D0B]">
         
-        {/* Background Image: Rustic Wooden Cross at Dawn in Bharananganam */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#0F0D0B]">
           <img
             src="/assisi_assets/backgrounds/retreat_cross_dawn.webp"
-            alt="Misty Hilltop Cross Dawn"
-            className="w-full h-full object-cover"
+            alt="Misty Hilltop Cross"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/96 via-stone-950/90 to-stone-900/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0F0D0B]/98 via-[#0F0D0B]/90 to-[#0F0D0B]/85" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -327,12 +326,12 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white">
                 സായാഹ്ന കൺവെൻഷൻ (Evening Convention)
               </h2>
-              <p className="text-sm sm:text-base text-stone-200 font-medium leading-relaxed">
+              <p className="text-sm sm:text-base text-stone-100 font-medium leading-relaxed">
                 എല്ലാ മാസത്തെയും ആദ്യ ചൊവ്വാഴ്ച വൈകുന്നേരം 4:00 മുതൽ രാത്രി 9:00 വരെ അസ്സീസി ധ്യാനകേന്ദ്രത്തിൽ വെച്ച് നടക്കുന്ന സായാഹ്ന കൺവെൻഷൻ.
               </p>
               
-              {/* Timetable Panel */}
-              <div className="bg-stone-950/90 backdrop-blur-md border border-amber-500/30 rounded-2xl p-5 divide-y divide-stone-800 shadow-2xl space-y-1">
+              {/* Timetable Panel - SOLID OPAQUE CARD */}
+              <div className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-5 divide-y divide-stone-800 shadow-2xl space-y-1">
                 <div className="py-2.5 flex items-center justify-between text-xs sm:text-sm">
                   <span className="font-black text-slate-950 bg-amber-400 px-3 py-1 rounded-md">4:00 PM</span>
                   <span className="font-bold text-white">കുമ്പസാരം (Sacrament of Confession)</span>
@@ -365,7 +364,7 @@ export default function Home() {
               transition={{ type: 'spring', stiffness: 90, damping: 16 }}
               className="lg:col-span-5"
             >
-              <div className="bg-stone-950/90 backdrop-blur-md border border-stone-700 rounded-3xl p-3.5 shadow-2xl max-w-sm mx-auto">
+              <div className="bg-[#181412] border-2 border-stone-700 rounded-3xl p-3.5 shadow-2xl max-w-sm mx-auto">
                 <img
                   src="/assisi_assets/convension-683x1024.webp"
                   alt="സായാഹ്ന കൺവെൻഷൻ പോസ്റ്റർ"
@@ -380,9 +379,9 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. GALLERY PREVIEW SECTION: MARIAN MIDNIGHT SANCTUARY */}
+      {/* 4. GALLERY PREVIEW SECTION: CRISP MARIAN SANCTUARY */}
       {/* ========================================================================= */}
-      <section id="gallery" className="py-16 sm:py-20 bg-gradient-to-b from-[#09111E] via-[#0E1B30] to-[#070D18] text-left border-y border-blue-900/50">
+      <section id="gallery" className="py-16 sm:py-20 bg-[#0A0E17] text-left border-y border-blue-950">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div {...springEntrance} className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
@@ -414,7 +413,7 @@ export default function Home() {
               >
                 <Link
                   href="/gallery"
-                  className="group bg-slate-900/90 backdrop-blur-md rounded-2xl border-2 border-blue-900/60 overflow-hidden shadow-2xl hover:border-blue-400 transition block"
+                  className="group bg-[#111726] rounded-2xl border-2 border-blue-900/60 overflow-hidden shadow-2xl hover:border-blue-400 transition block"
                 >
                   <div className="aspect-[4/3] bg-slate-950 overflow-hidden relative">
                     <img
@@ -441,26 +440,26 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. THANKSGIVING SECTION: CANDLELIT MARIAN SANCTUARY GLOW */}
+      {/* 5. THANKSGIVING SECTION: SOLID CONTRAST FORM */}
       {/* ========================================================================= */}
-      <section id="thanksgiving" className="relative py-16 sm:py-20 text-left overflow-hidden">
+      <section id="thanksgiving" className="relative py-16 sm:py-20 text-left overflow-hidden bg-[#100D0B]">
         
-        {/* Background Image: Marian Grotto & Votive Candles Glow */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#100D0B]">
           <img
             src="/assisi_assets/backgrounds/retreat_marian_sanctuary.webp"
             alt="Marian Sanctuary Testimonials"
-            className="w-full h-full object-cover scale-105"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/96 via-stone-950/90 to-stone-900/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#100D0B]/98 via-[#100D0B]/90 to-[#100D0B]/85" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
-            {/* Form Column */}
-            <motion.div {...springEntrance} className="lg:col-span-7 bg-stone-950/90 backdrop-blur-md border-2 border-amber-500/40 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5 text-white">
+            {/* Form Column - SOLID OPAQUE CARD */}
+            <motion.div {...springEntrance} className="lg:col-span-7 bg-[#161311] border-2 border-amber-500/40 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5 text-white">
               <div>
                 <span className="text-xs font-black text-slate-950 bg-amber-400 px-3 py-1 rounded">
                   WRITE TO US
@@ -474,7 +473,7 @@ export default function Home() {
               </div>
 
               {thanksSubmitted ? (
-                <div className="p-5 bg-[#1E3A8A]/90 border-2 border-amber-400 rounded-xl text-center space-y-2">
+                <div className="p-5 bg-[#1E3A8A] border-2 border-amber-400 rounded-xl text-center space-y-2">
                   <CheckCircle2 className="w-8 h-8 text-amber-400 mx-auto" />
                   <p className="text-sm font-bold text-white">നന്ദി പ്രകാശനം സമർപ്പിച്ചു!</p>
                 </div>
@@ -487,7 +486,7 @@ export default function Home() {
                       placeholder="First Name"
                       value={thanksForm.firstName}
                       onChange={(e) => setThanksForm({ ...thanksForm, firstName: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-600 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                     <input
                       type="text"
@@ -495,7 +494,7 @@ export default function Home() {
                       placeholder="Last Name"
                       value={thanksForm.lastName}
                       onChange={(e) => setThanksForm({ ...thanksForm, lastName: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-600 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                   </div>
 
@@ -506,7 +505,7 @@ export default function Home() {
                       placeholder="Contact Number"
                       value={thanksForm.contact}
                       onChange={(e) => setThanksForm({ ...thanksForm, contact: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-600 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                     <input
                       type="email"
@@ -514,7 +513,7 @@ export default function Home() {
                       placeholder="Email Address"
                       value={thanksForm.email}
                       onChange={(e) => setThanksForm({ ...thanksForm, email: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-600 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                   </div>
 
@@ -524,7 +523,7 @@ export default function Home() {
                     placeholder="Subject (വിഷയം)"
                     value={thanksForm.subject}
                     onChange={(e) => setThanksForm({ ...thanksForm, subject: e.target.value })}
-                    className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-600 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                    className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                   />
 
                   <textarea
@@ -533,7 +532,7 @@ export default function Home() {
                     placeholder="Describe your testimony (Type Here...)"
                     value={thanksForm.description}
                     onChange={(e) => setThanksForm({ ...thanksForm, description: e.target.value })}
-                    className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-600 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                    className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                   />
 
                   <button
@@ -549,14 +548,14 @@ export default function Home() {
 
             {/* Testimonials Column */}
             <motion.div {...springEntrance} className="lg:col-span-5 space-y-5">
-              <div className="border-b border-amber-900/60 pb-2">
+              <div className="border-b border-stone-800 pb-2">
                 <h3 className="text-xl font-bold text-white flex items-center gap-2">
                   <Quote className="w-5 h-5 text-amber-400" />
                   <span>TESTIMONIALS (സാക്ഷ്യങ്ങൾ)</span>
                 </h3>
               </div>
 
-              <div className="bg-stone-950/90 backdrop-blur-md border border-stone-700 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100">
+              <div className="bg-[#161311] border-2 border-stone-700 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100">
                 <p className="text-xs sm:text-sm leading-relaxed font-normal">
                   "We attended a retreat last month and my mother had prayed for her sister who had a debt of Rs 21 lakhs... God miraculously cleared the debt through divine providence."
                 </p>
@@ -566,7 +565,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-stone-950/90 backdrop-blur-md border border-stone-700 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100">
+              <div className="bg-[#161311] border-2 border-stone-700 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100">
                 <p className="text-xs sm:text-sm leading-relaxed font-normal">
                   "I had attended the retreat last year... blessed with a baby boy overcoming PCOD. All glory to Jesus!"
                 </p>
@@ -590,19 +589,19 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. OUR INSPIRATION: CAPUCHIN MONASTERY CLOISTER BACKGROUND */}
+      {/* 6. OUR INSPIRATION: CAPUCHIN MONASTERY HERITAGE */}
       {/* ========================================================================= */}
-      <section id="inspiration" className="relative py-16 sm:py-20 text-left overflow-hidden border-y border-stone-800">
+      <section id="inspiration" className="relative py-16 sm:py-20 text-left overflow-hidden bg-[#0F0C0A] border-y border-stone-800">
         
-        {/* Background Image: Monastic Stone Arched Cloister */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#0F0C0A]">
           <img
             src="/assisi_assets/backgrounds/retreat_monastery_cloister.webp"
             alt="Monastery Cloister Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1C1815]/96 via-[#241F1A]/92 to-[#181412]/96" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0F0C0A]/98 via-[#0F0C0A]/90 to-[#0F0C0A]/98" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -633,7 +632,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-              className="bg-stone-950/90 backdrop-blur-md border-2 border-stone-700 p-6 rounded-3xl shadow-xl flex items-start gap-4"
+              className="bg-[#181412] border-2 border-stone-700 p-6 rounded-3xl shadow-xl flex items-start gap-4"
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-stone-800 border-2 border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-md">
                 <img
@@ -650,7 +649,7 @@ export default function Home() {
                 <h3 className="text-base sm:text-lg font-bold text-white">
                   Fr. Armond Madhavath Capuchin
                 </h3>
-                <p className="text-xs text-stone-300 leading-relaxed font-normal">
+                <p className="text-xs text-stone-200 leading-relaxed font-normal">
                   മലയാളത്തിലെ ആദ്യ കരിസ്മാറ്റിക് ധ്യാനം ഭരണങ്ങാനത്ത് ആരംഭിച്ച പുണ്യപിതാവ്.
                 </p>
               </div>
@@ -662,7 +661,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.1 }}
-              className="bg-stone-950/90 backdrop-blur-md border-2 border-stone-700 p-6 rounded-3xl shadow-xl flex items-start gap-4"
+              className="bg-[#181412] border-2 border-stone-700 p-6 rounded-3xl shadow-xl flex items-start gap-4"
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-stone-800 border-2 border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-md">
                 <img
@@ -679,7 +678,7 @@ export default function Home() {
                 <h3 className="text-base sm:text-lg font-bold text-white">
                   Fr. Gratian Pallipurath Capuchin
                 </h3>
-                <p className="text-xs text-stone-300 leading-relaxed font-normal">
+                <p className="text-xs text-stone-200 leading-relaxed font-normal">
                   ഫ്രാൻസിസ്കൻ മൂന്നാം സഭയുടെയും മിഷൻ ധ്യാനങ്ങളുടെയും അടിയുറച്ച പ്രഘോഷകൻ.
                 </p>
               </div>
@@ -692,17 +691,17 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 7. OUR INSTITUTIONS: CAPUCHIN SANDSTONE & MONASTIC TERRACOTTA */}
       {/* ========================================================================= */}
-      <section id="institutions" className="relative py-16 sm:py-20 text-left border-y border-amber-900/50 overflow-hidden">
+      <section id="institutions" className="relative py-16 sm:py-20 text-left bg-[#100D0B] border-y border-stone-800 overflow-hidden">
         
-        {/* Background Cloister */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#100D0B]">
           <img
             src="/assisi_assets/backgrounds/retreat_monastery_cloister.webp"
             alt="Capuchin Ministries"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1E1510]/96 via-[#281C15]/94 to-[#18110D]/96" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#100D0B]/98 via-[#100D0B]/90 to-[#100D0B]/98" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -736,13 +735,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
-                className="bg-[#241B15]/90 backdrop-blur-md border-2 border-[#8C6239]/60 p-4 rounded-2xl shadow-xl hover:border-amber-400 transition text-left group flex flex-col justify-between"
+                className="bg-[#181412] border-2 border-stone-700 p-4 rounded-2xl shadow-xl hover:border-amber-400 transition text-left group flex flex-col justify-between"
               >
                 <div>
                   <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300 transition line-clamp-1">
                     {inst.mal}
                   </h3>
-                  <p className="text-[11px] text-amber-200/80 font-medium line-clamp-1">
+                  <p className="text-[11px] text-stone-300 font-medium line-clamp-1">
                     {inst.name}
                   </p>
                 </div>
@@ -759,17 +758,17 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 8. PRAYER REQUESTS: MARIAN CERULEAN SANCTUARY */}
       {/* ========================================================================= */}
-      <section id="prayer" className="relative py-16 sm:py-20 text-left border-y border-blue-900/50 overflow-hidden">
+      <section id="prayer" className="relative py-16 sm:py-20 text-left bg-[#0A0F1D] border-y border-blue-950 overflow-hidden">
         
-        {/* Background Image: Marian Sanctuary Candles */}
-        <div className="absolute inset-0 z-0">
+        {/* Subtle background */}
+        <div className="absolute inset-0 z-0 bg-[#0A0F1D]">
           <img
             src="/assisi_assets/backgrounds/retreat_marian_sanctuary.webp"
             alt="Marian Prayer Sanctuary"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 filter blur-[0.5px]"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061020]/96 via-[#0E2040]/92 to-[#061020]/96" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F1D]/98 via-[#0A0F1D]/90 to-[#0A0F1D]/98" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -782,7 +781,7 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white">
                 PRAYER REQUESTS (പ്രാർത്ഥനാ സഹായം)
               </h2>
-              <p className="text-sm sm:text-base text-stone-200 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-stone-100 leading-relaxed font-normal">
                 നിങ്ങളുടെ ആത്മീയ-ശാരീരിക നിയോഗങ്ങൾ അസ്സീസി ആശ്രമത്തിലെ കപ്പൂച്ചിൻ വൈദികർ വിശുദ്ധ കുർബാനയിലും ദിവ്യകാരുണ്യ സന്നിധിയിലും സമർപ്പിച്ച് പ്രാർത്ഥിക്കുന്നു.
               </p>
               <div>
@@ -796,7 +795,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div {...springEntrance} className="lg:col-span-6 bg-slate-950/90 backdrop-blur-md border-2 border-blue-500/40 p-6 rounded-3xl shadow-2xl space-y-3 text-white">
+            <motion.div {...springEntrance} className="lg:col-span-6 bg-[#111726] border-2 border-blue-500/40 p-6 rounded-3xl shadow-2xl space-y-3 text-white">
               <h3 className="text-base sm:text-lg font-bold text-white">
                 ഹെൽപ്പ്‌ലൈൻ നമ്പറുകൾ
               </h3>
@@ -822,7 +821,7 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 9. CONTACT US: CLEAN SANCTUARY SLATE */}
       {/* ========================================================================= */}
-      <section id="contact" className="py-16 sm:py-20 bg-[#12100E] text-left">
+      <section id="contact" className="py-16 sm:py-20 bg-[#0C0A09] text-left">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -847,7 +846,7 @@ export default function Home() {
                 </Link>
                 <a
                   href="tel:04822238335"
-                  className="bg-stone-800 hover:bg-stone-700 text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl transition inline-flex items-center gap-1.5 border border-stone-600"
+                  className="bg-[#1C1815] hover:bg-[#25201C] text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl transition inline-flex items-center gap-1.5 border border-stone-700"
                 >
                   <Phone className="w-4 h-4 text-amber-400" />
                   <span>04822 238335</span>
@@ -862,7 +861,7 @@ export default function Home() {
               transition={{ type: 'spring', stiffness: 90, damping: 16 }}
               className="lg:col-span-6"
             >
-              <div className="bg-stone-950 border-2 border-stone-800 rounded-3xl p-3 shadow-2xl">
+              <div className="bg-[#161311] border-2 border-stone-700 rounded-3xl p-3 shadow-2xl">
                 <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden">
                   <iframe
                     title="Assisi Renewal Center Location Map"
