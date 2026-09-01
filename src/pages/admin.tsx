@@ -45,10 +45,25 @@ export default function AdminDashboardPage() {
     }
   }, []);
 
-  const loadAllData = () => {
+  const loadAllData = async () => {
+    // 1. Instant local render
     setPrayers(DB.getPrayers());
     setTestimonies(DB.getTestimonies());
     setBookings(DB.getBookings());
+
+    // 2. Fetch fresh live data from Server Database API
+    try {
+      const [livePrayers, liveTestimonies, liveBookings] = await Promise.all([
+        DB.fetchPrayersAsync(),
+        DB.fetchTestimoniesAsync(),
+        DB.fetchBookingsAsync()
+      ]);
+      setPrayers(livePrayers);
+      setTestimonies(liveTestimonies);
+      setBookings(liveBookings);
+    } catch (err) {
+      console.warn('Live sync fallback to local', err);
+    }
   };
 
   const handleLogin = (e: React.FormEvent) => {

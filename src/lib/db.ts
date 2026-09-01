@@ -34,7 +34,6 @@ export interface RetreatBooking {
   createdAt: string;
 }
 
-// Initial sample data if storage is empty
 const DEFAULT_PRAYERS: PrayerRequest[] = [
   {
     id: 'pr-1001',
@@ -54,15 +53,6 @@ const DEFAULT_PRAYERS: PrayerRequest[] = [
     status: 'in_prayer',
     notes: 'Fr. Director informed for Wednesday Eucharistic Adoration',
     createdAt: new Date(Date.now() - 24 * 3600 * 1000).toISOString()
-  },
-  {
-    id: 'pr-1003',
-    name: 'ജോൺസൺ മാത്യു (Johnson Mathew)',
-    phone: '+91 8547345678',
-    place: 'തൊടുപുഴ',
-    intention: 'കടബാധ്യതകളിൽ നിന്നുള്ള വിടുതലിനും വിദേശ ജോലിക്കുമായി പ്രാർത്ഥനാ സഹായം തേടുന്നു.',
-    status: 'completed',
-    createdAt: new Date(Date.now() - 72 * 3600 * 1000).toISOString()
   }
 ];
 
@@ -78,18 +68,6 @@ const DEFAULT_TESTIMONIES: TestimonySubmission[] = [
     agreePublish: true,
     isApproved: true,
     createdAt: new Date(Date.now() - 5 * 24 * 3600 * 1000).toISOString()
-  },
-  {
-    id: 'test-2002',
-    firstName: 'Dona',
-    lastName: 'Jose',
-    contact: '+91 9846112233',
-    email: 'dona.jose@example.com',
-    subject: 'സന്താന സൗഭാഗ്യം നൽകി അനുഗ്രഹിച്ചു',
-    description: 'I had attended the retreat last year and requested prayer for childbirth. Through intense prayer at Assisi, God blessed us with a healthy baby boy. All glory to Jesus!',
-    agreePublish: true,
-    isApproved: true,
-    createdAt: new Date(Date.now() - 10 * 24 * 3600 * 1000).toISOString()
   }
 ];
 
@@ -106,9 +84,28 @@ const DEFAULT_BOOKINGS: RetreatBooking[] = [
   }
 ];
 
-// Helper functions for Local Storage & Backend API sync
 export const DB = {
-  // Prayer Requests
+  // ==========================================
+  // PRAYER REQUESTS
+  // ==========================================
+  fetchPrayersAsync: async (): Promise<PrayerRequest[]> => {
+    try {
+      const res = await fetch('/api/prayers.php');
+      if (res.ok) {
+        const json = await res.json();
+        if (json.data && Array.isArray(json.data) && json.data.length > 0) {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('assisi_db_prayers', JSON.stringify(json.data));
+          }
+          return json.data;
+        }
+      }
+    } catch {
+      // Offline or static preview mode fallback
+    }
+    return DB.getPrayers();
+  },
+
   getPrayers: (): PrayerRequest[] => {
     if (typeof window === 'undefined') return DEFAULT_PRAYERS;
     try {
@@ -123,7 +120,7 @@ export const DB = {
     }
   },
 
-  savePrayer: (prayer: Omit<PrayerRequest, 'id' | 'createdAt' | 'status'>): PrayerRequest => {
+  savePrayer: async (prayer: Omit<PrayerRequest, 'id' | 'createdAt' | 'status'>): Promise<PrayerRequest> => {
     const list = DB.getPrayers();
     const newEntry: PrayerRequest = {
       ...prayer,
@@ -131,14 +128,28 @@ export const DB = {
       status: 'new',
       createdAt: new Date().toISOString()
     };
+
+    // 1. Immediately save to LocalStorage for instant UI responsiveness
     const updated = [newEntry, ...list];
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('assisi_db_prayers', JSON.stringify(updated));
-      } catch (err) {
-        console.error('Storage error', err);
+      } catch (e) {
+        console.error(e);
       }
     }
+
+    // 2. Synchronously or asynchronously push to Server Database API
+    try {
+      fetch('/api/prayers.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newEntry)
+      }).catch(() => {});
+    } catch {
+      // Local fallback handled
+    }
+
     return newEntry;
   },
 
@@ -148,6 +159,16 @@ export const DB = {
     if (typeof window !== 'undefined') {
       localStorage.setItem('assisi_db_prayers', JSON.stringify(updated));
     }
+
+    // Sync to Server API
+    try {
+      fetch('/api/prayers.php', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status, notes })
+      }).catch(() => {});
+    } catch {}
+
     return updated;
   },
 
@@ -157,10 +178,35 @@ export const DB = {
     if (typeof window !== 'undefined') {
       localStorage.setItem('assisi_db_prayers', JSON.stringify(updated));
     }
+
+    try {
+      fetch(`/api/prayers.php?id=${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      }).catch(() => {});
+    } catch {}
+
     return updated;
   },
 
-  // Testimonies
+  // ==========================================
+  // TESTIMONIES
+  // ==========================================
+  fetchTestimoniesAsync: async (): Promise<TestimonySubmission[]> => {
+    try {
+      const res = await fetch('/api/testimonies.php');
+      if (res.ok) {
+        const json = await res.json();
+        if (json.data && Array.isArray(json.data) && json.data.length > 0) {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('assisi_db_testimonies', JSON.stringify(json.data));
+          }
+          return json.data;
+        }
+      }
+    } catch {}
+    return DB.getTestimonies();
+  },
+
   getTestimonies: (): TestimonySubmission[] => {
     if (typeof window === 'undefined') return DEFAULT_TESTIMONIES;
     try {
@@ -175,7 +221,7 @@ export const DB = {
     }
   },
 
-  saveTestimony: (testimony: Omit<TestimonySubmission, 'id' | 'createdAt' | 'isApproved'>): TestimonySubmission => {
+  saveTestimony: async (testimony: Omit<TestimonySubmission, 'id' | 'createdAt' | 'isApproved'>): Promise<TestimonySubmission> => {
     const list = DB.getTestimonies();
     const newEntry: TestimonySubmission = {
       ...testimony,
@@ -187,15 +233,41 @@ export const DB = {
     if (typeof window !== 'undefined') {
       localStorage.setItem('assisi_db_testimonies', JSON.stringify(updated));
     }
+
+    try {
+      fetch('/api/testimonies.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newEntry)
+      }).catch(() => {});
+    } catch {}
+
     return newEntry;
   },
 
   toggleApproveTestimony: (id: string): TestimonySubmission[] => {
     const list = DB.getTestimonies();
-    const updated = list.map((item) => (item.id === id ? { ...item, isApproved: !item.isApproved } : item));
+    let newApprovedState = false;
+    const updated = list.map((item) => {
+      if (item.id === id) {
+        newApprovedState = !item.isApproved;
+        return { ...item, isApproved: newApprovedState };
+      }
+      return item;
+    });
+
     if (typeof window !== 'undefined') {
       localStorage.setItem('assisi_db_testimonies', JSON.stringify(updated));
     }
+
+    try {
+      fetch('/api/testimonies.php', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, isApproved: newApprovedState })
+      }).catch(() => {});
+    } catch {}
+
     return updated;
   },
 
@@ -205,10 +277,35 @@ export const DB = {
     if (typeof window !== 'undefined') {
       localStorage.setItem('assisi_db_testimonies', JSON.stringify(updated));
     }
+
+    try {
+      fetch(`/api/testimonies.php?id=${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      }).catch(() => {});
+    } catch {}
+
     return updated;
   },
 
-  // Retreat Bookings
+  // ==========================================
+  // RETREAT BOOKINGS
+  // ==========================================
+  fetchBookingsAsync: async (): Promise<RetreatBooking[]> => {
+    try {
+      const res = await fetch('/api/bookings.php');
+      if (res.ok) {
+        const json = await res.json();
+        if (json.data && Array.isArray(json.data) && json.data.length > 0) {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('assisi_db_bookings', JSON.stringify(json.data));
+          }
+          return json.data;
+        }
+      }
+    } catch {}
+    return DB.getBookings();
+  },
+
   getBookings: (): RetreatBooking[] => {
     if (typeof window === 'undefined') return DEFAULT_BOOKINGS;
     try {
@@ -223,7 +320,7 @@ export const DB = {
     }
   },
 
-  saveBooking: (booking: Omit<RetreatBooking, 'id' | 'createdAt' | 'status'>): RetreatBooking => {
+  saveBooking: async (booking: Omit<RetreatBooking, 'id' | 'createdAt' | 'status'>): Promise<RetreatBooking> => {
     const list = DB.getBookings();
     const newEntry: RetreatBooking = {
       ...booking,
@@ -235,6 +332,15 @@ export const DB = {
     if (typeof window !== 'undefined') {
       localStorage.setItem('assisi_db_bookings', JSON.stringify(updated));
     }
+
+    try {
+      fetch('/api/bookings.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newEntry)
+      }).catch(() => {});
+    } catch {}
+
     return newEntry;
   },
 
@@ -244,6 +350,15 @@ export const DB = {
     if (typeof window !== 'undefined') {
       localStorage.setItem('assisi_db_bookings', JSON.stringify(updated));
     }
+
+    try {
+      fetch('/api/bookings.php', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, status })
+      }).catch(() => {});
+    } catch {}
+
     return updated;
   },
 
@@ -253,10 +368,17 @@ export const DB = {
     if (typeof window !== 'undefined') {
       localStorage.setItem('assisi_db_bookings', JSON.stringify(updated));
     }
+
+    try {
+      fetch(`/api/bookings.php?id=${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      }).catch(() => {});
+    } catch {}
+
     return updated;
   },
 
-  // Export to CSV for printing/mass intention list
+  // Export to CSV
   exportPrayersToCSV: (prayers: PrayerRequest[]) => {
     const headers = ['ID', 'Date', 'Name', 'Phone', 'Place', 'Intention', 'Status', 'Notes'];
     const rows = prayers.map((p) => [
