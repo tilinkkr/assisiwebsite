@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
-import { Phone, MessageCircle, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
-
-const RETREAT_CALENDAR = {
-  august: [
-    { dates: 'August 07 - 10', type: 'Inner Healing Retreat (ആന്തരിക സൗഖ്യ ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'August 14 - 17', type: 'Marian & Family Deliverance Retreat (കുടുംബ നവീകരണ ധ്യാനം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'August 21 - 24', type: 'Charismatic Spiritual Renewal (കരിസ്മാറ്റിക് ധ്യാനം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'August 28 - 31', type: 'Youth & Vocation Discernment Retreat (യുവജന ധ്യാനം)', director: 'Capuchin Youth Ministry', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' }
-  ],
-  september: [
-    { dates: 'September 04 - 07', type: 'Inner Healing Retreat (ആന്തരിക സൗഖ്യ ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'September 11 - 14', type: 'Holy Spirit & Deliverance Retreat (വിശുദ്ധാത്മാവിൽ നവീകരണം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'September 18 - 21', type: 'Couples & Family Sanctity Retreat (ദമ്പതി ധ്യാനം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'September 25 - 28', type: 'Inner Peace & Healing Retreat (ശാന്തിയും സൗഖ്യവും)', director: 'Capuchin Preachers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' }
-  ],
-  october: [
-    { dates: 'October 02 - 05', type: 'St. Francis Feast Special Retreat (ഫ്രാൻസിസ്കൻ തിരുനാൾ ധ്യാനം)', director: 'Provincial & Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'October 09 - 12', type: 'Inner Healing Retreat (ആന്തരിക സൗഖ്യ ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'October 16 - 19', type: 'Rosary & Marian Intercession Retreat (ജപമാല മാസ ധ്യാനം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'October 23 - 26', type: 'Deliverance & Grace Renewal (വിടുതൽ ധ്യാനം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' }
-  ]
-};
+import { Phone, MessageCircle, Clock, ShieldCheck, CheckCircle2, Calendar } from 'lucide-react';
+import { DB, RetreatEvent } from '../lib/db';
 
 export default function RetreatsPage() {
-  const [selectedMonth, setSelectedMonth] = useState<keyof typeof RETREAT_CALENDAR>('august');
+  const [events, setEvents] = useState<RetreatEvent[]>([]);
+  const [selectedMonth, setSelectedMonth] = useState<string>('august');
+
+  useEffect(() => {
+    // 1. Instant local render
+    const initialEvents = DB.getEvents();
+    setEvents(initialEvents);
+
+    // 2. Fetch fresh from server API
+    DB.fetchEventsAsync().then((live) => {
+      if (live && live.length > 0) {
+        setEvents(live);
+      }
+    });
+  }, []);
+
+  // Compute unique active months
+  const availableMonths = Array.from(new Set(events.map((e) => e.month.toLowerCase())));
+  const activeMonth = availableMonths.includes(selectedMonth)
+    ? selectedMonth
+    : availableMonths[0] || 'august';
+
+  // Filter events for selected month
+  const filteredEvents = events.filter((e) => e.month.toLowerCase() === activeMonth && e.isActive !== false);
 
   return (
     <Layout
@@ -65,15 +68,15 @@ export default function RetreatsPage() {
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          {/* Month Selector Tabs */}
+          {/* Dynamic Month Selector Tabs */}
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-stone-800 mb-10">
-            {(['august', 'september', 'october'] as const).map((m) => (
+            {availableMonths.map((m) => (
               <button
                 key={m}
                 type="button"
                 onClick={() => setSelectedMonth(m)}
                 className={`px-5 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-sm cursor-pointer ${
-                  selectedMonth === m
+                  activeMonth === m
                     ? 'bg-[#7A1C1C] text-white shadow-md border-2 border-amber-400'
                     : 'bg-[#181412] hover:bg-[#221D1A] text-stone-200 border border-stone-700'
                 }`}
@@ -83,61 +86,70 @@ export default function RetreatsPage() {
             ))}
           </div>
 
-          {/* Cards Grid - SOLID OPAQUE HIGH-CONTRAST */}
+          {/* Cards Grid - DYNAMIC AUTO-EXPANDING GRID */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {RETREAT_CALENDAR[selectedMonth].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
-                className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-6 shadow-xl hover:border-amber-400 transition space-y-4 text-left"
-              >
-                <div className="flex items-center justify-between border-b border-stone-800 pb-3">
-                  <span className="text-xs sm:text-sm font-bold text-amber-300 bg-amber-950 px-3 py-1 rounded-md border border-amber-500">
-                    {item.dates}
-                  </span>
-                  <span className="text-xs font-bold text-stone-200 bg-stone-800 px-2.5 py-1 rounded border border-stone-700">
-                    രജിസ്ട്രേഷൻ ഫീസ്: {item.fee}
-                  </span>
-                </div>
+            {filteredEvents.length === 0 ? (
+              <div className="col-span-full py-16 text-center text-stone-400 space-y-2">
+                <Calendar className="w-10 h-10 text-stone-600 mx-auto" />
+                <p className="text-base font-bold">ഈ മാസത്തെ ധ്യാന പരിപാടികൾ അപ്ഡേറ്റ് ചെയ്തുകൊണ്ടിരിക്കുന്നു</p>
+              </div>
+            ) : (
+              filteredEvents.map((item, idx) => (
+                <motion.div
+                  key={item.id || idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
+                  className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-6 shadow-xl hover:border-amber-400 transition space-y-4 text-left flex flex-col justify-between"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between border-b border-stone-800 pb-3">
+                      <span className="text-xs sm:text-sm font-bold text-amber-300 bg-amber-950 px-3 py-1 rounded-md border border-amber-500">
+                        {item.dates}
+                      </span>
+                      <span className="text-xs font-bold text-stone-200 bg-stone-800 px-2.5 py-1 rounded border border-stone-700">
+                        രജിസ്ട്രേഷൻ ഫീസ്: {item.fee}
+                      </span>
+                    </div>
 
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white">
-                    {item.type}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-stone-200 mt-1 font-medium">
-                    നയിക്കുന്നത്: <strong className="text-amber-300">{item.director}</strong>
-                  </p>
-                </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-white">
+                        {item.type}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-stone-200 mt-1 font-medium">
+                        നയിക്കുന്നത്: <strong className="text-amber-300">{item.director}</strong>
+                      </p>
+                    </div>
 
-                <div className="flex items-center gap-2 text-xs text-stone-300 font-medium">
-                  <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>{item.timing}</span>
-                </div>
+                    <div className="flex items-center gap-2 text-xs text-stone-300 font-medium">
+                      <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                      <span>{item.timing}</span>
+                    </div>
+                  </div>
 
-                {/* Card Action CTA Buttons */}
-                <div className="pt-2 flex flex-wrap items-center gap-3">
-                  <a
-                    href="tel:8590124063"
-                    className="bg-[#7A1C1C] hover:bg-[#601515] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98"
-                  >
-                    <Phone className="w-3.5 h-3.5 text-amber-300" />
-                    <span>സീറ്റ് ബുക്ക് ചെയ്യാൻ വിളിക്കുക</span>
-                  </a>
-                  <a
-                    href={`https://wa.me/918330884331?text=${encodeURIComponent(`ഹലോ, ${item.dates} തീയതിയിലെ ${item.type} ധ്യാനത്തിൽ പങ്കെടുക്കാൻ ആഗ്രഹിക്കുന്നു.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98 border border-amber-400"
-                  >
-                    <MessageCircle className="w-3.5 h-3.5 fill-white" />
-                    <span>WhatsApp വഴി ബുക്കിംഗ്</span>
-                  </a>
-                </div>
-              </motion.div>
-            ))}
+                  {/* Card Action CTA Buttons */}
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
+                    <a
+                      href="tel:8590124063"
+                      className="bg-[#7A1C1C] hover:bg-[#601515] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-amber-300" />
+                      <span>സീറ്റ് ബുക്ക് ചെയ്യാൻ വിളിക്കുക</span>
+                    </a>
+                    <a
+                      href={`https://wa.me/918330884331?text=${encodeURIComponent(`ഹലോ, ${item.dates} തീയതിയിലെ ${item.type} ധ്യാനത്തിൽ പങ്കെടുക്കാൻ ആഗ്രഹിക്കുന്നു.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98 border border-amber-400"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                      <span>WhatsApp വഴി ബുക്കിംഗ്</span>
+                    </a>
+                  </div>
+                </motion.div>
+              ))
+            )}
           </div>
 
           {/* Guidelines info card */}

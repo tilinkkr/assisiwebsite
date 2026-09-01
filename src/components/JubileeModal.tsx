@@ -18,15 +18,15 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
           
-          {/* Smooth Deep Backdrop */}
+          {/* Smooth Deep Backdrop - Click outside closes immediately */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/75 backdrop-blur-xs cursor-pointer"
           />
 
           {/* Premium Executive Modal Container */}
@@ -35,9 +35,9 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 12 }}
             transition={{ type: 'spring', stiffness: 140, damping: 18 }}
-            className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden z-10 my-auto text-left border border-stone-200"
+            className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden z-10 my-auto text-left border-2 border-amber-400"
           >
-            {/* Top Banner Image with Floating Glass Close Button */}
+            {/* Top Banner Image with Floating Close Button */}
             <div className="relative aspect-[16/9] w-full bg-stone-900 overflow-hidden">
               <img
                 src="/assisi_assets/jubilee_celebration_banner.webp"
@@ -49,14 +49,14 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-              {/* Floating Close Button */}
+              {/* Large, High-Visibility Close Button */}
               <button
                 type="button"
                 onClick={onClose}
-                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md transition-colors cursor-pointer active:scale-95"
-                aria-label="Close Jubilee Modal"
+                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/70 hover:bg-rose-800 text-white flex items-center justify-center backdrop-blur-md transition cursor-pointer active:scale-95 border border-white/40 shadow-lg"
+                aria-label="Close Modal"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5 stroke-[2.5]" />
               </button>
 
               {/* Location Tag */}
@@ -70,7 +70,7 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
               </div>
             </div>
 
-            {/* Content Area - Clean, Minimalist & Dignified */}
+            {/* Content Area */}
             <div className="p-5 sm:p-6 space-y-4">
               
               <div className="space-y-1">
@@ -100,7 +100,7 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
                 </div>
               </div>
 
-              {/* Action Buttons - Perfectly Balanced */}
+              {/* Action Buttons */}
               <div className="pt-1 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <button
                   type="button"
@@ -118,11 +118,22 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
                   href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-1.5 bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs sm:text-sm font-bold py-3 px-3 rounded-xl transition shadow-md active:scale-98 border border-amber-400"
+                  className="w-full inline-flex items-center justify-center gap-1.5 bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs sm:text-sm font-bold py-3 px-3 rounded-xl transition shadow-md border border-amber-400 active:scale-98"
                 >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>WhatsApp ബുക്കിംഗ്</span>
+                  <MessageCircle className="w-4 h-4 shrink-0 fill-white" />
+                  <span>വാട്സാപ്പ് ബുക്കിംഗ്</span>
                 </a>
+              </div>
+
+              {/* Dismiss link */}
+              <div className="text-center pt-1">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="text-xs text-stone-500 hover:text-stone-900 font-bold underline cursor-pointer"
+                >
+                  സൈറ്റിലേക്ക് തുടരുക (Continue to Website)
+                </button>
               </div>
 
             </div>

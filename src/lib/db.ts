@@ -34,6 +34,46 @@ export interface RetreatBooking {
   createdAt: string;
 }
 
+export interface RetreatEvent {
+  id: string;
+  month: string; // 'august' | 'september' | 'october' etc.
+  dates: string;
+  type: string;
+  director: string;
+  timing: string;
+  fee: string;
+  image?: string;
+  isActive: boolean;
+  sortOrder: number;
+  createdAt?: string;
+}
+
+export interface GalleryPhoto {
+  id: string;
+  title: string;
+  malayalamTitle: string;
+  category: string;
+  src: string;
+  description?: string;
+  sortOrder?: number;
+  createdAt?: string;
+}
+
+const DEFAULT_EVENTS: RetreatEvent[] = [
+  { id: 'ev-101', month: 'august', dates: 'August 07 - 10', type: 'Inner Healing Retreat (ആന്തരിക സൗഖ്യ ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 1 },
+  { id: 'ev-102', month: 'august', dates: 'August 14 - 17', type: 'Marian & Family Deliverance Retreat (കുടുംബ നവീകരണ ധ്യാനം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 2 },
+  { id: 'ev-103', month: 'august', dates: 'August 21 - 24', type: 'Charismatic Spiritual Renewal (കരിസ്മാറ്റിക് ധ്യാനം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 3 },
+  { id: 'ev-104', month: 'august', dates: 'August 28 - 31', type: 'Youth & Vocation Discernment Retreat (യുവജന ധ്യാനം)', director: 'Capuchin Youth Ministry', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 4 },
+  { id: 'ev-201', month: 'september', dates: 'September 04 - 07', type: 'Inner Healing Retreat (ആന്തരിക സൗഖ്യ ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 5 },
+  { id: 'ev-202', month: 'september', dates: 'September 11 - 14', type: 'Holy Spirit & Deliverance Retreat (വിശുദ്ധാത്മാവിൽ നവീകരണം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 6 },
+  { id: 'ev-203', month: 'september', dates: 'September 18 - 21', type: 'Couples & Family Sanctity Retreat (ദമ്പതി ധ്യാനം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 7 },
+  { id: 'ev-204', month: 'september', dates: 'September 25 - 28', type: 'Inner Peace & Healing Retreat (ശാന്തിയും സൗഖ്യവും)', director: 'Capuchin Preachers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 8 },
+  { id: 'ev-301', month: 'october', dates: 'October 02 - 05', type: 'St. Francis Feast Special Retreat (ഫ്രാൻസിസ്കൻ തിരുനാൾ ധ്യാനം)', director: 'Provincial & Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 9 },
+  { id: 'ev-302', month: 'october', dates: 'October 09 - 12', type: 'Inner Healing Retreat (ആന്തരിക സൗഖ്യ ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 10 },
+  { id: 'ev-303', month: 'october', dates: 'October 16 - 19', type: 'Rosary & Marian Intercession Retreat (ജപമാല മാസ ധ്യാനം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 11 },
+  { id: 'ev-304', month: 'october', dates: 'October 23 - 26', type: 'Deliverance & Grace Renewal (വിടുതൽ ധ്യാനം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700', isActive: true, sortOrder: 12 }
+];
+
 const DEFAULT_PRAYERS: PrayerRequest[] = [
   {
     id: 'pr-1001',
@@ -100,9 +140,7 @@ export const DB = {
           return json.data;
         }
       }
-    } catch {
-      // Offline or static preview mode fallback
-    }
+    } catch {}
     return DB.getPrayers();
   },
 
@@ -129,7 +167,6 @@ export const DB = {
       createdAt: new Date().toISOString()
     };
 
-    // 1. Immediately save to LocalStorage for instant UI responsiveness
     const updated = [newEntry, ...list];
     if (typeof window !== 'undefined') {
       try {
@@ -139,16 +176,13 @@ export const DB = {
       }
     }
 
-    // 2. Synchronously or asynchronously push to Server Database API
     try {
       fetch('/api/prayers.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newEntry)
       }).catch(() => {});
-    } catch {
-      // Local fallback handled
-    }
+    } catch {}
 
     return newEntry;
   },
@@ -160,7 +194,6 @@ export const DB = {
       localStorage.setItem('assisi_db_prayers', JSON.stringify(updated));
     }
 
-    // Sync to Server API
     try {
       fetch('/api/prayers.php', {
         method: 'PUT',
@@ -181,6 +214,164 @@ export const DB = {
 
     try {
       fetch(`/api/prayers.php?id=${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      }).catch(() => {});
+    } catch {}
+
+    return updated;
+  },
+
+  // ==========================================
+  // RETREAT EVENTS & SCHEDULE
+  // ==========================================
+  fetchEventsAsync: async (): Promise<RetreatEvent[]> => {
+    try {
+      const res = await fetch('/api/events.php');
+      if (res.ok) {
+        const json = await res.json();
+        if (json.data && Array.isArray(json.data) && json.data.length > 0) {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('assisi_db_events', JSON.stringify(json.data));
+          }
+          return json.data;
+        }
+      }
+    } catch {}
+    return DB.getEvents();
+  },
+
+  getEvents: (): RetreatEvent[] => {
+    if (typeof window === 'undefined') return DEFAULT_EVENTS;
+    try {
+      const data = localStorage.getItem('assisi_db_events');
+      if (!data) {
+        localStorage.setItem('assisi_db_events', JSON.stringify(DEFAULT_EVENTS));
+        return DEFAULT_EVENTS;
+      }
+      return JSON.parse(data);
+    } catch {
+      return DEFAULT_EVENTS;
+    }
+  },
+
+  saveEvent: (event: Omit<RetreatEvent, 'id'>): RetreatEvent => {
+    const list = DB.getEvents();
+    const newEntry: RetreatEvent = {
+      ...event,
+      id: `ev-${Date.now().toString().slice(-6)}`,
+      createdAt: new Date().toISOString()
+    };
+    const updated = [newEntry, ...list];
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('assisi_db_events', JSON.stringify(updated));
+    }
+
+    try {
+      fetch('/api/events.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newEntry)
+      }).catch(() => {});
+    } catch {}
+
+    return newEntry;
+  },
+
+  updateEvent: (event: RetreatEvent): RetreatEvent[] => {
+    const list = DB.getEvents();
+    const updated = list.map((item) => (item.id === event.id ? event : item));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('assisi_db_events', JSON.stringify(updated));
+    }
+
+    try {
+      fetch('/api/events.php', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(event)
+      }).catch(() => {});
+    } catch {}
+
+    return updated;
+  },
+
+  deleteEvent: (id: string): RetreatEvent[] => {
+    const list = DB.getEvents();
+    const updated = list.filter((item) => item.id !== id);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('assisi_db_events', JSON.stringify(updated));
+    }
+
+    try {
+      fetch(`/api/events.php?id=${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      }).catch(() => {});
+    } catch {}
+
+    return updated;
+  },
+
+  // ==========================================
+  // GALLERY PHOTOS
+  // ==========================================
+  fetchGalleryAsync: async (): Promise<GalleryPhoto[]> => {
+    try {
+      const res = await fetch('/api/gallery.php');
+      if (res.ok) {
+        const json = await res.json();
+        if (json.data && Array.isArray(json.data) && json.data.length > 0) {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('assisi_db_gallery', JSON.stringify(json.data));
+          }
+          return json.data;
+        }
+      }
+    } catch {}
+    return DB.getGallery();
+  },
+
+  getGallery: (): GalleryPhoto[] => {
+    if (typeof window === 'undefined') return [];
+    try {
+      const data = localStorage.getItem('assisi_db_gallery');
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  },
+
+  savePhoto: (photo: Omit<GalleryPhoto, 'id'>): GalleryPhoto => {
+    const list = DB.getGallery();
+    const newEntry: GalleryPhoto = {
+      ...photo,
+      id: `gal-${Date.now().toString().slice(-6)}`,
+      createdAt: new Date().toISOString()
+    };
+    const updated = [newEntry, ...list];
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('assisi_db_gallery', JSON.stringify(updated));
+    }
+
+    try {
+      fetch('/api/gallery.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newEntry)
+      }).catch(() => {});
+    } catch {}
+
+    return newEntry;
+  },
+
+  deletePhoto: (id: string): GalleryPhoto[] => {
+    const list = DB.getGallery();
+    const updated = list.filter((item) => item.id !== id);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('assisi_db_gallery', JSON.stringify(updated));
+    }
+
+    try {
+      fetch(`/api/gallery.php?id=${encodeURIComponent(id)}`, {
         method: 'DELETE'
       }).catch(() => {});
     } catch {}
