@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { JubileeModal } from './JubileeModal';
+import { FloatingWhatsApp } from './FloatingWhatsApp';
 import { Phone, MessageCircle, Calendar } from 'lucide-react';
 
 interface LayoutProps {
@@ -41,6 +42,8 @@ export const Layout: React.FC<LayoutProps> = ({
     };
   }, []);
 
+  const waUrl = 'https://wa.me/918330884331?text=' + encodeURIComponent('ഹലോ, ഭരണങ്ങാനം അസ്സീസി ധ്യാനകേന്ദ്രത്തിലെ ധ്യാന വിവരങ്ങൾ അറിയാനും ബുക്ക് ചെയ്യാനും ആഗ്രഹിക്കുന്നു.');
+
   return (
     <>
       <Head>
@@ -70,11 +73,14 @@ export const Layout: React.FC<LayoutProps> = ({
           {children}
         </main>
 
+        {/* Floating WhatsApp Widget with high-visibility Malayalam tooltip */}
+        <FloatingWhatsApp />
+
         {/* Master Footer */}
         <Footer />
 
         {/* Floating Mobile Jubilee Celebration Badge */}
-        <div className="md:hidden fixed bottom-18 left-3 z-30">
+        <div className="md:hidden fixed bottom-24 left-3 z-30">
           <button
             type="button"
             onClick={() => setIsJubileeOpen(true)}
@@ -84,31 +90,35 @@ export const Layout: React.FC<LayoutProps> = ({
           </button>
         </div>
 
-        {/* Fixed Mobile Bottom Action Strip */}
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#181614]/95 backdrop-blur-md border-t border-amber-900/40 p-2.5 flex items-center justify-between gap-2 shadow-2xl safe-area-bottom">
+        {/* Fixed Mobile Bottom Action Strip (UX Highlighted WhatsApp button) */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#141210]/98 backdrop-blur-md border-t-2 border-emerald-600/60 p-2 sm:p-2.5 flex items-center justify-between gap-1.5 sm:gap-2 shadow-2xl safe-area-bottom">
           <a
             href="tel:8590124063"
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-stone-900 text-white text-xs font-bold py-3 px-2 rounded-xl transition shadow-sm border border-stone-700 active:bg-black"
+            className="flex-1 inline-flex items-center justify-center gap-1 bg-stone-900 text-white text-[11px] font-bold py-3 px-1.5 rounded-xl transition shadow-sm border border-stone-700 active:bg-black"
           >
-            <Phone className="w-4 h-4 shrink-0 text-amber-400" />
+            <Phone className="w-3.5 h-3.5 shrink-0 text-amber-400" />
             <span>വിളിക്കുക</span>
           </a>
 
+          {/* Highlighted WhatsApp CTA in Mobile Bottom Bar */}
           <a
-            href="https://wa.me/918330884331?text=ഹലോ,%20അസ്സീസി%20ധ്യാനകേന്ദ്രത്തിലെ%20വിവരങ്ങൾ%20അറിയാൻ%20ആഗ്രഹിക്കുന്നു."
+            href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#0F5132] text-white text-xs font-bold py-3 px-2 rounded-xl transition shadow-sm active:bg-[#0B3D26]"
+            className="flex-[1.4] inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#0F5132] to-[#166534] text-white text-xs font-black py-3 px-2 rounded-xl transition shadow-lg border-2 border-emerald-400 active:scale-98"
           >
-            <MessageCircle className="w-4 h-4 shrink-0" />
+            <MessageCircle className="w-4 h-4 shrink-0 fill-white" />
             <span>WhatsApp</span>
+            <span className="text-[10px] bg-emerald-400 text-slate-950 font-black px-1.5 py-0.2 rounded-full hidden xs:inline">
+              LIVE
+            </span>
           </a>
 
           <Link
             href="/retreats"
-            className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#7A1C1C] text-white text-xs font-bold py-3 px-2 rounded-xl transition shadow-sm active:bg-[#601515]"
+            className="flex-1 inline-flex items-center justify-center gap-1 bg-[#7A1C1C] text-white text-[11px] font-bold py-3 px-1.5 rounded-xl transition shadow-sm active:bg-[#601515]"
           >
-            <Calendar className="w-4 h-4 shrink-0 text-amber-300" />
+            <Calendar className="w-3.5 h-3.5 shrink-0 text-amber-300" />
             <span>ബുക്കിംഗ്</span>
           </Link>
         </div>

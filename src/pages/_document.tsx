@@ -6,7 +6,7 @@ class MyDocument extends Document {
       <Html lang="ml" className="scroll-smooth">
         <Head>
           <meta charSet="UTF-8" />
-          <link rel="icon" type="image/png" href="/assisi_assets/Assisi-Renewal-Center-150x150.png" />
+          <link rel="icon" type="image/webp" href="/assisi_assets/Assisi-Renewal-Center-150x150.webp" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
@@ -14,7 +14,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="bg-white text-[#1A202C] antialiased selection:bg-[#7A1C1C] selection:text-white">
+        <body className="bg-[#12100E] text-slate-100 antialiased selection:bg-[#7A1C1C] selection:text-white">
           <Main />
           <NextScript />
         </body>

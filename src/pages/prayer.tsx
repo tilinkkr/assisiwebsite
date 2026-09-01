@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
-import { Send, CheckCircle2, Phone } from 'lucide-react';
+import { Send, CheckCircle2, Phone, MessageCircle } from 'lucide-react';
 
 export default function PrayerPage() {
   const [prayerForm, setPrayerForm] = useState({ name: '', phone: '', place: '', intention: '' });
@@ -183,6 +183,18 @@ export default function PrayerPage() {
                   >
                     <span className="text-stone-300">ഹെൽപ്പ്‌ലൈൻ:</span>
                     <span className="text-amber-400">+91 8590124063</span>
+                  </a>
+                  <a
+                    href="https://wa.me/918330884331?text=%E0%B4%B9%E0%B4%B2%E0%B5%8B%2C%20%E0%B4%85%E0%B4%B8%E0%B5%8D%E0%B4%B8%E0%B5%80%E0%B4%B8%E0%B4%BF%20%E0%B4%A7%E0%B5%8D%E0%B4%AF%E0%B4%BE%E0%B4%A8%E0%B4%95%E0%B5%87%E0%B4%A8%E0%B5%8D%E0%B4%A6%E0%B5%8D%E0%B4%B0%E0%B4%A4%E0%B5%8D%E0%B4%A4%E0%B4%BF%E0%B4%B2%E0%B5%8D%E2%80%8D%20%E0%B4%92%E0%B4%B0%E0%B5%81%20%E0%B4%85%E0%B4%9F%E0%B4%BF%E0%B4%AF%E0%B4%A8%E0%B5%8D%E0%B4%A4%E0%B4%B0%20%E0%B4%AA%E0%B5%8D%E0%B4%B0%E0%B4%BE%E0%B4%B0%E0%B5%8D%E2%80%8D%E0%B4%A4%E0%B5%8D%E0%B4%A5%E0%B4%A8%E0%B4%BE%20%E0%B4%B8%E0%B4%B9%E0%B4%BE%E0%B4%AF%E0%B4%82%20%E0%B4%86%E0%B4%B5%E0%B4%B6%E0%B5%8D%E0%B4%AF%E0%B4%AE%E0%B5%81%E0%B4%A3%E0%B5%8D%E0%B4%9F%E0%B5%8D."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 bg-[#0F5132]/90 border-2 border-emerald-400 rounded-xl hover:bg-[#0F5132] transition shadow-md"
+                  >
+                    <span className="text-white font-bold flex items-center gap-2">
+                      <MessageCircle className="w-4 h-4 text-emerald-300 fill-emerald-400" />
+                      <span>WhatsApp പ്രാർത്ഥന:</span>
+                    </span>
+                    <span className="text-emerald-200 font-extrabold">+91 8330884331</span>
                   </a>
                 </div>
               </div>

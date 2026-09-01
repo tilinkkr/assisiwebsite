@@ -19,6 +19,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
 
+  const waUrl = 'https://wa.me/918330884331?text=' + encodeURIComponent('ഹലോ, ഭരണങ്ങാനം അസ്സീസി ധ്യാനകേന്ദ്രത്തിലെ ധ്യാന വിവരങ്ങൾ അറിയാനും ബുക്ക് ചെയ്യാനും ആഗ്രഹിക്കുന്നു.');
+
   // Prevent background scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -51,6 +53,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
+    if (router.pathname !== href) {
+      router.push(href);
+    }
   };
 
   return (
@@ -72,22 +77,31 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             </span>
           </button>
 
-          {/* Quick Contact & Hours */}
+          {/* Top Bar Contacts & WhatsApp Highlight */}
           <div className="flex items-center gap-2 sm:gap-4 text-[11px] sm:text-xs shrink-0 font-medium text-amber-100">
+            
+            {/* Highlighted WhatsApp Pill in Top Bar */}
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0F5132] hover:bg-[#166534] border border-emerald-400 text-white px-2.5 py-0.5 rounded-full font-black text-[11px] inline-flex items-center gap-1.5 shadow-sm transition active:scale-95"
+            >
+              <MessageCircle className="w-3 h-3 fill-white" />
+              <span>WhatsApp: +91 8330884331</span>
+            </a>
+
+            <span className="text-amber-700 hidden sm:inline">|</span>
+            
             <a
               href="tel:04822238335"
-              className="hover:text-white transition whitespace-nowrap font-bold text-amber-200"
+              className="hover:text-white transition whitespace-nowrap font-bold text-amber-200 hidden md:inline"
             >
               04822 238335
             </a>
-            <span className="text-amber-700 hidden xs:inline">|</span>
-            <a
-              href="tel:8590124063"
-              className="hover:text-white text-amber-300 font-bold transition whitespace-nowrap hidden xs:inline"
-            >
-              +91 8590124063
-            </a>
-            <span className="hidden lg:inline text-amber-700">|</span>
+            
+            <span className="text-amber-700 hidden md:inline">|</span>
+            
             <span className="hidden lg:inline text-amber-200/90 whitespace-nowrap">
               ഓഫീസ്: 9:00 AM – 6:00 PM
             </span>
@@ -172,16 +186,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
           {/* Right Action CTA Buttons */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             
-            {/* WhatsApp Action */}
+            {/* Highlighted WhatsApp CTA with Direct Malayalam Message */}
             <a
-              href="https://wa.me/918330884331?text=ഹലോ,%20അസ്സീസി%20ധ്യാനകേന്ദ്രത്തിലെ%20വിവരങ്ങൾ%20അറിയാൻ%20ആഗ്രഹിക്കുന്നു."
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-[#0F5132] hover:bg-[#0B3D26] text-white text-xs sm:text-[13px] font-bold px-3 py-2 rounded-xl transition whitespace-nowrap shadow-sm active:scale-98"
-              title="WhatsApp Help"
+              className="inline-flex items-center gap-1.5 bg-[#0F5132] hover:bg-[#0B3D26] text-white text-xs sm:text-[13px] font-black px-3.5 py-2 rounded-xl transition whitespace-nowrap shadow-md border-2 border-emerald-400 active:scale-98"
+              title="WhatsApp: +91 8330884331"
             >
-              <MessageCircle className="w-4 h-4 shrink-0" />
-              <span className="hidden sm:inline">WhatsApp</span>
+              <MessageCircle className="w-4 h-4 shrink-0 fill-white" />
+              <span className="hidden sm:inline">WhatsApp: 8330884331</span>
+              <span className="sm:hidden">WhatsApp</span>
             </a>
 
             {/* Retreat Booking CTA */}
@@ -201,7 +216,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 text-slate-900 hover:bg-slate-100 active:bg-slate-200 rounded-xl transition shrink-0 cursor-pointer"
+              className="xl:hidden p-2.5 text-slate-900 hover:bg-slate-100 active:bg-slate-200 rounded-xl transition shrink-0 cursor-pointer border border-slate-200"
               aria-label="മെനു തുറക്കുക"
             >
               {mobileMenuOpen ? <X className="w-6 h-6 text-[#7A1C1C]" /> : <Menu className="w-6 h-6 text-slate-900" />}
@@ -222,6 +237,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             >
               <div className="px-4 py-5 space-y-2 text-left">
                 
+                {/* Highlighted WhatsApp Banner Card at top of Drawer */}
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mb-3 p-3.5 bg-gradient-to-r from-[#0F5132] to-[#166534] rounded-2xl border-2 border-emerald-400 flex items-center justify-between text-white shadow-md active:scale-98 transition"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                      <MessageCircle className="w-6 h-6 fill-white" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-black uppercase tracking-wider text-emerald-200">ഔദ്യോഗിക വാട്സാപ്പ്</p>
+                      <p className="text-sm font-extrabold text-white">+91 8330884331 (മെസ്സേജ്)</p>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-emerald-300 shrink-0" />
+                </a>
+
                 {/* Jubilee Quick Card in Mobile Drawer */}
                 <div
                   onClick={() => {
@@ -237,20 +271,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
                   <ChevronRight className="w-5 h-5 text-amber-400 shrink-0" />
                 </div>
 
-                {/* Nav Links */}
+                {/* Nav Links with Smooth Instant Navigation */}
                 {navLinks.map((link) => {
                   const active = isActive(link.href);
                   return (
-                    <Link
+                    <button
                       key={link.href}
-                      href={link.href}
-                      prefetch={true}
+                      type="button"
                       onClick={() => handleNavClick(link.href)}
-                      onTouchStart={() => router.prefetch(link.href)}
-                      className={`flex items-center justify-between py-3 px-3.5 rounded-xl text-sm font-bold transition ${
+                      className={`w-full flex items-center justify-between py-3 px-3.5 rounded-xl text-sm font-bold transition text-left cursor-pointer ${
                         active
                           ? 'bg-[#7A1C1C] text-white shadow-sm'
-                          : 'text-slate-900 hover:bg-slate-100'
+                          : 'text-slate-900 hover:bg-slate-100 active:bg-slate-200'
                       }`}
                     >
                       <div className="flex flex-col text-left">
@@ -262,7 +294,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
                         </span>
                       </div>
                       <ChevronRight className={`w-4 h-4 ${active ? 'text-white' : 'text-slate-400'}`} />
-                    </Link>
+                    </button>
                   );
                 })}
 
@@ -287,15 +319,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
                       <span>8590124063</span>
                     </a>
                   </div>
-                  <a
-                    href="https://wa.me/918330884331?text=ഹലോ,%20അസ്സീസി%20ധ്യാനകേന്ദ്രത്തിലെ%20വിവരങ്ങൾ%20അറിയാൻ%20ആഗ്രഹിക്കുന്നു."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-[#0F5132] hover:bg-[#0B3D26] text-white text-xs font-bold py-3 px-3 rounded-xl text-center flex items-center justify-center gap-2 shadow-sm"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp (+91 8330884331)</span>
-                  </a>
                 </div>
 
               </div>
