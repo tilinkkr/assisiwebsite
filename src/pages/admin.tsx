@@ -23,7 +23,9 @@ import {
   RefreshCw,
   Image as ImageIcon,
   User,
-  Sparkles
+  Sparkles,
+  MapPin,
+  FileText
 } from 'lucide-react';
 import {
   DB,
@@ -467,7 +469,7 @@ export default function AdminDashboardPage() {
                   title="Click to toggle 5-second live polling"
                 >
                   <span className={`w-2 h-2 rounded-full ${isAutoSync ? 'bg-emerald-400 animate-ping' : 'bg-stone-500'}`} />
-                  <span>{isAutoSync ? '🟢 Live Auto-Syncing' : 'Paused'}</span>
+                  <span>{isAutoSync ? 'Live Auto-Sync' : 'Paused'}</span>
                 </button>
 
                 <button
@@ -754,7 +756,10 @@ export default function AdminDashboardPage() {
                               <div>
                                 <h3 className="text-base font-bold text-white">{item.name}</h3>
                                 {item.place && (
-                                  <p className="text-xs text-amber-300 font-medium">📍 {item.place}</p>
+                                  <p className="text-xs text-amber-300 font-medium flex items-center gap-1.5 mt-0.5">
+                                    <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
+                                    <span>{item.place}</span>
+                                  </p>
                                 )}
                               </div>
 
@@ -765,8 +770,9 @@ export default function AdminDashboardPage() {
                               </div>
 
                               {item.notes && (
-                                <p className="text-[11px] text-amber-200/90 bg-amber-950/40 p-2 rounded-lg border border-amber-800/40">
-                                  📝 <strong className="text-amber-300">കുറിപ്പ്:</strong> {item.notes}
+                                <p className="text-[11px] text-amber-200/90 bg-amber-950/40 p-2 rounded-lg border border-amber-800/40 flex items-start gap-1.5">
+                                  <FileText className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                                  <span><strong className="text-amber-300">കുറിപ്പ്:</strong> {item.notes}</span>
                                 </p>
                               )}
                             </div>
@@ -819,10 +825,11 @@ export default function AdminDashboardPage() {
                                   <button
                                     type="button"
                                     onClick={() => handleAddNote(item.id, item.notes)}
-                                    className="text-[11px] bg-stone-800 hover:bg-stone-700 text-amber-300 font-bold py-1 px-2 rounded-lg transition border border-stone-600"
+                                    className="text-[11px] bg-stone-800 hover:bg-stone-700 text-amber-300 font-bold py-1 px-2 rounded-lg transition border border-stone-600 inline-flex items-center gap-1"
                                     title="അച്ചന്റെ കുറിപ്പ്"
                                   >
-                                    📝 കുറിപ്പ്
+                                    <FileText className="w-3 h-3 text-amber-400" />
+                                    <span>കുറിപ്പ്</span>
                                   </button>
                                 </div>
 
