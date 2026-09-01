@@ -118,7 +118,7 @@ export const JubileeModal: React.FC<JubileeModalProps> = ({
                   href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-1.5 bg-[#0F5132] hover:bg-[#0B3D26] text-white text-xs sm:text-sm font-bold py-3 px-3 rounded-xl transition shadow-md active:scale-98 border border-emerald-400"
+                  className="w-full inline-flex items-center justify-center gap-1.5 bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs sm:text-sm font-bold py-3 px-3 rounded-xl transition shadow-md active:scale-98 border border-amber-400"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
                   <span>WhatsApp ബുക്കിംഗ്</span>

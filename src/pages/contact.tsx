@@ -27,15 +27,16 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Main Contact Content */}
+      {/* Main Contact Content with Monastery Background */}
       <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
         
-        {/* Background Sanctuary Image */}
+        {/* Background Monastery Cloister */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/assisi_assets/backgrounds/retreat_sanctuary_bg.webp"
-            alt="Sanctuary Background"
+            src="/assisi_assets/backgrounds/retreat_monastery_cloister.webp"
+            alt="Monastery Background"
             className="w-full h-full object-cover"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#140E0B]/95 via-[#18110D]/92 to-[#100B08]/96" />
         </div>
@@ -86,14 +87,14 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <MessageCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <MessageCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                     <div>
                       <p className="font-bold text-white">ഔദ്യോഗിക WhatsApp</p>
                       <a
                         href="https://wa.me/918330884331?text=ഹലോ,%20അസ്സീസി%20ധ്യാനകേന്ദ്രത്തിലെ%20വിവരങ്ങൾ%20അറിയാൻ%20ആഗ്രഹിക്കുന്നു."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-400 font-bold hover:underline"
+                        className="text-amber-300 font-bold hover:underline"
                       >
                         +91 8330884331 (മെസ്സേജ് അയക്കുക)
                       </a>
@@ -104,8 +105,8 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                     <div>
                       <p className="font-bold text-white">ഇമെയിൽ (Email)</p>
-                      <a href="mailto:info@assisirenewalcenter.org" className="text-amber-300 hover:underline">
-                        info@assisirenewalcenter.org
+                      <a href="mailto:assisirenewalcenter@gmail.com" className="text-amber-300 hover:underline">
+                        assisirenewalcenter@gmail.com
                       </a>
                     </div>
                   </div>
@@ -138,7 +139,7 @@ export default function ContactPage() {
                 </h3>
                 <div className="aspect-[16/10] w-full rounded-2xl overflow-hidden border border-stone-700">
                   <iframe
-                    title="Assisi Renewal Center Location Map"
+                    title="Assisi Renewal Center Google Map"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.228784110825!2d76.7166311!3d9.6974972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07cb679ba2bb6b%3A0xb35a7702f23cf0a6!2sAssisi%20Renewal%20Center!5e0!3m2!1sen!2sin!4v1694241078167!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
@@ -149,14 +150,15 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-stone-900/80 backdrop-blur-md border border-white/15 p-6 rounded-3xl space-y-3 text-left text-white shadow-xl">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <Compass className="w-5 h-5 text-amber-400" />
-                  <span>എത്തിച്ചേരാനുള്ള വഴി (Route Guide)</span>
-                </h3>
-                <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-normal">
-                  കോട്ടയം ജില്ലയിലെ പാലാ – ഈരാറ്റുപേട്ട പ്രധാന പാതയിൽ ഭരണങ്ങാനം ജംഗ്ഷനിൽ നിന്ന് വെറും 600 മീറ്റർ അകലെയാണ് അസ്സീസി ആശ്രമവും ധ്യാനകേന്ദ്രവും സ്ഥിതി ചെയ്യുന്നത്.
-                </p>
+              <div className="bg-stone-900/85 backdrop-blur-md border border-white/15 p-6 rounded-3xl shadow-xl space-y-3 text-stone-200 text-xs sm:text-sm">
+                <h4 className="font-bold text-white text-base">
+                  എത്തിച്ചേരാനുള്ള വഴി (How to Reach)
+                </h4>
+                <ul className="space-y-2 list-disc list-inside text-stone-300">
+                  <li>പാലാ – ഈരാറ്റുപേട്ട പ്രധാന റൂട്ടിൽ ഭരണങ്ങാനം ജംഗ്ഷനിൽ നിന്നും 600 മീറ്റർ മാത്രം ദൂരം.</li>
+                  <li>ഏറ്റവും അടുത്ത റെയിൽവേ സ്റ്റേഷൻ: കോട്ടയം (32 കി.മീ).</li>
+                  <li>ഏറ്റവും അടുത്ത വിമാനത്താവളം: കൊച്ചി അന്താരാഷ്ട്ര വിമാനത്താവളം - നെടുമ്പാശ്ശേരി (75 കി.മീ).</li>
+                </ul>
               </div>
             </motion.div>
 

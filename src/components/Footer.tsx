@@ -178,12 +178,12 @@ export const Footer: React.FC = () => {
                   </span>
                 </p>
                 <p className="flex items-center gap-2">
-                  <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <MessageCircle className="w-4 h-4 text-amber-400 shrink-0" />
                   <a
                     href="https://wa.me/918330884331?text=ഹലോ,%20അസ്സീസി%20ധ്യാനകേന്ദ്രത്തിലെ%20വിവരങ്ങൾ%20അറിയാൻ%20ആഗ്രഹിക്കുന്നു."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white text-emerald-300 font-bold"
+                    className="hover:text-white text-amber-300 font-bold"
                   >
                     +91 8330884331 (WhatsApp)
                   </a>

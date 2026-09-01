@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
-import { Calendar, Phone, MessageCircle, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Phone, MessageCircle, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 const RETREAT_CALENDAR = {
   august: [
@@ -21,18 +21,6 @@ const RETREAT_CALENDAR = {
     { dates: 'October 09 - 12', type: 'Inner Healing Retreat (ആന്തരിക സൗഖ്യ ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
     { dates: 'October 16 - 19', type: 'Rosary & Marian Intercession Retreat (ജപമാല മാസ ധ്യാനം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
     { dates: 'October 23 - 26', type: 'Deliverance & Grace Renewal (വിടുതൽ ധ്യാനം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' }
-  ],
-  november: [
-    { dates: 'November 06 - 09', type: 'Inner Healing Retreat (ആന്തരിക സൗഖ്യ ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'November 13 - 16', type: 'Spiritual Renewal & Word of God (വചന പ്രഘോഷണ ധ്യാനം)', director: 'Capuchin Preachers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'November 20 - 23', type: 'Family Peace & Blessings Retreat (കുടുംബ സമാധാന ധ്യാനം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'November 27 - 30', type: 'Inner Healing & Deliverance Retreat (രോഗശാന്തി ധ്യാനം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' }
-  ],
-  december: [
-    { dates: 'December 04 - 07', type: 'Advent Preparation Retreat (ആഗമനകാല ഒരുക്ക ധ്യാനം)', director: 'Fr. Director & ARC Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'December 11 - 14', type: 'Christmas Deliverance & Grace Retreat (ക്രിസ്തുമസ് കൃപാ ധ്യാനം)', director: 'Capuchin Fathers', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'December 18 - 21', type: 'Holy Nativity Spiritual Renewal (തിരുപ്പിറവി നവീകരണം)', director: 'Fr. Director & Team', timing: 'Thursday 4:30 PM to Sunday 1:30 PM', fee: '₹700' },
-    { dates: 'December 28 - 31', type: 'Year-End Thanksgiving & Blessing Retreat (വർഷാവസാന നന്ദി പ്രകാശന ധ്യാനം)', director: 'Capuchin Community', timing: 'Sunday 4:30 PM to Wednesday 1:30 PM', fee: '₹700' }
   ]
 };
 
@@ -41,36 +29,36 @@ export default function RetreatsPage() {
 
   return (
     <Layout
-      title="ധ്യാന കലണ്ടർ 2026 | Retreat Programes | അസ്സീസി ധ്യാനകേന്ദ്രം"
-      description="Official Residential Retreat Schedule 2026 - Assisi Renewal Center Bharananganam."
+      title="ധ്യാന കലണ്ടർ 2026 | Retreat Schedule | അസ്സീസി ധ്യാനകേന്ദ്രം"
+      description="Official 2026 Residential Retreat Schedule at Assisi Renewal Center Bharananganam. Booking, timings and preachers."
     >
-      {/* Header Banner: Eucharistic Sanctuary Atmosphere */}
-      <section className="relative bg-gradient-to-b from-[#2A0808] via-[#1E0606] to-[#140404] text-white py-14 sm:py-18 text-left border-b border-amber-900/40 overflow-hidden">
+      {/* Header Banner: Franciscan Crimson Atmosphere */}
+      <section className="relative bg-gradient-to-b from-[#2A080C] via-[#1E0508] to-[#120305] border-b border-rose-900/40 py-14 sm:py-18 text-left overflow-hidden">
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center gap-1.5 shadow-xs">
-              <Calendar className="w-3.5 h-3.5" />
-              <span>RESIDENTIAL RETREAT SCHEDULE 2026</span>
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-300 bg-amber-950/80 px-3.5 py-1 rounded-md border border-amber-500/40 inline-flex items-center shadow-xs">
+              <span>RESIDENTIAL RETREATS 2026 • ഭരണങ്ങാനം</span>
             </span>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
-              RETREAT PROGRAMES (ധ്യാനങ്ങൾ 2026)
+              ധ്യാന കലണ്ടർ 2026 (RETREAT SCHEDULE)
             </h1>
-            <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed font-normal">
-              എല്ലാ മാസത്തെയും വ്യാഴാഴ്ച വൈകുന്നേരം 4:30 മുതൽ ഞായറാഴ്ച ഉച്ചയ്ക്ക് 1:30 വരെയുള്ള താമസിച്ചുള്ള റസിഡൻഷ്യൽ ധ്യാനങ്ങൾ.
+            <p className="text-sm sm:text-base text-rose-100/90 leading-relaxed font-normal">
+              അസ്സീസി ധ്യാനകേന്ദ്രത്തിൽ നടക്കുന്ന താമസിച്ചുള്ള ധ്യാനങ്ങളുടെ തീയതികളും വിവരങ്ങളും.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Schedule Body with Adoration Background */}
+      {/* Main Retreats Content with Eucharistic Adoration Background */}
       <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
         
-        {/* Background Image: Adoration Candles */}
+        {/* Background Image: Glowing Eucharistic Monstrance */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/assisi_assets/backgrounds/retreat_adoration_candles_bg.webp"
-            alt="Adoration Background"
+            src="/assisi_assets/backgrounds/retreat_eucharist_glow.webp"
+            alt="Eucharistic Adoration Sanctuary"
             className="w-full h-full object-cover"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#140507]/95 via-[#100305]/92 to-[#0C0204]/96" />
         </div>
@@ -78,15 +66,15 @@ export default function RetreatsPage() {
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Month Selector Tabs */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-amber-900/40 mb-10 overflow-x-auto scrollbar-none">
-            {(['august', 'september', 'october', 'november', 'december'] as const).map((m) => (
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-8 border-b border-white/10 mb-10">
+            {(['august', 'september', 'october'] as const).map((m) => (
               <button
                 key={m}
                 type="button"
                 onClick={() => setSelectedMonth(m)}
-                className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition cursor-pointer whitespace-nowrap ${
+                className={`px-5 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-sm cursor-pointer ${
                   selectedMonth === m
-                    ? 'bg-[#7A1C1C] text-white shadow-lg border border-amber-400/50'
+                    ? 'bg-[#7A1C1C] text-white shadow-md border-2 border-amber-400'
                     : 'bg-stone-900/80 hover:bg-stone-800 text-stone-300 border border-white/15 backdrop-blur-md'
                 }`}
               >
@@ -129,6 +117,7 @@ export default function RetreatsPage() {
                   <span>{item.timing}</span>
                 </div>
 
+                {/* Card Action CTA Buttons (Marian & Franciscan - Franciscan Burgundy & Marian Blue) */}
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
                     href="tel:8590124063"
@@ -141,10 +130,10 @@ export default function RetreatsPage() {
                     href={`https://wa.me/918330884331?text=${encodeURIComponent(`ഹലോ, ${item.dates} തീയതിയിലെ ${item.type} ധ്യാനത്തിൽ പങ്കെടുക്കാൻ ആഗ്രഹിക്കുന്നു.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#0F5132] hover:bg-[#0B3D26] text-white text-xs sm:text-sm font-bold px-3 py-2.5 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98"
+                    className="bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98 border border-amber-400"
                   >
-                    <MessageCircle className="w-3.5 h-3.5" />
-                    <span>WhatsApp</span>
+                    <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                    <span>WhatsApp വഴി ബുക്കിംഗ്</span>
                   </a>
                 </div>
               </motion.div>
@@ -159,27 +148,30 @@ export default function RetreatsPage() {
             transition={{ type: 'spring', stiffness: 100, damping: 15 }}
             className="mt-12 bg-stone-900/90 backdrop-blur-md border border-amber-500/30 rounded-3xl p-6 sm:p-8 text-left space-y-4 text-white shadow-2xl"
           >
-            <h4 className="text-lg font-bold text-white flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-amber-400" />
-              <span>റസിഡൻഷ്യൽ ധ്യാനത്തിൽ പങ്കെടുക്കുന്നവർക്കുള്ള പ്രധാന നിർദ്ദേശങ്ങൾ</span>
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-stone-300">
-              <p className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>ധ്യാനം വ്യാഴാഴ്ച വൈകുന്നേരം 4:30-ന് ആരംഭിച്ച് ഞായറാഴ്ച ഉച്ചയ്ക്ക് 1:30-ന് സമാപിക്കും.</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>വിശുദ്ധ ബൈബിൾ (പി.ഒ.സി.), നോട്ടുബുക്ക്, പേന, ബെഡ്ഷീറ്റ് എന്നിവ കരുതുക.</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>നിത്യേന കഴിക്കുന്ന മരുന്നുകൾ ആവശ്യത്തിന് കൈവശം കരുതേണ്ടതാണ്.</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>ധ്യാന സമയത്ത് മൊബൈൽ ഫോൺ ഉപയോഗം പൂർണ്ണമായി നിരോധിച്ചിരിക്കുന്നു.</span>
-              </p>
+            <div className="flex items-center gap-2.5 border-b border-white/15 pb-3">
+              <ShieldCheck className="w-6 h-6 text-amber-400 shrink-0" />
+              <h2 className="text-lg sm:text-xl font-bold text-white">
+                ധ്യാനത്തിൽ പങ്കെടുക്കുന്നവർ ശ്രദ്ധിക്കേണ്ട പ്രധാന കാര്യങ്ങൾ
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-stone-200">
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-1" />
+                <p>ധ്യാനം വ്യാഴാഴ്ച വൈകുന്നേരം 4:30 ന് ആരംഭിച്ചു ഞായറാഴ്ച ഉച്ചയ്ക്ക് 1:30 ന് സമാപിക്കുന്നു.</p>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-1" />
+                <p>ബൈബിൾ (സത്യവേദപുസ്തകം), നോട്ട്ബുക്ക്, പേന, കുടിവെള്ള ബോട്ടിൽ എന്നിവ കരുതുക.</p>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-1" />
+                <p>താമസവും ഭക്ഷണവും ആശ്രമത്തിൽ ക്രമീകരിച്ചിരിക്കുന്നു. ആവശ്യമായ ബെഡ്ഷീറ്റ്, മരുന്നുകൾ കരുതുക.</p>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-1" />
+                <p>മുൻകൂട്ടി സീറ്റ് ഉറപ്പാക്കാൻ ഫോൺ വഴിയോ വാട്സാപ്പ് വഴിയോ രജിസ്റ്റർ ചെയ്യേണ്ടതാണ്.</p>
+              </div>
             </div>
           </motion.div>
 

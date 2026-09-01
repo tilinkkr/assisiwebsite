@@ -80,12 +80,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
           {/* Top Bar Contacts & WhatsApp Highlight */}
           <div className="flex items-center gap-2 sm:gap-4 text-[11px] sm:text-xs shrink-0 font-medium text-amber-100">
             
-            {/* Highlighted WhatsApp Pill in Top Bar */}
+            {/* Highlighted WhatsApp Pill in Top Bar (Marian Blue & Gold) */}
             <a
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#0F5132] hover:bg-[#166534] border border-emerald-400 text-white px-2.5 py-0.5 rounded-full font-black text-[11px] inline-flex items-center gap-1.5 shadow-sm transition active:scale-95"
+              className="bg-[#1E3A8A] hover:bg-[#1D4ED8] border border-amber-400 text-white px-3 py-0.5 rounded-full font-black text-[11px] inline-flex items-center gap-1.5 shadow-sm transition active:scale-95"
             >
               <MessageCircle className="w-3 h-3 fill-white" />
               <span>WhatsApp: +91 8330884331</span>
@@ -183,7 +183,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             })}
           </div>
 
-          {/* Right Action CTA Buttons */}
+          {/* Right Action CTA Buttons (Marian & Franciscan - Marian Sapphire & Franciscan Burgundy) */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             
             {/* Highlighted WhatsApp CTA with Direct Malayalam Message */}
@@ -191,7 +191,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
               href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-[#0F5132] hover:bg-[#0B3D26] text-white text-xs sm:text-[13px] font-black px-3.5 py-2 rounded-xl transition whitespace-nowrap shadow-md border-2 border-emerald-400 active:scale-98"
+              className="inline-flex items-center gap-1.5 bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs sm:text-[13px] font-black px-3.5 py-2 rounded-xl transition whitespace-nowrap shadow-md border-2 border-amber-400 active:scale-98"
               title="WhatsApp: +91 8330884331"
             >
               <MessageCircle className="w-4 h-4 shrink-0 fill-white" />
@@ -237,23 +237,23 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
             >
               <div className="px-4 py-5 space-y-2 text-left">
                 
-                {/* Highlighted WhatsApp Banner Card at top of Drawer */}
+                {/* Highlighted WhatsApp Banner Card at top of Drawer (Marian Blue & Gold) */}
                 <a
                   href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mb-3 p-3.5 bg-gradient-to-r from-[#0F5132] to-[#166534] rounded-2xl border-2 border-emerald-400 flex items-center justify-between text-white shadow-md active:scale-98 transition"
+                  className="mb-3 p-3.5 bg-gradient-to-r from-[#0F1D38] to-[#1E3A8A] rounded-2xl border-2 border-amber-400 flex items-center justify-between text-white shadow-md active:scale-98 transition"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
                       <MessageCircle className="w-6 h-6 fill-white" />
                     </div>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-emerald-200">ഔദ്യോഗിക വാട്സാപ്പ്</p>
+                      <p className="text-xs font-black uppercase tracking-wider text-amber-300">ഔദ്യോഗിക വാട്സാപ്പ്</p>
                       <p className="text-sm font-extrabold text-white">+91 8330884331 (മെസ്സേജ്)</p>
                     </div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-emerald-300 shrink-0" />
+                  <ChevronRight className="w-5 h-5 text-amber-300 shrink-0" />
                 </a>
 
                 {/* Jubilee Quick Card in Mobile Drawer */}

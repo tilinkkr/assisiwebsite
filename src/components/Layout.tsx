@@ -73,7 +73,7 @@ export const Layout: React.FC<LayoutProps> = ({
           {children}
         </main>
 
-        {/* Floating WhatsApp Widget with high-visibility Malayalam tooltip */}
+        {/* Floating WhatsApp Widget with high-visibility Malayalam tooltip (Marian & Gold Liturgical) */}
         <FloatingWhatsApp />
 
         {/* Master Footer */}
@@ -90,8 +90,8 @@ export const Layout: React.FC<LayoutProps> = ({
           </button>
         </div>
 
-        {/* Fixed Mobile Bottom Action Strip (UX Highlighted WhatsApp button) */}
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#141210]/98 backdrop-blur-md border-t-2 border-emerald-600/60 p-2 sm:p-2.5 flex items-center justify-between gap-1.5 sm:gap-2 shadow-2xl safe-area-bottom">
+        {/* Fixed Mobile Bottom Action Strip (Marian Sapphire & Gold, Marian & Gold) */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#141210]/98 backdrop-blur-md border-t-2 border-amber-500/60 p-2 sm:p-2.5 flex items-center justify-between gap-1.5 sm:gap-2 shadow-2xl safe-area-bottom">
           <a
             href="tel:8590124063"
             className="flex-1 inline-flex items-center justify-center gap-1 bg-stone-900 text-white text-[11px] font-bold py-3 px-1.5 rounded-xl transition shadow-sm border border-stone-700 active:bg-black"
@@ -100,16 +100,16 @@ export const Layout: React.FC<LayoutProps> = ({
             <span>വിളിക്കുക</span>
           </a>
 
-          {/* Highlighted WhatsApp CTA in Mobile Bottom Bar */}
+          {/* Highlighted WhatsApp CTA in Mobile Bottom Bar (Marian Sapphire Blue & Gold) */}
           <a
             href={waUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-[1.4] inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#0F5132] to-[#166534] text-white text-xs font-black py-3 px-2 rounded-xl transition shadow-lg border-2 border-emerald-400 active:scale-98"
+            className="flex-[1.4] inline-flex items-center justify-center gap-1.5 bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs font-black py-3 px-2 rounded-xl transition shadow-lg border-2 border-amber-400 active:scale-98"
           >
             <MessageCircle className="w-4 h-4 shrink-0 fill-white" />
             <span>WhatsApp</span>
-            <span className="text-[10px] bg-emerald-400 text-slate-950 font-black px-1.5 py-0.2 rounded-full hidden xs:inline">
+            <span className="text-[10px] bg-amber-400 text-slate-950 font-black px-1.5 py-0.2 rounded-full hidden xs:inline">
               LIVE
             </span>
           </a>

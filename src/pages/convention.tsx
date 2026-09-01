@@ -34,17 +34,18 @@ export default function ConventionPage() {
         </div>
       </section>
 
-      {/* Main Timetable & Poster Grid */}
+      {/* Main Timetable & Poster Grid with Cross at Dawn Background */}
       <section className="relative py-14 min-h-[600px] text-left overflow-hidden">
         
-        {/* Background Image: Misty Hills */}
+        {/* Background Image: Cross at Dawn */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/assisi_assets/backgrounds/retreat_mist_nature_bg.webp"
-            alt="Convention Background"
+            src="/assisi_assets/backgrounds/retreat_cross_dawn.webp"
+            alt="Convention Hilltop Cross Background"
             className="w-full h-full object-cover"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/88 to-stone-900/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/96 via-stone-950/90 to-stone-900/85" />
         </div>
 
         <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -59,24 +60,26 @@ export default function ConventionPage() {
               className="lg:col-span-7 space-y-6"
             >
               <div>
-                <span className="text-xs font-bold text-amber-300 bg-amber-950/80 px-3 py-1 rounded-md border border-amber-500/40">
-                  PROGRAM TIMETABLE
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mt-2">
-                  കൺവെൻഷൻ ക്രമം (4:00 PM – 9:00 PM)
+                <h2 className="text-2xl font-bold text-white">
+                  ശുശ്രൂഷാ ക്രമം (Timetable & Program)
                 </h2>
+                <p className="text-xs sm:text-sm text-stone-300 font-normal mt-1">
+                  ഓരോ മാസത്തെയും ആദ്യ ചൊവ്വാഴ്ച താഴെ കാണുന്ന ക്രമത്തിലാണ് ശുശ്രൂഷകൾ നടക്കുന്നത്:
+                </p>
               </div>
 
-              <div className="bg-stone-900/85 backdrop-blur-md border border-white/15 rounded-3xl divide-y divide-white/10 shadow-2xl overflow-hidden">
+              <div className="bg-stone-900/85 backdrop-blur-md border border-white/15 rounded-3xl p-5 sm:p-6 shadow-2xl divide-y divide-white/10 space-y-2">
                 {schedule.map((item, idx) => (
-                  <div key={idx} className="p-5 flex items-start gap-4">
-                    <div className="bg-[#7A1C1C] text-white text-xs font-bold px-3 py-1.5 rounded-lg shrink-0 mt-0.5 border border-amber-400/40">
-                      {item.time}
-                    </div>
+                  <div key={idx} className="pt-3 first:pt-0 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-left">
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white">
-                        {item.title}
-                      </h3>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-black text-slate-950 bg-amber-400 px-2.5 py-0.5 rounded">
+                          {item.time}
+                        </span>
+                        <h3 className="text-sm sm:text-base font-bold text-white">
+                          {item.title}
+                        </h3>
+                      </div>
                       <p className="text-xs sm:text-sm text-stone-300 font-normal mt-0.5">
                         {item.desc}
                       </p>
@@ -85,6 +88,7 @@ export default function ConventionPage() {
                 ))}
               </div>
 
+              {/* Action Buttons (Marian & Franciscan: Franciscan Burgundy & Marian Blue) */}
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a
                   href="tel:04822238335"
@@ -97,10 +101,10 @@ export default function ConventionPage() {
                   href="https://wa.me/918330884331?text=ഹലോ,%20സായാഹ്ന%20കൺവെൻഷനെക്കുറിച്ചുള്ള%20വിവരങ്ങൾ%20അറിയാൻ%20ആഗ്രഹിക്കുന്നു."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#0F5132] hover:bg-[#0B3D26] text-white text-xs sm:text-sm font-bold px-4 py-3 rounded-xl transition inline-flex items-center gap-1.5 shadow-md active:scale-98"
+                  className="bg-[#1E3A8A] hover:bg-[#172554] text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl transition inline-flex items-center gap-2 shadow-md active:scale-98 border border-amber-400"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>WhatsApp</span>
+                  <MessageCircle className="w-4 h-4 fill-white" />
+                  <span>WhatsApp: +91 8330884331</span>
                 </a>
               </div>
             </motion.div>
@@ -113,11 +117,12 @@ export default function ConventionPage() {
               transition={{ type: 'spring', stiffness: 90, damping: 16 }}
               className="lg:col-span-5"
             >
-              <div className="bg-stone-900/85 backdrop-blur-md border border-white/20 rounded-3xl p-4 shadow-2xl">
+              <div className="bg-stone-900/85 backdrop-blur-md border border-white/20 rounded-3xl p-4 shadow-2xl max-w-sm mx-auto">
                 <img
                   src="/assisi_assets/convension-683x1024.webp"
                   alt="സായാഹ്ന കൺവെൻഷൻ ഔദ്യോഗിക പോസ്റ്റർ"
                   className="w-full h-auto object-contain rounded-2xl"
+                  decoding="async"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = '/assisi_assets/convension.webp';
                   }}
