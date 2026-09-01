@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteBase /
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Handle API routes to PHP scripts
+RewriteRule ^api/prayers/?$ api/prayers.php [L,QSA]
+RewriteRule ^api/testimonies/?$ api/testimonies.php [L,QSA]
+RewriteRule ^api/bookings/?$ api/bookings.php [L,QSA]
+RewriteRule ^api/events/?$ api/events.php [L,QSA]
+RewriteRule ^api/gallery/?$ api/gallery.php [L,QSA]
+
+# Trailing slash handling and static html resolution
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ .html [L]
+
+Options -Indexes
