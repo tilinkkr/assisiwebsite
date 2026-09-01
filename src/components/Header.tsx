@@ -17,8 +17,7 @@ import {
   Users,
   Image,
   Building2,
-  MapPin,
-  BookmarkCheck
+  MapPin
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -39,7 +38,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
   const navLinks = [
     { label: 'HOME', href: '/', mal: 'ഹോം', icon: Home },
     { label: 'RETREATS 2026', href: '/retreats', mal: 'ധ്യാനങ്ങൾ', icon: Calendar },
-    { label: 'BOOKING', href: '/retreats', mal: 'ബുക്കിംഗ്', icon: BookmarkCheck },
     { label: 'CONVENTION', href: '/convention', mal: 'കൺവെൻഷൻ', icon: Clock },
     { label: 'PRAYER', href: '/prayer', mal: 'പ്രാർത്ഥന', icon: HeartHandshake },
     { label: 'THANKS GIVING', href: '/thanksgiving', mal: 'നന്ദി', icon: Heart },
@@ -51,7 +49,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
 
   const isActive = (href: string) => {
     if (href === '/' && router.pathname === '/') return true;
-    if (href !== '/' && router.pathname.startsWith(href)) return true;
+    if (href !== '/' && router.pathname === href) return true;
+    if (href !== '/' && router.pathname.startsWith(href) && href.length > 1) return true;
     return false;
   };
 
