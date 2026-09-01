@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
 import { Send, CheckCircle2, Quote } from 'lucide-react';
+import { DB } from '../lib/db';
 
 const TESTIMONIALS_LIST = [
   {
@@ -40,6 +41,18 @@ export default function ThanksgivingPage() {
 
   const handleThanksSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // 1. Save to Database
+    DB.saveTestimony({
+      firstName: thanksForm.firstName,
+      lastName: thanksForm.lastName,
+      contact: thanksForm.contact,
+      email: thanksForm.email,
+      subject: thanksForm.subject,
+      description: thanksForm.description,
+      agreePublish: thanksForm.agreePublish === 'yes'
+    });
+
+    // 2. Open WhatsApp
     const waText = encodeURIComponent(
       `*THANKS GIVING (നന്ദി പ്രകാശനം)*\nപേര്: ${thanksForm.firstName} ${thanksForm.lastName}\nഫോൺ: ${thanksForm.contact}\nEmail: ${thanksForm.email}\nവിഷയം: ${thanksForm.subject}\nവെബ്‌സൈറ്റിൽ പ്രസിദ്ധീകരിക്കാൻ അനുമതി: ${thanksForm.agreePublish === 'yes' ? 'Yes' : 'No'}\n\nസാക്ഷ്യം / അനുഭവം:\n${thanksForm.description}\n\n(Assisi Retreat Centre Bharananganam)`
     );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout';
 import { Send, CheckCircle2, Phone, MessageCircle } from 'lucide-react';
+import { DB } from '../lib/db';
 
 export default function PrayerPage() {
   const [prayerForm, setPrayerForm] = useState({ name: '', phone: '', place: '', intention: '' });
@@ -9,6 +10,15 @@ export default function PrayerPage() {
 
   const handlePrayerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // 1. Save to Database
+    DB.savePrayer({
+      name: prayerForm.name,
+      phone: prayerForm.phone,
+      place: prayerForm.place,
+      intention: prayerForm.intention
+    });
+
+    // 2. Open WhatsApp for direct confirmation
     const waText = encodeURIComponent(
       `*PRAYER REQUEST (പ്രാർത്ഥനാ സഹായം)*\nപേര്: ${prayerForm.name}\nഫോൺ: ${prayerForm.phone}\nസ്ഥലം: ${prayerForm.place}\n\nപ്രാർത്ഥനാ നിയോഗം:\n${prayerForm.intention}\n\n(Assisi Retreat Centre Bharananganam)`
     );
