@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '../components/Layout';
-import { X, ZoomIn } from 'lucide-react';
+import { X, ZoomIn, Image as ImageIcon } from 'lucide-react';
+import { DB, GalleryPhoto } from '../lib/db';
 
 interface GalleryItem {
   id: string;
   title: string;
   malayalamTitle: string;
-  category: 'chapel' | 'halls' | 'campus' | 'grotto' | 'history';
+  category: 'chapel' | 'halls' | 'campus' | 'grotto' | 'history' | 'retreats' | string;
   src: string;
   fullSrc?: string;
   description: string;
 }
 
-const GALLERY_DATA: GalleryItem[] = [
+const DEFAULT_GALLERY_DATA: GalleryItem[] = [
   {
     id: '1',
     title: 'Holy Eucharistic Chapel',
@@ -152,12 +153,41 @@ const GALLERY_DATA: GalleryItem[] = [
 ];
 
 export default function GalleryPage() {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'chapel' | 'halls' | 'campus' | 'grotto' | 'history'>('all');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
   const [activeLightbox, setActiveLightbox] = useState<GalleryItem | null>(null);
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(DEFAULT_GALLERY_DATA);
 
-  const filteredItems = activeCategory === 'all'
-    ? GALLERY_DATA
-    : GALLERY_DATA.filter((item) => item.category === activeCategory);
+  // Load custom dynamic gallery photos from database and merge seamlessly
+  useEffect(() => {
+    const customPhotos = DB.getGallery();
+    if (customPhotos && customPhotos.length > 0) {
+      const mapped: GalleryItem[] = customPhotos.map((p) => ({
+        id: p.id,
+        title: p.title,
+        malayalamTitle: p.malayalamTitle || p.title,
+        category: p.category || 'retreats',
+        src: p.src,
+        fullSrc: p.src,
+        description: p.description || ''
+      }));
+      setGalleryItems([...mapped, ...DEFAULT_GALLERY_DATA]);
+    }
+
+    DB.fetchGalleryAsync().then((live) => {
+      if (live && live.length > 0) {
+        const mapped: GalleryItem[] = live.map((p: GalleryPhoto) => ({
+          id: p.id,
+          title: p.title,
+          malayalamTitle: p.malayalamTitle || p.title,
+          category: p.category || 'retreats',
+          src: p.src,
+          fullSrc: p.src,
+          description: p.description || ''
+        }));
+        setGalleryItems([...mapped, ...DEFAULT_GALLERY_DATA]);
+      }
+    });
+  }, []);
 
   const categories = [
     { key: 'all', label: 'All Photos (എല്ലാം)' },
@@ -165,8 +195,13 @@ export default function GalleryPage() {
     { key: 'halls', label: 'Retreat Halls (ഹാളുകൾ)' },
     { key: 'campus', label: 'Campus & Grounds (ആശ്രമം)' },
     { key: 'grotto', label: 'Marian Grotto (ഗ്രോട്ടോ)' },
-    { key: 'history', label: 'Golden Jubilee (ചരിത്രം)' }
+    { key: 'history', label: 'Golden Jubilee (ചരിത്രം)' },
+    { key: 'retreats', label: 'Recent Retreats (ധ്യാനങ്ങൾ)' }
   ];
+
+  const filteredItems = activeCategory === 'all'
+    ? galleryItems
+    : galleryItems.filter((item) => item.category.toLowerCase() === activeCategory.toLowerCase());
 
   return (
     <Layout
@@ -200,7 +235,7 @@ export default function GalleryPage() {
               <button
                 key={cat.key}
                 type="button"
-                onClick={() => setActiveCategory(cat.key as any)}
+                onClick={() => setActiveCategory(cat.key)}
                 className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition shadow-xs cursor-pointer ${
                   activeCategory === cat.key
                     ? 'bg-[#7A1C1C] text-white shadow-md border border-amber-400/40'
@@ -212,97 +247,118 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          {/* Gallery Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredItems.map((item, idx) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ type: 'spring', stiffness: 100, damping: 15, delay: (idx % 4) * 0.05 }}
-                onClick={() => setActiveLightbox(item)}
-                className="group bg-slate-900/85 backdrop-blur-md rounded-2xl border border-blue-900/50 overflow-hidden shadow-xl hover:border-blue-400/60 transition-all duration-300 cursor-pointer flex flex-col justify-between"
-              >
-                <div className="relative aspect-[4/3] bg-slate-950 overflow-hidden">
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/assisi_assets/2018-05-26.webp';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white">
-                    <ZoomIn className="w-6 h-6 text-amber-300" />
-                    <span className="text-xs font-bold uppercase tracking-wider">വലുതായി കാണുക</span>
-                  </div>
-                </div>
+          {/* Gallery Grid - Bulletproof Responsive Aspect-Ratio Architecture */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
+            {filteredItems.length === 0 ? (
+              <div className="col-span-full py-16 text-center text-stone-400 space-y-2">
+                <ImageIcon className="w-10 h-10 text-stone-600 mx-auto" />
+                <p className="text-base font-bold">ചിത്രങ്ങൾ ഒന്നും കണ്ടെത്തിയില്ല</p>
+              </div>
+            ) : (
+              filteredItems.map((item, idx) => (
+                <motion.div
+                  key={item.id || idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: 'spring', stiffness: 100, damping: 15, delay: (idx % 8) * 0.04 }}
+                  onClick={() => setActiveLightbox(item)}
+                  className="group relative bg-[#131E33] border-2 border-blue-950 hover:border-amber-400/80 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-300 flex flex-col justify-between"
+                >
+                  {/* Fixed Aspect Ratio Container: Guarantees 0 Grid Breakage Regardless of Image Dimensions */}
+                  <div className="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden">
+                    <img
+                      src={item.src}
+                      alt={item.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/assisi_assets/Assisi-Renewal-Center-150x150.webp';
+                      }}
+                    />
+                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
 
-                <div className="p-4 text-left space-y-1">
-                  <h3 className="text-base font-bold text-white group-hover:text-amber-300 transition line-clamp-1">
-                    {item.malayalamTitle}
-                  </h3>
-                  <p className="text-xs text-blue-200 font-medium line-clamp-1">
-                    {item.title}
-                  </p>
-                  <p className="text-[11px] text-stone-400 line-clamp-2 pt-1 font-normal">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-xs border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ZoomIn className="w-4 h-4" />
+                    </div>
+
+                    <div className="absolute bottom-2.5 left-3">
+                      <span className="text-[10px] font-black uppercase text-amber-300 bg-black/70 px-2 py-0.5 rounded border border-amber-400/40">
+                        {item.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Caption Footer */}
+                  <div className="p-3.5 text-left space-y-1 bg-[#10192B]">
+                    <h3 className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors truncate">
+                      {item.malayalamTitle}
+                    </h3>
+                    <p className="text-[11px] text-stone-400 truncate">
+                      {item.title}
+                    </p>
+                  </div>
+                </motion.div>
+              ))
+            )}
           </div>
 
         </div>
       </section>
 
-      {/* Lightbox Modal (Ultra-Smooth Mobile Optimized) */}
+      {/* Lightbox Modal */}
       <AnimatePresence>
         {activeLightbox && (
-          <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveLightbox(null)}
-              className="fixed inset-0"
+              className="fixed inset-0 bg-black/90 backdrop-blur-md cursor-pointer"
             />
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 15 }}
-              transition={{ type: 'spring', stiffness: 120, damping: 18 }}
-              className="relative max-w-4xl w-full bg-slate-900 border border-blue-500/40 rounded-3xl overflow-hidden shadow-2xl z-10 my-auto"
-            >
-              <button
-                type="button"
-                onClick={() => setActiveLightbox(null)}
-                className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2 rounded-full bg-black/70 hover:bg-black text-white transition cursor-pointer"
-                aria-label="Close Lightbox"
-              >
-                <X className="w-5 h-5" />
-              </button>
 
-              <div className="aspect-[16/10] sm:aspect-[16/9] w-full bg-black flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              className="relative w-full max-w-4xl bg-[#131E33] border-2 border-amber-400 rounded-3xl overflow-hidden shadow-2xl z-10 text-left my-auto"
+            >
+              <div className="relative max-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
                 <img
                   src={activeLightbox.fullSrc || activeLightbox.src}
                   alt={activeLightbox.title}
-                  className="max-h-[65vh] w-full object-contain"
+                  className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
+                
+                <button
+                  type="button"
+                  onClick={() => setActiveLightbox(null)}
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/70 hover:bg-rose-800 text-white flex items-center justify-center backdrop-blur-md transition cursor-pointer border border-white/30"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5 stroke-[2.5]" />
+                </button>
               </div>
 
-              <div className="p-4 sm:p-6 bg-slate-950 text-left space-y-1.5">
-                <h3 className="text-lg sm:text-xl font-bold text-white">
-                  {activeLightbox.malayalamTitle}
+              <div className="p-5 sm:p-6 space-y-2 bg-[#10192B] border-t border-blue-900/60 text-white">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black uppercase text-amber-300 bg-amber-950 px-2.5 py-0.5 rounded border border-amber-600">
+                    {activeLightbox.category}
+                  </span>
+                  <p className="text-xs text-stone-400 font-mono">ARC BHARANANGANAM</p>
+                </div>
+                
+                <h3 className="text-lg sm:text-xl font-extrabold text-white">
+                  {activeLightbox.malayalamTitle} ({activeLightbox.title})
                 </h3>
-                <p className="text-xs sm:text-sm text-amber-300 font-semibold">
-                  {activeLightbox.title}
-                </p>
-                <p className="text-xs sm:text-sm text-stone-300 font-normal">
-                  {activeLightbox.description}
-                </p>
+                
+                {activeLightbox.description && (
+                  <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                    {activeLightbox.description}
+                  </p>
+                )}
               </div>
             </motion.div>
           </div>
