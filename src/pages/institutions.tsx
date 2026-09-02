@@ -106,7 +106,7 @@ export default function InstitutionsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
-                  className="bg-[#181412] border-2 border-stone-700 p-6 rounded-3xl shadow-xl hover:border-amber-400 transition text-left group flex flex-col justify-between space-y-4"
+                  className="bg-[#181412] border border-stone-800 p-6 rounded-3xl shadow-xl hover:border-amber-400 transition text-left group flex flex-col justify-between space-y-4"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">

@@ -105,7 +105,7 @@ export default function ThanksgivingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-              className="lg:col-span-7 bg-[#111726] border-2 border-stone-700 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6 text-white"
+              className="lg:col-span-7 bg-[#111726] border border-stone-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6 text-white"
             >
               <div>
                 <h2 className="text-2xl font-black text-white">
@@ -117,7 +117,7 @@ export default function ThanksgivingPage() {
               </div>
 
               {thanksSubmitted ? (
-                <div className="p-6 bg-[#1E3A8A] border-2 border-amber-400 rounded-2xl text-center space-y-2">
+                <div className="p-6 bg-[#1E3A8A] border border-amber-400 rounded-2xl text-center space-y-2">
                   <CheckCircle2 className="w-10 h-10 text-amber-400 mx-auto" />
                   <h3 className="text-lg font-bold text-white">നന്ദി പ്രകാശനം സമർപ്പിച്ചു</h3>
                   <p className="text-xs sm:text-sm text-stone-200">
@@ -137,7 +137,7 @@ export default function ThanksgivingPage() {
                         placeholder="First Name"
                         value={thanksForm.firstName}
                         onChange={(e) => setThanksForm({ ...thanksForm, firstName: e.target.value })}
-                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                       />
                     </div>
                     <div className="space-y-1.5">
@@ -150,7 +150,7 @@ export default function ThanksgivingPage() {
                         placeholder="Last Name"
                         value={thanksForm.lastName}
                         onChange={(e) => setThanksForm({ ...thanksForm, lastName: e.target.value })}
-                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                       />
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export default function ThanksgivingPage() {
                         placeholder="+91 Phone"
                         value={thanksForm.contact}
                         onChange={(e) => setThanksForm({ ...thanksForm, contact: e.target.value })}
-                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                       />
                     </div>
                     <div className="space-y-1.5">
@@ -179,7 +179,7 @@ export default function ThanksgivingPage() {
                         placeholder="Email Address"
                         value={thanksForm.email}
                         onChange={(e) => setThanksForm({ ...thanksForm, email: e.target.value })}
-                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                       />
                     </div>
                   </div>
@@ -194,7 +194,7 @@ export default function ThanksgivingPage() {
                       placeholder="e.g. രോഗസൗഖ്യം, പരീക്ഷാ വിജയം, കുടുംബ സമാധാനം..."
                       value={thanksForm.subject}
                       onChange={(e) => setThanksForm({ ...thanksForm, subject: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                   </div>
 
@@ -208,7 +208,7 @@ export default function ThanksgivingPage() {
                       placeholder="ദൈവത്തിൽ നിന്ന് ലഭിച്ച കൃപയെക്കുറിച്ചുള്ള നിങ്ങളുടെ അനുഭവം ഇവിടെ വിശദമായി രേഖപ്പെടുത്തുക..."
                       value={thanksForm.description}
                       onChange={(e) => setThanksForm({ ...thanksForm, description: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                   </div>
 
@@ -239,7 +239,7 @@ export default function ThanksgivingPage() {
               </div>
 
               {TESTIMONIALS_LIST.map((item, idx) => (
-                <div key={idx} className="bg-[#111726] border-2 border-stone-700 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100 text-left">
+                <div key={idx} className="bg-[#111726] border border-stone-800 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100 text-left">
                   <p className="text-xs sm:text-sm leading-relaxed font-normal">
                     "{item.testimony}"
                   </p>

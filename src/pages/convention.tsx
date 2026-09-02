@@ -69,7 +69,7 @@ export default function ConventionPage() {
               </div>
 
               {/* Solid Opaque Timetable Box */}
-              <div className="bg-[#181412] border-2 border-stone-700 rounded-3xl p-5 sm:p-6 shadow-2xl divide-y divide-stone-800 space-y-2">
+              <div className="bg-[#181412] border border-stone-800 rounded-3xl p-5 sm:p-6 shadow-2xl divide-y divide-stone-800 space-y-2">
                 {schedule.map((item, idx) => (
                   <div key={idx} className="pt-3 first:pt-0 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-left">
                     <div>
@@ -118,7 +118,7 @@ export default function ConventionPage() {
               transition={{ type: 'spring', stiffness: 90, damping: 16 }}
               className="lg:col-span-5"
             >
-              <div className="bg-[#181412] border-2 border-stone-700 rounded-3xl p-4 shadow-2xl max-w-sm mx-auto">
+              <div className="bg-[#181412] border border-stone-800 rounded-3xl p-4 shadow-2xl max-w-sm mx-auto">
                 <img
                   src="/assisi_assets/convension-683x1024.webp"
                   alt="സായാഹ്ന കൺവെൻഷൻ ഔദ്യോഗിക പോസ്റ്റർ"

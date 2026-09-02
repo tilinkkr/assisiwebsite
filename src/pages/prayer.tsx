@@ -71,7 +71,7 @@ export default function PrayerPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-              className="lg:col-span-7 bg-[#111726] border-2 border-stone-700 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6 text-white"
+              className="lg:col-span-7 bg-[#111726] border border-stone-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6 text-white"
             >
               <div>
                 <h2 className="text-2xl font-black text-white">
@@ -83,7 +83,7 @@ export default function PrayerPage() {
               </div>
 
               {prayerSubmitted ? (
-                <div className="p-6 bg-[#1E3A8A] border-2 border-amber-400 rounded-2xl text-center space-y-2">
+                <div className="p-6 bg-[#1E3A8A] border border-amber-400 rounded-2xl text-center space-y-2">
                   <CheckCircle2 className="w-10 h-10 text-amber-400 mx-auto" />
                   <h3 className="text-lg font-bold text-white">പ്രാർത്ഥനാ നിയോഗം സമർപ്പിച്ചു</h3>
                   <p className="text-xs sm:text-sm text-stone-200">
@@ -102,7 +102,7 @@ export default function PrayerPage() {
                       value={prayerForm.name}
                       onChange={(e) => setPrayerForm({ ...prayerForm, name: e.target.value })}
                       placeholder="നിങ്ങളുടെ പൂർണ്ണ നാമം"
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                   </div>
 
@@ -117,7 +117,7 @@ export default function PrayerPage() {
                         value={prayerForm.phone}
                         onChange={(e) => setPrayerForm({ ...prayerForm, phone: e.target.value })}
                         placeholder="+91 Phone"
-                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                       />
                     </div>
 
@@ -130,7 +130,7 @@ export default function PrayerPage() {
                         value={prayerForm.place}
                         onChange={(e) => setPrayerForm({ ...prayerForm, place: e.target.value })}
                         placeholder="Place / Parish"
-                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                        className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                       />
                     </div>
                   </div>
@@ -145,7 +145,7 @@ export default function PrayerPage() {
                       value={prayerForm.intention}
                       onChange={(e) => setPrayerForm({ ...prayerForm, intention: e.target.value })}
                       placeholder="നിങ്ങളുടെ പ്രാർത്ഥനാ നിയോഗങ്ങൾ ഇവിടെ വിശദമായി രേഖപ്പെടുത്തുക (രോഗസൗഖ്യം, കടബാധ്യത, പരീക്ഷാ വിജയം, കുടുംബ സമാധാനം...)"
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                   </div>
 
@@ -168,7 +168,7 @@ export default function PrayerPage() {
               transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.1 }}
               className="lg:col-span-5 space-y-6"
             >
-              <div className="bg-[#111726] border-2 border-stone-700 p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 text-white">
+              <div className="bg-[#111726] border border-stone-800 p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 text-white">
                 <h3 className="text-lg font-bold text-white flex items-center gap-2">
                   <Phone className="w-5 h-5 text-amber-400" />
                   <span>അടിയന്തര പ്രാർത്ഥനാ സഹായം</span>
@@ -195,7 +195,7 @@ export default function PrayerPage() {
                     href="https://wa.me/918330884331?text=%E0%B4%B9%E0%B4%B2%E0%B5%8B%2C%20%E0%B4%85%E0%B4%B8%E0%B5%8D%E0%B4%B8%E0%B5%80%E0%B4%B8%E0%B4%BF%20%E0%B4%A7%E0%B5%8D%E0%B4%AF%E0%B4%BE%E0%B4%A8%E0%B4%95%E0%B5%87%E0%B4%A8%E0%B5%8D%E0%B4%A6%E0%B5%8D%E0%B4%B0%E0%B4%A4%E0%B5%8D%E0%B4%A4%E0%B4%BF%E0%B4%B2%E0%B5%8D%E2%80%8D%20%E0%B4%92%E0%B4%B0%E0%B5%81%20%E0%B4%85%E0%B4%9F%E0%B4%BF%E0%B4%AF%E0%B4%A8%E0%B5%8D%E0%B4%A4%E0%B4%B0%20%E0%B4%AA%E0%B5%8D%E0%B4%B0%E0%B4%BE%E0%B4%B0%E0%B5%8D%E2%80%8D%E0%B4%A4%E0%B5%8D%E0%B4%A5%E0%B4%A8%E0%B4%BE%20%E0%B4%B8%E0%B4%B9%E0%B4%BE%E0%B4%AF%E0%B4%82%20%E0%B4%86%E0%B4%B5%E0%B4%B6%E0%B5%8D%E0%B4%AF%E0%B4%AE%E0%B5%81%E0%B4%A3%E0%B5%8D%E0%B4%9F%E0%B5%8D."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 bg-[#1E3A8A] border-2 border-amber-400 rounded-xl hover:bg-[#1D4ED8] transition shadow-md"
+                    className="flex items-center justify-between p-3 bg-[#1E3A8A] border border-amber-400 rounded-xl hover:bg-[#1D4ED8] transition shadow-md"
                   >
                     <span className="text-white font-bold flex items-center gap-2">
                       <MessageCircle className="w-4 h-4 text-amber-300 fill-white" />

@@ -323,7 +323,7 @@ export default function GalleryPage() {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.92 }}
-              className="relative w-full max-w-4xl bg-[#131E33] border-2 border-amber-400 rounded-3xl overflow-hidden shadow-2xl z-10 text-left my-auto"
+              className="relative w-full max-w-4xl bg-[#131E33] border border-amber-400 rounded-3xl overflow-hidden shadow-2xl z-10 text-left my-auto"
             >
               <div className="relative max-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
                 <img

@@ -179,7 +179,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenJubilee }) => {
               className="bg-[#7A1C1C] hover:bg-[#601515] text-white text-xs sm:text-[13px] font-bold px-3 sm:px-4 py-2 rounded-xl transition whitespace-nowrap shadow-md flex items-center gap-1.5 shrink-0 active:scale-98 border border-amber-400"
             >
               <Calendar className="w-4 h-4 shrink-0 text-amber-300" />
-              <span>ബുക്കിംഗ്</span>
+              <span>BOOKING</span>
             </Link>
 
             {/* Mobile / Tablet Hamburger Button */}

@@ -33,7 +33,7 @@ export const Layout: React.FC<LayoutProps> = ({
         timer = setTimeout(() => {
           setIsJubileeOpen(true);
           sessionStorage.setItem('assisi_jubilee_seen', 'true');
-        }, 1200);
+        }, 250);
       }
     } catch {
       // Fallback for private browsing environments

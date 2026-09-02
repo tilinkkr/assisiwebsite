@@ -109,7 +109,7 @@ export default function Home() {
             {/* Left Content Card - OPAQUE HIGH-CONTRAST CARD */}
             <motion.div
               {...springEntrance}
-              className="lg:col-span-7 bg-[#161311] border-2 border-amber-500/40 p-6 sm:p-10 rounded-3xl shadow-2xl space-y-5 text-left"
+              className="lg:col-span-7 bg-[#161311] border border-amber-500/20 shadow-xl p-6 sm:p-10 rounded-3xl shadow-2xl space-y-5 text-left"
             >
               <div className="inline-flex items-center gap-2 bg-amber-400 text-stone-950 font-black text-xs sm:text-sm px-3.5 py-1 rounded-full shadow-md">
                 <span>ST. JOSEPH CAPUCHIN PROVINCE • 1976 – 2026</span>
@@ -159,7 +159,7 @@ export default function Home() {
               transition={{ type: 'spring', stiffness: 90, damping: 16, delay: 0.15 }}
               className="lg:col-span-5"
             >
-              <div className="bg-[#161311] p-3 sm:p-4 rounded-3xl shadow-2xl border-2 border-amber-500/40 relative group max-w-md mx-auto">
+              <div className="bg-[#161311] p-3 sm:p-4 rounded-3xl shadow-2xl border border-amber-500/20 shadow-xl relative group max-w-md mx-auto">
                 <div className="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-slate-900">
                   <img
                     src="/assisi_assets/2018-05-26.webp"
@@ -233,7 +233,7 @@ export default function Home() {
                 onClick={() => setSelectedMonth(m)}
                 className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wider transition cursor-pointer whitespace-nowrap ${
                   selectedMonth === m
-                    ? 'bg-[#7A1C1C] text-white shadow-lg border-2 border-amber-400'
+                    ? 'bg-[#7A1C1C] text-white shadow-lg border border-amber-400'
                     : 'bg-[#1C1815] hover:bg-[#25201C] text-stone-200 border border-stone-700'
                 }`}
               >
@@ -251,7 +251,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.08 }}
-                className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-5 shadow-2xl hover:border-amber-400 transition flex flex-col justify-between space-y-4"
+                className="bg-[#181412] border border-stone-800 rounded-2xl p-5 shadow-2xl hover:border-amber-400 transition flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between">
@@ -331,7 +331,7 @@ export default function Home() {
               </p>
               
               {/* Timetable Panel - SOLID OPAQUE CARD */}
-              <div className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-5 divide-y divide-stone-800 shadow-2xl space-y-1">
+              <div className="bg-[#181412] border border-stone-800 rounded-2xl p-5 divide-y divide-stone-800 shadow-2xl space-y-1">
                 <div className="py-2.5 flex items-center justify-between text-xs sm:text-sm">
                   <span className="font-black text-slate-950 bg-amber-400 px-3 py-1 rounded-md">4:00 PM</span>
                   <span className="font-bold text-white">കുമ്പസാരം (Sacrament of Confession)</span>
@@ -364,7 +364,7 @@ export default function Home() {
               transition={{ type: 'spring', stiffness: 90, damping: 16 }}
               className="lg:col-span-5"
             >
-              <div className="bg-[#181412] border-2 border-stone-700 rounded-3xl p-3.5 shadow-2xl max-w-sm mx-auto">
+              <div className="bg-[#181412] border border-stone-800 rounded-3xl p-3.5 shadow-2xl max-w-sm mx-auto">
                 <img
                   src="/assisi_assets/convension-683x1024.webp"
                   alt="സായാഹ്ന കൺവെൻഷൻ പോസ്റ്റർ"
@@ -413,7 +413,7 @@ export default function Home() {
               >
                 <Link
                   href="/gallery"
-                  className="group bg-[#111726] rounded-2xl border-2 border-blue-900/60 overflow-hidden shadow-2xl hover:border-blue-400 transition block"
+                  className="group bg-[#111726] rounded-2xl border border-blue-900/40 overflow-hidden shadow-2xl hover:border-blue-400 transition block"
                 >
                   <div className="aspect-[4/3] bg-slate-950 overflow-hidden relative">
                     <img
@@ -459,7 +459,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
             {/* Form Column - SOLID OPAQUE CARD */}
-            <motion.div {...springEntrance} className="lg:col-span-7 bg-[#161311] border-2 border-amber-500/40 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5 text-white">
+            <motion.div {...springEntrance} className="lg:col-span-7 bg-[#161311] border border-amber-500/20 shadow-xl p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5 text-white">
               <div>
                 <span className="text-xs font-black text-slate-950 bg-amber-400 px-3 py-1 rounded">
                   WRITE TO US
@@ -473,7 +473,7 @@ export default function Home() {
               </div>
 
               {thanksSubmitted ? (
-                <div className="p-5 bg-[#1E3A8A] border-2 border-amber-400 rounded-xl text-center space-y-2">
+                <div className="p-5 bg-[#1E3A8A] border border-amber-400 rounded-xl text-center space-y-2">
                   <CheckCircle2 className="w-8 h-8 text-amber-400 mx-auto" />
                   <p className="text-sm font-bold text-white">നന്ദി പ്രകാശനം സമർപ്പിച്ചു!</p>
                 </div>
@@ -486,7 +486,7 @@ export default function Home() {
                       placeholder="First Name"
                       value={thanksForm.firstName}
                       onChange={(e) => setThanksForm({ ...thanksForm, firstName: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                     <input
                       type="text"
@@ -494,7 +494,7 @@ export default function Home() {
                       placeholder="Last Name"
                       value={thanksForm.lastName}
                       onChange={(e) => setThanksForm({ ...thanksForm, lastName: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                   </div>
 
@@ -505,7 +505,7 @@ export default function Home() {
                       placeholder="Contact Number"
                       value={thanksForm.contact}
                       onChange={(e) => setThanksForm({ ...thanksForm, contact: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                     <input
                       type="email"
@@ -513,7 +513,7 @@ export default function Home() {
                       placeholder="Email Address"
                       value={thanksForm.email}
                       onChange={(e) => setThanksForm({ ...thanksForm, email: e.target.value })}
-                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                      className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                     />
                   </div>
 
@@ -523,7 +523,7 @@ export default function Home() {
                     placeholder="Subject (വിഷയം)"
                     value={thanksForm.subject}
                     onChange={(e) => setThanksForm({ ...thanksForm, subject: e.target.value })}
-                    className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                    className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                   />
 
                   <textarea
@@ -532,7 +532,7 @@ export default function Home() {
                     placeholder="Describe your testimony (Type Here...)"
                     value={thanksForm.description}
                     onChange={(e) => setThanksForm({ ...thanksForm, description: e.target.value })}
-                    className="w-full px-4 py-3 sm:py-2.5 rounded-xl border-2 border-stone-700 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
+                    className="w-full px-4 py-3 sm:py-2.5 rounded-xl border border-stone-800 bg-stone-900 text-base sm:text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-400 font-medium"
                   />
 
                   <button
@@ -555,7 +555,7 @@ export default function Home() {
                 </h3>
               </div>
 
-              <div className="bg-[#161311] border-2 border-stone-700 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100">
+              <div className="bg-[#161311] border border-stone-800 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100">
                 <p className="text-xs sm:text-sm leading-relaxed font-normal">
                   "We attended a retreat last month and my mother had prayed for her sister who had a debt of Rs 21 lakhs... God miraculously cleared the debt through divine providence."
                 </p>
@@ -565,7 +565,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-[#161311] border-2 border-stone-700 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100">
+              <div className="bg-[#161311] border border-stone-800 p-5 rounded-2xl shadow-xl space-y-2 text-stone-100">
                 <p className="text-xs sm:text-sm leading-relaxed font-normal">
                   "I had attended the retreat last year... blessed with a baby boy overcoming PCOD. All glory to Jesus!"
                 </p>
@@ -632,9 +632,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-              className="bg-[#181412] border-2 border-stone-700 p-6 rounded-3xl shadow-xl flex items-start gap-4"
+              className="bg-[#181412] border border-stone-800 p-6 rounded-3xl shadow-xl flex items-start gap-4"
             >
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-stone-800 border-2 border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-md">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-stone-800 border border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-md">
                 <img
                   src="/assisi_assets/fr_armond_madhavath.webp"
                   alt="Fr Armond Madhavath Capuchin"
@@ -661,9 +661,9 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.1 }}
-              className="bg-[#181412] border-2 border-stone-700 p-6 rounded-3xl shadow-xl flex items-start gap-4"
+              className="bg-[#181412] border border-stone-800 p-6 rounded-3xl shadow-xl flex items-start gap-4"
             >
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-stone-800 border-2 border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-md">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-stone-800 border border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-md">
                 <img
                   src="/assisi_assets/fr_gratian_pallipurath.webp"
                   alt="Fr. Gratian Pallipurath Capuchin"
@@ -735,7 +735,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
-                className="bg-[#181412] border-2 border-stone-700 p-4 rounded-2xl shadow-xl hover:border-amber-400 transition text-left group flex flex-col justify-between"
+                className="bg-[#181412] border border-stone-800 p-4 rounded-2xl shadow-xl hover:border-amber-400 transition text-left group flex flex-col justify-between"
               >
                 <div>
                   <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300 transition line-clamp-1">
@@ -795,7 +795,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div {...springEntrance} className="lg:col-span-6 bg-[#111726] border-2 border-blue-500/40 p-6 rounded-3xl shadow-2xl space-y-3 text-white">
+            <motion.div {...springEntrance} className="lg:col-span-6 bg-[#111726] border border-blue-500/20 shadow-xl p-6 rounded-3xl shadow-2xl space-y-3 text-white">
               <h3 className="text-base sm:text-lg font-bold text-white">
                 ഹെൽപ്പ്‌ലൈൻ നമ്പറുകൾ
               </h3>
@@ -861,7 +861,7 @@ export default function Home() {
               transition={{ type: 'spring', stiffness: 90, damping: 16 }}
               className="lg:col-span-6"
             >
-              <div className="bg-[#161311] border-2 border-stone-700 rounded-3xl p-3 shadow-2xl">
+              <div className="bg-[#161311] border border-stone-800 rounded-3xl p-3 shadow-2xl">
                 <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden">
                   <iframe
                     title="Assisi Renewal Center Location Map"

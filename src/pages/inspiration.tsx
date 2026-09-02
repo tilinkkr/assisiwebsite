@@ -48,10 +48,10 @@ export default function InspirationPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-              className="bg-[#181412] border-2 border-stone-700 p-6 sm:p-8 rounded-3xl shadow-xl space-y-6 text-white text-left"
+              className="bg-[#181412] border border-stone-800 p-6 sm:p-8 rounded-3xl shadow-xl space-y-6 text-white text-left"
             >
               <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-stone-800 border-2 border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-lg">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-stone-800 border border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-lg">
                   <img
                     src="/assisi_assets/fr_armond_madhavath.webp"
                     alt="Fr. Armond Madhavath Capuchin"
@@ -88,10 +88,10 @@ export default function InspirationPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.1 }}
-              className="bg-[#181412] border-2 border-stone-700 p-6 sm:p-8 rounded-3xl shadow-xl space-y-6 text-white text-left"
+              className="bg-[#181412] border border-stone-800 p-6 sm:p-8 rounded-3xl shadow-xl space-y-6 text-white text-left"
             >
               <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-stone-800 border-2 border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-lg">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-stone-800 border border-amber-400/60 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-lg">
                   <img
                     src="/assisi_assets/fr_gratian_pallipurath.webp"
                     alt="Fr. Gratian Pallipurath Capuchin"

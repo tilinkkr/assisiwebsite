@@ -77,7 +77,7 @@ export default function RetreatsPage() {
                 onClick={() => setSelectedMonth(m)}
                 className={`px-5 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-sm cursor-pointer ${
                   activeMonth === m
-                    ? 'bg-[#7A1C1C] text-white shadow-md border-2 border-amber-400'
+                    ? 'bg-[#7A1C1C] text-white shadow-md border border-amber-400'
                     : 'bg-[#181412] hover:bg-[#221D1A] text-stone-200 border border-stone-700'
                 }`}
               >
@@ -101,7 +101,7 @@ export default function RetreatsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ type: 'spring', stiffness: 100, damping: 15, delay: idx * 0.05 }}
-                  className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-6 shadow-xl hover:border-amber-400 transition space-y-4 text-left flex flex-col justify-between"
+                  className="bg-[#181412] border border-stone-800 rounded-2xl p-6 shadow-xl hover:border-amber-400 transition space-y-4 text-left flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between border-b border-stone-800 pb-3">
@@ -158,7 +158,7 @@ export default function RetreatsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-            className="mt-12 bg-[#181412] border-2 border-stone-700 rounded-3xl p-6 sm:p-8 text-left space-y-4 text-white shadow-2xl"
+            className="mt-12 bg-[#181412] border border-stone-800 rounded-3xl p-6 sm:p-8 text-left space-y-4 text-white shadow-2xl"
           >
             <div className="flex items-center gap-2.5 border-b border-stone-800 pb-3">
               <ShieldCheck className="w-6 h-6 text-amber-400 shrink-0" />

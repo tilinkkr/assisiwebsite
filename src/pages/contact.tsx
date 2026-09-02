@@ -52,7 +52,7 @@ export default function ContactPage() {
               transition={{ type: 'spring', stiffness: 100, damping: 15 }}
               className="lg:col-span-5 space-y-6"
             >
-              <div className="bg-[#181412] border-2 border-stone-700 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6 text-white">
+              <div className="bg-[#181412] border border-stone-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6 text-white">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white">
                     അസ്സീസി ആശ്രമ കാര്യാലയം
@@ -133,7 +133,7 @@ export default function ContactPage() {
               transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.1 }}
               className="lg:col-span-7 space-y-6"
             >
-              <div className="bg-[#181412] border-2 border-stone-700 p-4 rounded-3xl shadow-2xl">
+              <div className="bg-[#181412] border border-stone-800 p-4 rounded-3xl shadow-2xl">
                 <h3 className="text-lg font-bold text-white p-2">
                   ഗൂഗിൾ മാപ്പ് ലൊക്കേഷൻ (Google Maps)
                 </h3>
@@ -150,7 +150,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-[#181412] border-2 border-stone-700 p-6 rounded-3xl shadow-xl space-y-3 text-stone-200 text-xs sm:text-sm">
+              <div className="bg-[#181412] border border-stone-800 p-6 rounded-3xl shadow-xl space-y-3 text-stone-200 text-xs sm:text-sm">
                 <h4 className="font-bold text-white text-base">
                   എത്തിച്ചേരാനുള്ള വഴി (How to Reach)
                 </h4>

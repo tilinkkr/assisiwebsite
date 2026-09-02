@@ -352,7 +352,7 @@ export default function AdminDashboardPage() {
               animate={{ opacity: 1, scale: 1 }}
               className="w-full max-w-md bg-[#181412] border-2 border-amber-500/60 p-8 rounded-3xl shadow-2xl space-y-6 text-center"
             >
-              <div className="w-16 h-16 rounded-2xl bg-[#7A1C1C] border-2 border-amber-400 p-3 mx-auto flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-[#7A1C1C] border border-amber-400 p-3 mx-auto flex items-center justify-center shadow-lg">
                 <Lock className="w-8 h-8 text-amber-300" />
               </div>
 
@@ -380,7 +380,7 @@ export default function AdminDashboardPage() {
                       value={usernameInput}
                       onChange={(e) => setUsernameInput(e.target.value)}
                       placeholder="Username നൽകുക"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-stone-700 bg-stone-900 text-white text-sm focus:outline-none focus:border-amber-400 font-medium"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-800 bg-stone-900 text-white text-sm focus:outline-none focus:border-amber-400 font-medium"
                     />
                   </div>
                 </div>
@@ -398,7 +398,7 @@ export default function AdminDashboardPage() {
                       value={passwordInput}
                       onChange={(e) => setPasswordInput(e.target.value)}
                       placeholder="••••••••••••"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-stone-700 bg-stone-900 text-white text-sm focus:outline-none focus:border-amber-400 font-medium"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-stone-800 bg-stone-900 text-white text-sm focus:outline-none focus:border-amber-400 font-medium"
                     />
                   </div>
                 </div>
@@ -508,7 +508,7 @@ export default function AdminDashboardPage() {
               {/* Summary KPI Cards Grid */}
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
                 
-                <div className="bg-[#181412] border-2 border-stone-700 p-4 rounded-2xl shadow-md space-y-1">
+                <div className="bg-[#181412] border border-stone-800 p-4 rounded-2xl shadow-md space-y-1">
                   <div className="flex items-center justify-between text-amber-400">
                     <span className="text-xs font-bold uppercase">പുതിയ നിയോഗങ്ങൾ</span>
                     <HeartHandshake className="w-4 h-4" />
@@ -517,7 +517,7 @@ export default function AdminDashboardPage() {
                   <p className="text-[11px] text-amber-300">പ്രാർത്ഥന കാത്തിരിക്കുന്നു</p>
                 </div>
 
-                <div className="bg-[#181412] border-2 border-stone-700 p-4 rounded-2xl shadow-md space-y-1">
+                <div className="bg-[#181412] border border-stone-800 p-4 rounded-2xl shadow-md space-y-1">
                   <div className="flex items-center justify-between text-blue-400">
                     <span className="text-xs font-bold uppercase">പ്രാർത്ഥനയിൽ</span>
                     <Clock className="w-4 h-4" />
@@ -526,7 +526,7 @@ export default function AdminDashboardPage() {
                   <p className="text-[11px] text-stone-400">വി. കുർബാനയിൽ സമർപ്പിച്ചു</p>
                 </div>
 
-                <div className="bg-[#181412] border-2 border-stone-700 p-4 rounded-2xl shadow-md space-y-1">
+                <div className="bg-[#181412] border border-stone-800 p-4 rounded-2xl shadow-md space-y-1">
                   <div className="flex items-center justify-between text-emerald-400">
                     <span className="text-xs font-bold uppercase">പൂർത്തിയായവ</span>
                     <CheckCircle2 className="w-4 h-4" />
@@ -535,7 +535,7 @@ export default function AdminDashboardPage() {
                   <p className="text-[11px] text-stone-400">പ്രാർത്ഥിച്ച നിയോഗങ്ങൾ</p>
                 </div>
 
-                <div className="bg-[#181412] border-2 border-stone-700 p-4 rounded-2xl shadow-md space-y-1">
+                <div className="bg-[#181412] border border-stone-800 p-4 rounded-2xl shadow-md space-y-1">
                   <div className="flex items-center justify-between text-purple-400">
                     <span className="text-xs font-bold uppercase">ധ്യാന പരിപാടികൾ</span>
                     <Calendar className="w-4 h-4" />
@@ -544,7 +544,7 @@ export default function AdminDashboardPage() {
                   <p className="text-[11px] text-stone-400">കലണ്ടർ ഇവന്റുകൾ</p>
                 </div>
 
-                <div className="bg-[#181412] border-2 border-stone-700 p-4 rounded-2xl shadow-md space-y-1 col-span-2 lg:col-span-1">
+                <div className="bg-[#181412] border border-stone-800 p-4 rounded-2xl shadow-md space-y-1 col-span-2 lg:col-span-1">
                   <div className="flex items-center justify-between text-rose-400">
                     <span className="text-xs font-bold uppercase">ബുക്കിംഗ് / സാക്ഷ്യം</span>
                     <Sparkles className="w-4 h-4" />
@@ -563,7 +563,7 @@ export default function AdminDashboardPage() {
                     onClick={() => setActiveTab('prayers')}
                     className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition cursor-pointer flex items-center gap-2 ${
                       activeTab === 'prayers'
-                        ? 'bg-[#7A1C1C] text-white border-2 border-amber-400 shadow-md'
+                        ? 'bg-[#7A1C1C] text-white border border-amber-400 shadow-md'
                         : 'bg-[#181412] text-stone-300 border border-stone-700 hover:bg-stone-800'
                     }`}
                   >
@@ -576,7 +576,7 @@ export default function AdminDashboardPage() {
                     onClick={() => setActiveTab('events')}
                     className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition cursor-pointer flex items-center gap-2 ${
                       activeTab === 'events'
-                        ? 'bg-[#7A1C1C] text-white border-2 border-amber-400 shadow-md'
+                        ? 'bg-[#7A1C1C] text-white border border-amber-400 shadow-md'
                         : 'bg-[#181412] text-stone-300 border border-stone-700 hover:bg-stone-800'
                     }`}
                   >
@@ -589,7 +589,7 @@ export default function AdminDashboardPage() {
                     onClick={() => setActiveTab('gallery')}
                     className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition cursor-pointer flex items-center gap-2 ${
                       activeTab === 'gallery'
-                        ? 'bg-[#7A1C1C] text-white border-2 border-amber-400 shadow-md'
+                        ? 'bg-[#7A1C1C] text-white border border-amber-400 shadow-md'
                         : 'bg-[#181412] text-stone-300 border border-stone-700 hover:bg-stone-800'
                     }`}
                   >
@@ -602,7 +602,7 @@ export default function AdminDashboardPage() {
                     onClick={() => setActiveTab('testimonies')}
                     className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition cursor-pointer flex items-center gap-2 ${
                       activeTab === 'testimonies'
-                        ? 'bg-[#7A1C1C] text-white border-2 border-amber-400 shadow-md'
+                        ? 'bg-[#7A1C1C] text-white border border-amber-400 shadow-md'
                         : 'bg-[#181412] text-stone-300 border border-stone-700 hover:bg-stone-800'
                     }`}
                   >
@@ -615,7 +615,7 @@ export default function AdminDashboardPage() {
                     onClick={() => setActiveTab('bookings')}
                     className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition cursor-pointer flex items-center gap-2 ${
                       activeTab === 'bookings'
-                        ? 'bg-[#7A1C1C] text-white border-2 border-amber-400 shadow-md'
+                        ? 'bg-[#7A1C1C] text-white border border-amber-400 shadow-md'
                         : 'bg-[#181412] text-stone-300 border border-stone-700 hover:bg-stone-800'
                     }`}
                   >
@@ -674,7 +674,7 @@ export default function AdminDashboardPage() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="പേര്, ഫോൺ നമ്പർ, സ്ഥലം അല്ലെങ്കിൽ നിയോഗം തിരയുക..."
-                        className="w-full pl-10 pr-4 py-2.5 bg-[#181412] border-2 border-stone-700 rounded-xl text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-500 font-medium"
+                        className="w-full pl-10 pr-4 py-2.5 bg-[#181412] border border-stone-800 rounded-xl text-sm text-white focus:outline-none focus:border-amber-400 placeholder:text-stone-500 font-medium"
                       />
                     </div>
 
@@ -881,7 +881,7 @@ export default function AdminDashboardPage() {
                     {events.map((ev) => (
                       <div
                         key={ev.id}
-                        className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-5 shadow-xl space-y-3 text-left flex flex-col justify-between"
+                        className="bg-[#181412] border border-stone-800 rounded-2xl p-5 shadow-xl space-y-3 text-left flex flex-col justify-between"
                       >
                         <div className="space-y-2">
                           <div className="flex items-center justify-between border-b border-stone-800 pb-2">
@@ -971,7 +971,7 @@ export default function AdminDashboardPage() {
                       gallery.map((img) => (
                         <div
                           key={img.id}
-                          className="bg-[#181412] border-2 border-stone-700 rounded-2xl overflow-hidden shadow-xl space-y-2 flex flex-col justify-between"
+                          className="bg-[#181412] border border-stone-800 rounded-2xl overflow-hidden shadow-xl space-y-2 flex flex-col justify-between"
                         >
                           <div className="aspect-[4/3] bg-stone-900 overflow-hidden relative">
                             <img src={img.src} alt={img.title} className="w-full h-full object-cover" />
@@ -1007,7 +1007,7 @@ export default function AdminDashboardPage() {
                     testimonies.map((item) => (
                       <div
                         key={item.id}
-                        className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-5 shadow-xl space-y-3 flex flex-col justify-between text-left"
+                        className="bg-[#181412] border border-stone-800 rounded-2xl p-5 shadow-xl space-y-3 flex flex-col justify-between text-left"
                       >
                         <div className="space-y-2">
                           <div className="flex items-center justify-between border-b border-stone-800 pb-2">
@@ -1078,7 +1078,7 @@ export default function AdminDashboardPage() {
                     bookings.map((item) => (
                       <div
                         key={item.id}
-                        className="bg-[#181412] border-2 border-stone-700 rounded-2xl p-5 shadow-xl space-y-3 text-left"
+                        className="bg-[#181412] border border-stone-800 rounded-2xl p-5 shadow-xl space-y-3 text-left"
                       >
                         <div className="flex items-center justify-between border-b border-stone-800 pb-2">
                           <span className="text-xs text-amber-300 font-bold">{item.retreatDates}</span>
@@ -1146,7 +1146,7 @@ export default function AdminDashboardPage() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="relative w-full max-w-lg bg-[#181412] border-2 border-amber-400 p-6 rounded-3xl shadow-2xl z-10 text-left space-y-4"
+                className="relative w-full max-w-lg bg-[#181412] border border-amber-400 p-6 rounded-3xl shadow-2xl z-10 text-left space-y-4"
               >
                 <h3 className="text-xl font-bold text-white">
                   {editingEvent ? 'ധ്യാന വിവരങ്ങൾ എഡിറ്റ് ചെയ്യുക' : 'പുതിയ ധ്യാനം ചേർക്കുക'}
@@ -1258,7 +1258,7 @@ export default function AdminDashboardPage() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="relative w-full max-w-lg bg-[#181412] border-2 border-amber-400 p-6 rounded-3xl shadow-2xl z-10 text-left space-y-4"
+                className="relative w-full max-w-lg bg-[#181412] border border-amber-400 p-6 rounded-3xl shadow-2xl z-10 text-left space-y-4"
               >
                 <h3 className="text-xl font-bold text-white">പുതിയ ഫോട്ടോ ചേർക്കുക</h3>
 
